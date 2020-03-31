@@ -1,0 +1,12 @@
+version: '3'
+services:
+  antwapp4hc:
+    image: antwapp4hc/ubuntu
+    build:
+      context: ./
+    privileged: true
+    container_name: java-antwapp4hc-ubuntu
+    volumes:
+      - .:/android
+    working_dir: /android
+    command: bash ./gradlew clean assembleDebug 

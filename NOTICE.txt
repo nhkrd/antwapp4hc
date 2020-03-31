@@ -1,0 +1,9 @@
+NOTICE
+
+THIS SOFTWARE IS INTENDED FOR USE IN JAPAN.
+
+---
+
+注意
+
+本ソフトウェアは日本国内で使用されることを想定しています。
