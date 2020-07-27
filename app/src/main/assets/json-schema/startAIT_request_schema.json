@@ -1,0 +1,98 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/nhkrd/hyconet4j/sample/hcxp-json-schema/startAIT_request_schema.json",
+    "type": "object",
+    "properties": {
+        "resource": {
+            "$id": "/properties/resource",
+            "type": "object",
+            "properties": {
+                "original_network_id": {
+                    "$id": "/properties/resource/properties/original_network_id",
+                    "type": "number",
+                    "title": "The Original_network_id Schema",
+                    "default": 0,
+                    "examples": [
+                        32737
+                    ],
+                    "minimum": 0,
+                    "maximum": 65535
+                },
+                "transport_stream_id": {
+                    "$id": "/properties/resource/properties/transport_stream_id",
+                    "type": "number",
+                    "title": "The Transport_stream_id Schema",
+                    "default": 0,
+                    "examples": [
+                        32737
+                    ],
+                    "minimum": 0,
+                    "maximum": 65535
+                },
+                "service_id": {
+                    "$id": "/properties/resource/properties/service_id",
+                    "type": "number",
+                    "title": "The Service_id Schema",
+                    "default": 0,
+                    "examples": [
+                        1032
+                    ],
+                    "minimum": 0,
+                    "maximum": 65535
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "original_network_id",
+                "transport_stream_id",
+                "service_id"
+            ]
+        },
+        "hybridcast": {
+            "$id": "/properties/hybridcast",
+            "type": "object",
+            "properties": {
+                "aiturl": {
+                    "$id": "/properties/hybridcast/properties/aiturl",
+                    "type": "string",
+                    "title": "The Aiturl Schema",
+                    "default": "",
+                    "examples": [
+                        "https://example.com/ait.xml"
+                    ]
+                },
+                "orgid": {
+                    "$id": "/properties/hybridcast/properties/orgid",
+                    "type": "number",
+                    "title": "The Orgid Schema",
+                    "default": 0,
+                    "examples": [
+                        16
+                    ],
+                    "minimum": 0,
+                    "maximum": 65535
+                },
+                "appid": {
+                    "$id": "/properties/hybridcast/properties/appid",
+                    "type": "number",
+                    "title": "The Appid Schema",
+                    "default": 0,
+                    "examples": [
+                        16
+                    ],
+                    "minimum": 0,
+                    "maximum": 4294967295
+                }
+            },
+            "additionalProperties": false,
+            "dependencies": {
+                "aiturl" : ["orgid", "appid"]
+             }
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "resource",
+        "hybridcast"
+    ]
+}

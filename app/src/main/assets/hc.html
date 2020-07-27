@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0, user-scalable=yes">
+	<title>HC Emulation Page</title>
+    <meta name="description" content="">
+<style>
+* {
+	margin: 0px; padding: 0px; border: 0px;
+	}
+body {
+	margin: 0px; padding: 0px; border: 0px;
+	background-color: rgba( 255, 255, 0, 0.5 );
+	font-size:20px;
+	}
+#vObj {position:absolute; top:0px; left:1440px; width:480px; height:270px;
+	}
+iframe {
+	position: absolute;
+	margin: 0px; padding: 0px; border: 0px;
+	width: 1920px;
+	height: 1080px;
+	left: 0px;
+	top: 0px;
+	}
+#appinfo {
+	position: absolute;
+	margin: 0px; padding: 10px; border: 0px;
+	width:  940px;
+	min-height: 100px;
+	left:   960px;
+	top:    0px;
+	color: #ffffff;
+	background-color: rgba( 0,0,0,0.6);
+	font-size:20px;
+	line-height: 100%;
+	z-index: 10000;
+	}
+.title {
+	font-size:24px;
+	margin: 0px 0px 5px 0px;
+	}
+.subinfo {
+	margin: 10px 0px 0px 10px;
+	}
+.subinfo2 {
+	margin: 0px 0px 0px 20px;
+	}
+button {
+	width: 100px;
+	height: 50px;
+	}
+button:focus {
+	background-color: rgba( 255,200,200,0.8);
+	}
+.urlinfo {
+	word-wrap: break-word;
+	margin: -20px 0px 0px 110px;
+	width: 840px;
+	}
+#channel_icon {
+	margin: 0px; padding: 0px; border: 0px;
+	width:  100px;
+	height: 100px;
+	left:   700px;
+	top:     10px;
+	color: #ffffff;
+	background-color: rgba( 255, 0, 0, 0.6);
+	float: right;
+	}
+#channel_icon.color_0 { background-color: rgba( 128, 128, 128, 1.0); }
+#channel_icon.color_1 { background-color: rgba( 255, 0, 0, 0.9); }
+#channel_icon.color_2 { background-color: rgba( 0, 255, 0, 0.9); }
+#channel_icon.color_3 { background-color: rgba( 255, 255, 0, 0.9); }
+#channel_icon.color_4 { background-color: rgba( 0, 0, 255, 0.9); }
+#channel_icon.color_5 { background-color: rgba( 255, 0, 255, 0.9); }
+#channel_icon.color_6 { background-color: rgba( 0, 255, 255, 0.9); }
+#channel_icon.color_7 { background-color: rgba( 255, 255, 255, 0.9); }
+
+#hcarea {
+	background-color: #ffffff;
+	}
+	
+</style>
+</head>
+<body>
+<div id="appinfo">
+	<div id="channel_icon" class="color_1"></div>
+	<div class="title">Application Information</div>
+	<div><p class="subinfo">Mode: <span id="hcmode"></span></p>
+	</div>
+	<div><p class="subinfo">Resource:</p>
+		<p class="subinfo2"><span>NWID: </span><span id="nwid">0</span><span>, TSID: </span><span id="tsid">0</span><span>, SVID: </span><span id="svid">0</span></p>
+		<p class="subinfo2"><span>Number: </span><span id="chnumber">0</span><span>, Name: </span><span id="chname">name</span></p>
+	</div>
+	<div><p class="subinfo">Hybridcast:</p>
+		<p class="subinfo2"><span>AITURL: </span><div id="aiturl" class="urlinfo">http://</div></p>
+		<p class="subinfo2"><span>HCURL: </span><div id="hcurl" class="urlinfo">http://</div></p>
+		<p class="subinfo2"><span>ORGID:</span><span id="orgid">0</span><span>, APPID:</span><span id="appid">0</span></p>
+	</div>
+</div>
+<iframe id="hcarea" sandbox="allow-same-origin allow-forms allow-scripts"></iframe>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+<script >
+function logdisp(msg) {
+}
+function launchPage(ownobj) {
+	var newsrc = ownobj.value;
+	var hcarea = document.getElementById("hcarea");
+	hcarea.src = newsrc;
+}
+
+var lastappinfo_url = "http://127.0.0.1:8887/api/lastappinfo" ;
+var tune_url = "http://127.0.0.1:8887/tune.html" ;
+
+window.addEventListener('load', function() {
+	$.ajax( lastappinfo_url, {
+		type: 'get',
+		dataType: 'text'
+	})
+	.done(function(data) {
+		var hcjson = JSON.parse( data )["body"];
+
+		$("#hcmode").text( hcjson["mode"] ) ; 
+		$("#nwid").text( hcjson["resource"]["original_network_id"] ) ; 
+			$("#channel_icon").removeClass() ; 
+			$("#channel_icon").addClass( "color_" + ( (hcjson["resource"]["original_network_id"] + hcjson["resource"]["transport_stream_id"] + hcjson["resource"]["service_id"]) % 8) ) ; 
+		$("#tsid").text( hcjson["resource"]["transport_stream_id"] ) ; 
+		$("#svid").text( hcjson["resource"]["service_id"] ) ; 
+		
+		$("#chnumber").text( hcjson["logical_channel_number"] ) ; 
+		$("#chname").text( hcjson["broadcast_channel_name"] ) ; 
+
+		$("#aiturl").text( hcjson["hybridcast"]["aiturl"] ) ; 
+		$("#hcurl").text( hcjson["hybridcast"]["hcurl"] ) ; 
+		$("#orgid").text( hcjson["hybridcast"]["orgid"] ) ; 
+		$("#appid").text( hcjson["hybridcast"]["appid"] ) ; 
+		
+		var hcarea = document.getElementById("hcarea");
+		if( hcjson["mode"] == "app" ) {
+			hcarea.src = hcjson["hybridcast"]["hcurl"];
+		}
+		else {
+			hcarea.src = tune_url;
+		}
+	})
+	.fail(function() {
+	});
+});
+
+</script>
+</body>
+</html>

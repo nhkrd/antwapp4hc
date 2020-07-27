@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--<meta name="viewport" content="width=1920, height=1080, initial-scale=1.0, user-scalable=yes">-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>HCXP Log Viewer</title>
+<meta name="description" content="">
+<style>
+* {
+	margin: 0px; padding: 0px; border: 0px;
+	}
+html {
+	font-size: 16px;
+	}
+body {
+	padding:  10px; 
+/*	width:  1900px; */
+/*	height: 1060px; */
+	color: #000000 ;
+	background-color: #ffffff; font-size: 16px;
+	}
+#vObj {
+	position:absolute; top:0px; left:1440px; width:480px; height:270px;
+	}
+.ChangeElem_Btn {
+	border: 1px solid rgba(0,0,0,0.0);
+	padding: 5px ;
+	font-size:20px;
+	}
+.ChangeElem_Panel{
+	}
+#logarea, #setting {
+/*	position: absolute; */
+	margin: 0px; padding: 10px;
+	width:  900px;
+	height: 200px;
+	left:   10px;
+	top:    100px;
+	color: #000000;
+	font-size:20px;
+	line-height: 110%;
+	z-index: 10000;
+}
+#log {
+	width:  900px;
+	height: 205px;
+	border: 1px solid #000000;
+	background-color: rgba( 255, 255, 255, 1.0);
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+.logbutton {
+	border: 1px solid rgba(0,0,0,0.0);
+	padding: 0px 10px ;
+	margin: 0px 10px 2px 10px;
+	font-size: 16px;
+	vertical-align: top;
+}
+.tuneDelayButton {
+	border: 1px solid rgba(0,0,0,0.0);
+	padding: 0px 10px ;
+	margin: 5px 10px 0px 10px;
+	font-size: 20px;
+	vertical-align: top;
+}
+#config {
+	width:  900px;
+	height: 925px;
+	border: 1px solid #000000;
+	background-color: rgba( 255, 255, 255, 1.0);
+}
+p.attrtitle {
+	margin:  0px;
+	padding: 5px;
+	border:  0px ;
+	color: #2c2c2c ;
+	font-size: 20px ;
+	line-height: 100% ;
+	z-index: 10 ;
+	}
+p.attrstr {
+	margin:  0px 0px 0px 10px ;
+	padding: 5px;
+	border:  0px ;
+	color: #2c2c2c ;
+	font-size: 16px ;
+	line-height: 100% ;
+	z-index: 10 ;
+	}
+#appinfo_label {
+	position: absolute;
+	margin: 0px; padding: 10px; border: 0px;
+	width:  940px;
+	min-height: 100px;
+	left:   950px;
+	top:    102px;
+	color: #000000;
+	font-size:20px;
+	line-height: 110%;
+	z-index: 10000;
+    }
+#appinfo {
+	position: absolute;
+	margin: 0px; padding: 10px; border: 0px;
+	width:  940px;
+	min-height: 100px;
+	left:   950px;
+	top:    137px;
+	color: #ffffff;
+	background-color: rgba( 0,0,0,0.6);
+	font-size:20px;
+	line-height: 110%;
+	z-index: 10000;
+	}
+.title {
+	font-size:24px;
+	margin: 0px 0px 5px 0px;
+	}
+.subinfo {
+	margin: 10px 0px 0px 10px;
+	}
+.subinfo2 {
+	margin: 0px 0px 0px 20px;
+	}
+.urlinfo {
+	word-wrap: break-word;
+	margin: -20px 0px 0px 110px;
+	width: 840px;
+	}
+#logo {
+	width:  100px;
+	}	
+
+#hcsrc {
+	background-color: #ffffff;
+	}
+
+.configBase {
+	margin: 10px;
+	padding: 5px;
+	border: 1px solid #000000;
+	background-color: #d0ffff;
+}
+.ConfigChange_Btn_Content {
+	margin: 0px 0px 0px 10px;
+	}
+.CondifChange_Btn {
+	border: 1px solid rgba(0,0,0,0.0);
+	margin: 5px;
+	padding: 5px ;
+	font-size:20px;
+	background-color: #c0c0c0;
+	}
+.CondifChange_Div {
+	border: 1px solid rgba(0,0,0,0.0);
+	margin: 5px;
+	padding: 5px ;
+	font-size:20px;
+	min-width: 100px;
+	background-color: #c0c0c0;
+	display: inline-block;
+	}
+
+.ChangeElem_Btn:focus , .CondifChange_Btn:focus , .logbutton:focus {
+	border: 1px solid #ff0000;
+	background-color: rgba( 255, 0, 0, 0.1);
+	outline: none;
+}
+
+input#cc_aitVerifierURL {
+    width: 400px;
+    fontsize: 24px;
+	border: 1px solid #ff0000;
+	background-color: rgba( 255, 0, 0, 0.1);
+}
+
+
+.logstr1 {
+	background-color: #eeeeee;
+	}
+.logstr2 {
+	background-color: #ffffff;
+	}
+#debuginfo  {
+	margin-top: 10px;
+	}
+#debuginfo > tbody {
+	display: block;
+    overflow-y: scroll;
+    height: 700px;
+	}
+#debuginfo > thead {
+	border: 0px;
+	display: block;
+	}
+#debuginfo > thead > tr > th {
+	color: #ffffff;
+	background-color: #404040;
+/*	border: 1px solid #ffffff; */
+	border-top: 0px solid #000000; 
+	border-bottom: 1px solid #000000; 
+	border-left: 1px solid #000000; 
+	border-right: 0px solid #000000; 
+	padding: 0px;
+	text-align: center;
+	/* 56 145 167 */
+	}
+#debuginfo > tbody > tr > td {
+	color: #000000;
+/*	background-color: #d0d0d0; */
+	border-top: 0px solid #000000; 
+	border-bottom: 1px solid #000000; 
+	border-left: 1px solid #000000; 
+	border-right: 0px solid #000000; 
+	padding: 0px;
+	text-align: center;
+	}
+#debuginfo>thead>tr>th:nth-child(1), #debuginfo>tbody>tr>td:nth-child(1) { width:  80px; min-width:  80px; max-width:  80px; }
+#debuginfo>thead>tr>th:nth-child(2), #debuginfo>tbody>tr>td:nth-child(2) { width: 200px; min-width: 200px; max-width: 200px; }
+#debuginfo>thead>tr>th:nth-child(3), #debuginfo>tbody>tr>td:nth-child(3) { width:  80px; min-width:  80px; max-width:  80px; }
+#debuginfo>thead>tr>th:nth-child(4), #debuginfo>tbody>tr>td:nth-child(4) { width: 400px; min-width: 400px; max-width: 400px; }
+#debuginfo>thead>tr>th:nth-child(5), #debuginfo>tbody>tr>td:nth-child(5) { width: 600px; min-width: 600px; max-width: 600px; }
+#debuginfo>thead>tr>th:nth-child(6), #debuginfo>tbody>tr>td:nth-child(6) { width: 300px; min-width: 300px; max-width: 300px; border-right: 1px solid #000000;}
+#debuginfo>tbody>tr>td:nth-child(4) { text-align:left; word-wrap:break-word;}
+#debuginfo>tbody>tr>td:nth-child(5) { text-align:left; word-wrap:break-word;}
+
+table {
+	border-color: #ff0000;
+	border: 0px;
+	border-spacing: 0px;
+	}
+
+</style>
+</head>
+<body>
+<div>AnTWapp Debug Info Viewer [IP Address: <span id="ipaddress"></span>]</div>
+<div>
+<!--
+    <div id="logarea">
+		ログ情報
+		<button class="logbutton focusable" onclick="logup();">▲</button>
+		<button class="logbutton focusable" onclick="logdown();">▼</button>
+		<div id="log"></div>
+    </div>
+-->
+	<table class="table" id="debuginfo">
+		<thead><tr><th>type</th><th>time</th><th>status</th><th>codepoint</th><th>message</th><th>remark</th></tr></thead>
+		<tbody><!--
+					<tr>
+					<td>Local</td>
+					<td>2019-02-12T17:01:23</td>
+					<td>345678</td>
+					<td>テストああああああああああああああああ2</td>
+					<td>345678</td>
+					<td>345678</td>
+					</tr>
+-->		</tbody>
+	</table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+<script src="./js/focus-manager.js"></script>
+<script src="./js/config.js"></script>
+<script type="text/javascript">
+	var antwappconfig_url = null ;
+
+    var logmax = 100;
+	var log_toggle = true;
+	function logdisp(debugstr, color) {
+		var d_log = $("#log");
+		while(logmax <= d_log.find(".logstr").length ) {
+			d_log.find(".logstr").first().children().remove() ;
+			d_log.find(".logstr").first().remove() ;
+		}
+
+		var classname = (log_toggle)? "logstr logstr1":"logstr logstr2"  ;
+
+
+		var debuglog = JSON.parse(debugstr);
+		var d_log = $("#debuginfo tbody");
+		var bodystr = make_denbuginfo(debuglog);
+		$("#debuginfo tbody").append( bodystr );
+
+		//logdown();
+		var scrollMax = $('#debuginfo tbody').get(0).scrollHeight - $('#debuginfo tbody').get(0).offsetHeight;
+console.log( "scrollMax:" + scrollMax + " logpos:" + logpos);
+		logpos = logpos + 1000;
+		if( scrollMax < logpos ) {
+			logpos = scrollMax;
+		}
+		$("#debuginfo tbody").scrollTop(logpos);
+
+		log_toggle = !log_toggle;
+	}
+	function logclear() {
+		var d_log = $("#debuginfo");
+		d_log.empty();
+	}
+
+	function make_denbuginfo( debuginfo ) {
+		var classname = (log_toggle)? "logstr logstr1":"logstr logstr2"  ;
+		var bodystr = '<tr class="' + classname + '">' ;
+		bodystr = bodystr + "<td>" + debuginfo["type"] + "</td>" ;
+		bodystr = bodystr + "<td>" + debuginfo["time"] + "</td>" ;
+		bodystr = bodystr + "<td>" + debuginfo["status"] + "</td>" ;
+		bodystr = bodystr + "<td>" + debuginfo["codepoint"] + "</td>" ;
+		if( debuginfo["color"] == "" ) {
+			bodystr = bodystr + "<td>" + debuginfo["message"] + "</td>" ;
+		}
+		else {
+			bodystr = bodystr + '<td style="color:' + debuginfo["color"] +'">' + debuginfo["message"] + "</td>" ;
+		}
+//		bodystr = bodystr + "<td>" + debuginfo["color"] + "</td>" ;
+		bodystr = bodystr + "<td>" + debuginfo["remark"] + "</td>" ;
+		bodystr = bodystr + "</tr>";
+		return bodystr;
+	}
+
+	//Log Scroll
+	var logpos = 0;
+	var scroll_step = 20;
+	function logup() {
+		logpos = logpos - scroll_step;
+		if( logpos < 0 ) {
+			logpos = 0;
+		}
+		$("#log").scrollTop(logpos);
+//		console.log(logpos, $('#log').get(0).scrollHeight, $('#log').get(0).offsetHeight );
+	}
+	function logdown() {
+		var scrollMax = $('#debuginfo').get(0).scrollHeight - $('#debuginfo').get(0).offsetHeight;
+		logpos = logpos + scroll_step;
+		if( scrollMax < logpos ) {
+			logpos = scrollMax;
+		}
+		$("#debuginfo").scrollTop(logpos);
+//		console.log(logpos, $('#log').get(0).scrollHeight, $('#log').get(0).offsetHeight );
+	}
+
+	const getLogUrl = async function(){
+                    const options = {
+                        method: 'GET',
+                        headers: {'Content-type': 'application/ld+json'}
+                    }
+                    return await (await fetch( "http://" + window.location.host + "/apps/Hybridcast", options)).json();
+	            }
+
+	window.addEventListener('load', function() {
+		var host = window.location.host;
+		console.log("host:" + host);
+		var log_url = "ws://" + host + "/antwapp/websocket" ;
+		antwappconfig_url = "http://" + host + "/api/antwappconfig" ;
+
+		getLogUrl()
+            .then( jsondata => { log_url = jsondata.actions.events.hybridcastCompanionConnectListener.forms[0].href })
+            .catch( error => {
+                console.log(error);
+                log_url =  "ws://" + host + "/antwapp/websocket";
+            })
+
+		var connection = new WebSocket( log_url, ['HCXPLog'] );
+		//通信が接続された場合
+		connection.onopen = function(e) {
+			logdisp( JSON.stringify({"type":"Local","time":"","status":"","codepoint":"","message":"onopen","color":"#009900","remark":""}) );
+		};
+ 
+		//エラーが発生した場合
+		connection.onerror = function(error) {
+//			logdisp( "***** onerror *****", "#ff0000") ;
+			logdisp( JSON.stringify({"type":"Local","time":"","status":"","codepoint":"","message":"onerror","color":"#ff0000","remark":""}) );
+		};
+		//メッセージを受け取った場合
+		connection.onmessage = function(e) {
+			console.log(e.data);
+			logdisp(e.data, "#000000") ;
+		};
+
+		//通信が切断された場合
+		connection.onclose = function() {
+//			logdisp( "***** onclose *****", "#ff0000") ;
+			logdisp( JSON.stringify({"type":"Local","time":"","status":"","codepoint":"","message":"onclose","color":"#ff0000","remark":""}) );
+		};
+
+		//disp IP Address
+		dispIpAddress(antwappconfig_url, "#ipaddress");
+		set_menu_focus();
+		$('#displog').focus();
+//		logdisp("start", "#ff0000");
+	});
+</script>
+</body>
+</html>

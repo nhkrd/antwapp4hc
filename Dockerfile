@@ -1,9 +1,7 @@
 FROM ubuntu:bionic
-MAINTAINER utsunomiya 20200226
+MAINTAINER ikeomasaya 20200702
 
-RUN apt-get update
-RUN apt-get install -y curl wget unzip language-pack-ja
-RUN apt-get install -y openjdk-8-jdk
+RUN apt-get update && apt-get install -y curl wget unzip language-pack-ja openjdk-8-jdk
 
 ## ENV settings
 ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64

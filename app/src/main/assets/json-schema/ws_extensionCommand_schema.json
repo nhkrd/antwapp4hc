@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/nhkrd/hyconet4j/sample/hcxp-json-schema/ws_extensionCommand_schema.json",
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "control": {
+      "$id": "/properties/control",
+      "type": "object",
+      "properties": {
+        "devid": {
+          "$id": "/properties/control/properties/devid",
+          "type": "string",
+          "title": "The Devid Schema ",
+          "default": "",
+          "examples": [
+            "端末 ID"
+          ],
+          "minLength": 1
+        },
+        "extensions": {
+          "$id": "/properties/control/properties/extensions",
+          "type": "object",
+          "properties": {
+            "vendor": {
+              "$id": "/properties/control/properties/extensions/properties/vendor",
+              "type": "string",
+              "title": "The Vendor Schema ",
+              "default": "",
+              "examples": [
+                "ベンダー名"
+              ]
+            }
+          },
+          "required": [
+            "vendor"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "devid",
+        "extensions"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "control"
+  ]
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff" android:baselineAligned="false">
+
+    <ViewSwitcher
+        android:id="@+id/viewSwitcher1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <WebView
+            android:id="@+id/web_view_console"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:minHeight="300dp"
+            android:minWidth="300dp">
+        </WebView>
+
+
+        <RelativeLayout
+            android:id="@+id/layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#00000000" >
+
+            <WebView
+                android:id="@+id/web_view_hc"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:minHeight="300dp"
+                android:minWidth="300dp" >
+            </WebView>
+
+            <WebView
+                android:id="@+id/web_view_hcsub"
+                android:layout_width="760px"
+                android:layout_height="220px"
+                android:layout_marginTop="0px"
+                android:layout_marginLeft="1160px"
+                android:background="#00000000" />
+
+        </RelativeLayout>
+
+    </ViewSwitcher>
+
+</LinearLayout>

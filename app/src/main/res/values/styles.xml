@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="@style/Theme.Leanback"></style>
+
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowMinWidthMajor">@dimen/dialog_min_width_major</item>>
+        <item name="android:windowMinWidthMinor">@dimen/dialog_min_width_minor</item>>
+    </style>
+
+    <style name="windowTitleStyle" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textSize">@dimen/dialog_text_size</item>>
+    </style>
+
+</resources>

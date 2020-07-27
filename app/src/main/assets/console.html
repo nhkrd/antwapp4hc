@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=1920, height=1080, initial-scale=1.0, user-scalable=yes">
+<title>Antwapp Console</title>
+<meta name="description" content="">
+<style>
+* {
+	margin: 0px; padding: 0px; border: 0px;
+	}
+html {
+	background-color: #000000; font-size:20px;
+	}
+body {
+	background-color: #f0f0f0; font-size:20px;
+	padding:  10px;
+	width:  1900px;
+	height: 1060px;
+	color: #000000 ;
+	}
+#vObj {
+	position:absolute; top:0px; left:1440px; width:480px; height:270px;
+	}
+.ChangeElem_Btn {
+	border: 1px solid rgba(0,0,0,0.0);
+	padding: 5px ;
+	font-size:20px;
+	}
+.ChangeElem_Panel{
+	display: none;
+	}
+#logarea, #setting {
+	position: absolute;
+	margin: 0px; padding: 10px;
+	width:  900px;
+	height: 890px;
+	left:   10px;
+	top:    100px;
+	color: #000000;
+	font-size:20px;
+	line-height: 110%;
+	z-index: 10000;
+}
+#log {
+	width:  900px;
+	height: 925px;
+	border: 1px solid #000000;
+	background-color: rgba( 255, 255, 255, 1.0);
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+.logbutton {
+	border: 1px solid rgba(0,0,0,0.0);
+	padding: 0px 10px ;
+	margin: 0px 10px 2px 10px;
+	font-size: 16px;
+	vertical-align: top;
+}
+.tuneDelayButton {
+	border: 1px solid rgba(0,0,0,0.0);
+	padding: 0px 10px ;
+	margin: 5px 10px 0px 10px;
+	font-size: 20px;
+	vertical-align: top;
+}
+p.logstr1 {
+	margin:  0px 2px 2px 2px;
+	padding: 0px ;
+	border:  0px ;
+	width:  896px;
+	/*	border-bottom: 1px solid #d0d0d0 ; */
+	color: #000000 ;
+	background-color: #e8e8e8;
+	font-size: 16px ;
+	line-height: 100% ;
+	z-index: 10 ;
+	word-wrap: break-word;
+	}
+p.logstr2 {
+	margin:  0px 0px 2px 2px;
+	padding: 0px ;
+	border:  0px ;
+	width:  896px;
+	/*	border-bottom: 1px solid #d0d0d0 ; */
+	color: #000000 ;
+	background-color: #ffffff;
+	font-size: 16px ;
+	line-height: 100% ;
+	z-index: 10 ;
+	word-wrap: break-word;
+	}
+#config {
+	width:  900px;
+	height: 925px;
+	border: 1px solid #000000;
+	background-color: rgba( 255, 255, 255, 1.0);
+}
+p.attrtitle {
+	margin:  0px;
+	padding: 5px;
+	border:  0px ;
+	color: #2c2c2c ;
+	font-size: 20px ;
+	line-height: 100% ;
+	z-index: 10 ;
+	}
+p.attrstr {
+	margin:  0px 0px 0px 10px ;
+	padding: 5px;
+	border:  0px ;
+	color: #2c2c2c ;
+	font-size: 16px ;
+	line-height: 100% ;
+	z-index: 10 ;
+	}
+#appinfo_label {
+	position: absolute;
+	margin: 0px; padding: 10px; border: 0px;
+	width:  940px;
+	min-height: 100px;
+	left:   950px;
+	top:    102px;
+	color: #000000;
+	font-size:20px;
+	line-height: 110%;
+	z-index: 10000;
+    }
+#appinfo {
+	position: absolute;
+	margin: 0px; padding: 10px; border: 0px;
+	width:  940px;
+	min-height: 100px;
+	left:   950px;
+	top:    137px;
+	color: #ffffff;
+	background-color: rgba( 0,0,0,0.6);
+	font-size:20px;
+	line-height: 110%;
+	z-index: 10000;
+	}
+#hcarea_label {
+	position: absolute;
+	margin: 0px; padding: 10px; border: 0px;
+	width:  960px;
+	min-height: 100px;
+	left:   950px;
+	top:    490px;
+	color: #000000;
+	font-size:20px;
+	line-height: 110%;
+	z-index: 10000;
+    }
+#hcarea {
+	position: absolute;
+	margin: 0px; padding: 0px; border: 0px;
+	width:  960px;
+	height: 540px;
+	left:   950px;
+	top:    525px;
+	color: #ffffff;
+	background-color: rgba( 0,0,0,0.6);
+	font-size:20px;
+	line-height: 100%;
+	z-index: 10000;
+	overflow-x:hidden;
+	}
+.title {
+	font-size:24px;
+	margin: 0px 0px 5px 0px;
+	}
+.subinfo {
+	margin: 10px 0px 0px 10px;
+	}
+.subinfo2 {
+	margin: 0px 0px 0px 20px;
+	}
+.urlinfo {
+	word-wrap: break-word;
+	margin: -20px 0px 0px 110px;
+	width: 840px;
+	}
+#channel_icon {
+	margin: 0px; padding: 0px; border: 0px;
+	width:  100px;
+	height: 100px;
+	left:   700px;
+	top:     10px;
+	color: #ffffff;
+	background-color: rgba( 255, 0, 0, 0.6);
+	float: right;
+	}
+#logo {
+	width:  100px;
+	}
+#channel_icon.color_x { background-color: rgba( 0, 0, 0, 0.0); }
+#channel_icon.color_0 { background-color: rgba( 128, 128, 128, 1.0); }
+#channel_icon.color_1 { background-color: rgba( 255, 0, 0, 0.9); }
+#channel_icon.color_2 { background-color: rgba( 0, 255, 0, 0.9); }
+#channel_icon.color_3 { background-color: rgba( 255, 255, 0, 0.9); }
+#channel_icon.color_4 { background-color: rgba( 0, 0, 255, 0.9); }
+#channel_icon.color_5 { background-color: rgba( 255, 0, 255, 0.9); }
+#channel_icon.color_6 { background-color: rgba( 0, 255, 255, 0.9); }
+#channel_icon.color_7 { background-color: rgba( 255, 255, 255, 0.9); }
+
+#hcsrc {
+	background-color: #ffffff;
+	}
+
+.configBase {
+	margin: 10px;
+	padding: 5px;
+	border: 1px solid #000000;
+	background-color: #d0ffff;
+}
+.ConfigChange_Btn_Content {
+	margin: 0px 0px 0px 10px;
+	}
+.CondifChange_Btn {
+	border: 1px solid rgba(0,0,0,0.0);
+	margin: 5px;
+	padding: 5px ;
+	font-size:20px;
+	background-color: #c0c0c0;
+	}
+.CondifChange_Div {
+	border: 1px solid rgba(0,0,0,0.0);
+	margin: 5px;
+	padding: 5px ;
+	font-size:20px;
+	min-width: 100px;
+	background-color: #c0c0c0;
+	display: inline-block;
+	}
+
+.ChangeElem_Btn:focus , .CondifChange_Btn:focus , .logbutton:focus {
+	border: 1px solid #ff0000;
+	background-color: rgba( 255, 0, 0, 0.1);
+	outline: none;
+}
+
+input#cc_aitVerifierURL {
+    width: 400px;
+    fontsize: 24px;
+	border: 1px solid #ff0000;
+	background-color: rgba( 255, 0, 0, 0.1);
+}
+
+
+
+</style>
+</head>
+<body>
+<div>AnTWapp Debug Console [IP Address: <span id="ipaddress"></span>, UserAgent: <span id="useragent"></span> ]</div>
+<div class="ChangeElem_Btn_Content">
+  <button class="ChangeElem_Btn focusable" id="displog">ログ表示</button>
+  <button class="ChangeElem_Btn focusable" id="dispconfig">設定情報</button>
+  <button class="ChangeElem_Btn focusable">アプリ画面へ遷移</button>
+  <button class="ChangeElem_Btn focusable">ログクリア</button>
+</div>
+
+<ul>
+  <li class="ChangeElem_Panel">
+    <div id="logarea">ログ情報<button class="logbutton focusable" onclick="logup();">▲</button><button class="logbutton focusable" onclick="logdown();">▼</button><div id="log"></div>
+    </div>
+  </li>
+  <li class="ChangeElem_Panel">
+    <div id="setting">設定情報<div id="config"></div></div>
+  </li>
+</ul>
+
+<div id="appinfo">
+	<div id="channel_icon" class="color_x"><img id="logo"></div>
+	<div class="title">startAIT Request Information</div>
+	<div><p class="subinfo">Mode: <span id="hcmode"></span></p>
+	</div>
+	<div><p class="subinfo">Resource:</p>
+		<p class="subinfo2"><span>NWID: </span><span id="nwid">0</span><span>, TSID: </span><span id="tsid">0</span><span>, SVID: </span><span id="svid">0</span></p>
+		<p class="subinfo2"><span>Number: </span><span id="chnumber">0</span><span>, Name: </span><span id="chname">name</span></p>
+	</div>
+	<div><p class="subinfo">Hybridcast:</p>
+		<p class="subinfo2"><span>AITURL: </span><div id="aiturl" class="urlinfo">http://</div></p>
+		<p class="subinfo2"><span>HCURL: </span><div id="hcurl" class="urlinfo">http://</div></p>
+		<p class="subinfo2"><span>ORGID:</span><span id="orgid">0</span><span>, APPID:</span><span id="appid">0</span></p>
+	</div>
+</div>
+
+<div id="hcarea_label">Hybridcast想定HTML表示画面</div>
+<div id="hcarea">
+    <div style="width:960px;height:540px;overflow:hidden;">
+        <iframe id="hcsrc" frameborder="0" scrolling="no" width="1920" height="1080" style="transform:scale(0.5);-o-transform:scale(0.5);-webkit-transform:scale(0.5);-moz-transform:scale(0.5);-ms-transform:scale(0.5);transform-origin:0 0;-o-transform-origin:0 0;-webkit-transform-origin:0 0;-moz-transform-origin:0 0;-ms-transform-origin:0 0;"></iframe>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+<script src="./js/focus-manager.js"></script>
+<script src="./js/config.js"></script>
+<script type="text/javascript">
+	var host = window.location.host;
+	var antwappconfig_url = "http://" + host + "/api/antwappconfig" ;
+	var log_url = "ws://" + host + "/antwapp/websocket"
+
+
+    var logmax = 100;
+	var log_toggle = true;
+	function logdisp(str, color) {
+		var d_log = $("#log");
+		while(logmax <= d_log.find(".logstr").length ) {
+			d_log.find(".logstr").first().children().remove() ;
+			d_log.find(".logstr").first().remove() ;
+		}
+		var classname = (log_toggle)? "logstr logstr1":"logstr logstr2"  ;
+		var logstr = $('<p class="' + classname + '"></p>').clone() ;
+		if( !!color ) {
+			logstr.attr('style', 'color:'+color)
+		}
+		logstr.text(str);
+		d_log.append( logstr ) ;
+		//logdown();
+		var scrollMax = $('#log').get(0).scrollHeight - $('#log').get(0).offsetHeight;
+		logpos = logpos + 1000;
+		if( scrollMax < logpos ) {
+			logpos = scrollMax;
+		}
+		$("#log").scrollTop(logpos);
+
+		log_toggle = !log_toggle;
+	}
+	function logclear() {
+		var d_log = $("#log");
+		d_log.empty();
+	}
+
+	//Log Scroll
+	var logpos = 0;
+	var scroll_step = 20;
+	function logup() {
+		logpos = logpos - scroll_step;
+		if( logpos < 0 ) {
+			logpos = 0;
+		}
+		$("#log").scrollTop(logpos);
+//		console.log(logpos, $('#log').get(0).scrollHeight, $('#log').get(0).offsetHeight );
+	}
+	function logdown() {
+		var scrollMax = $('#log').get(0).scrollHeight - $('#log').get(0).offsetHeight;
+		logpos = logpos + scroll_step;
+		if( scrollMax < logpos ) {
+			logpos = scrollMax;
+		}
+		$("#log").scrollTop(logpos);
+//		console.log(logpos, $('#log').get(0).scrollHeight, $('#log').get(0).offsetHeight );
+	}
+
+	function startAITControlledApp( hcjson_str ) {
+		var hcjson = JSON.parse( hcjson_str );
+
+		$("#hcmode").text( hcjson["mode"] ) ;
+		$("#nwid").text( hcjson["resource"]["original_network_id"] ) ;
+			$("#channel_icon").removeClass() ;
+			$("#channel_icon").addClass( "color_" + ( (parseInt(hcjson["resource"]["original_network_id"]) + parseInt(hcjson["resource"]["service_id"])) % 8) ) ;
+		$("#tsid").text( hcjson["resource"]["transport_stream_id"] ) ;
+		$("#svid").text( hcjson["resource"]["service_id"] ) ;
+
+		$("#chnumber").text( hcjson["logical_channel_number"] ) ;
+		$("#chname").text( hcjson["broadcast_channel_name"] ) ;
+		if( hcjson["logo_image"] != "" ) {
+			$("#logo").attr( "src", hcjson["logo_image"] ) ;
+			$("#logo").show() ;
+		}
+		else {
+			$("#logo").attr( "src", "" ) ;
+			$("#logo").hide() ;
+		}
+
+		$("#aiturl").text( hcjson["hybridcast"]["aiturl"] ) ;
+		if( hcjson["hybridcast"]["hcurl"] != "" ) {
+			$("#hcurl").text( hcjson["hybridcast"]["hcurl"] ) ;
+		}
+		else {
+			$("#hcurl").text( "　" ) ;
+		}
+		$("#orgid").text( hcjson["hybridcast"]["orgid"] ) ;
+		$("#appid").text( hcjson["hybridcast"]["appid"] ) ;
+
+		if((hcjson["hcViewMode"] == "Debug") || (hcjson["hcViewMode"] == "Both")) {
+			var hcarea = document.getElementById("hcsrc");
+			if( hcjson["mode"] == "app" ) {
+				hcarea.src = hcjson["hybridcast"]["hcurl"];
+			}
+			else {
+				hcarea.src = hcjson["hybridcast"]["tuneurl"];
+			}
+		}
+		else {
+			var hcarea = document.getElementById("hcsrc");
+			hcarea.src = "";
+		}
+	}
+
+	function menu_control() {
+			//button init
+		$('.ChangeElem_Panel').hide();
+		$('.ChangeElem_Panel').eq(0).show();
+		$('.ChangeElem_Btn').eq(0).addClass('is-active');
+		$('.ChangeElem_Btn').eq(0).focus();
+		$('.ChangeElem_Btn').each(function () {
+			$(this).on('click', function () {
+				var index = $('.ChangeElem_Btn').index(this);
+				if( index == 0 ) {
+					$('.ChangeElem_Btn').removeClass('is-active');
+					$(this).addClass('is-active');
+					$('.ChangeElem_Panel').hide();
+					$('.ChangeElem_Panel').eq(index).show();
+				}
+				else if( index == 1 ) {
+					$('.ChangeElem_Btn').removeClass('is-active');
+					$(this).addClass('is-active');
+					$('.ChangeElem_Panel').hide();
+					$('.ChangeElem_Panel').eq(index).show();
+					getConfig();
+				}
+				else if( index == 2 ) {
+//					sendConfig();
+				}
+				else if( index == 3 ) {
+					logclear();
+				}
+			});
+		});
+	}
+
+
+	var connection ;
+	function ws_debuginfo() {
+		connection = new WebSocket( log_url, ['HCXPLog'] );
+		//通信が接続された場合
+		connection.onopen = function(e) {
+			logdisp( "HCXPLog onopen","#009900" );
+		};
+ 		//エラーが発生した場合
+		connection.onerror = function(error) {};
+		//メッセージを受け取った場合
+		connection.onmessage = function(e) {
+			console.log(e.data);
+			var debug = JSON.parse(e.data);
+			logdisp( debug.codepoint + "|" + debug.message ,  debug.color) ;
+		};
+		//通信が切断された場合
+		connection.onclose = function() {
+			logdisp( "onclose","#ff0000" );
+			ws_debuginfo();
+		};
+	}
+
+	const getLogUrl = async function(){
+                    const options = {
+                        method: 'GET',
+                        headers: {'Content-type': 'application/ld+json'}
+                    }
+                    return await (await fetch( "http://" + host + "/apps/Hybridcast", options)).json();
+	            };
+
+	window.addEventListener('load', function() {
+		var host = window.location.host;
+		console.log("host:" + host);
+		antwappconfig_url = "http://" + host + "/api/antwappconfig" ;
+        getLogUrl()
+            .then( jsondata => { log_url = jsondata.actions.events.hybridcastCompanionConnectListener.forms[0].href })
+            .catch( error => {
+                console.log(error);
+                log_url =  "ws://" + host + "/antwapp/websocket";
+            })
+		menu_control();
+
+		//disp user-agent, IP Address
+		$("#useragent").text( navigator.userAgent ) ;
+		dispIpAddress(antwappconfig_url, "#ipaddress");
+
+		ws_debuginfo();
+
+		set_menu_focus();
+		$('#displog').focus();
+	});
+</script>
+</body>
+</html>

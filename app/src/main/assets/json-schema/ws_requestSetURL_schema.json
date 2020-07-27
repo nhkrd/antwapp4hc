@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/nhkrd/hyconet4j/sample/hcxp-json-schema/ws_requrestSetURL_schema.json",
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "control": {
+      "$id": "/properties/control",
+      "type": "object",
+      "properties": {
+        "devid": {
+          "$id": "/properties/control/properties/devid",
+          "type": "string",
+          "title": "The Devid Schema ",
+          "default": "",
+          "examples": [
+            "端末 ID"
+          ],
+          "minLength": 1
+        },
+        "request": {
+          "$id": "/properties/control/properties/request",
+          "type": "object",
+          "properties": {
+            "command": {
+              "$id": "/properties/control/properties/request/properties/command",
+              "type": "string",
+              "title": "The Command Schema ",
+              "default": "",
+              "examples": [
+                "setURLForCompanionDevice"
+              ],
+              "enum": [
+                "setURLForCompanionDevice"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": ["command"]
+        }
+      },
+      "additionalProperties": false,
+      "required": ["devid", "request"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["control"]
+}

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="https://origami-build.ft.com/v2/bundles/css?modules=o-grid@^4.0.0" />
+<!--<link rel="stylesheet" href="css/o-grid.min.css" />-->
+<title>HCEX Protocol Test</title>
+<style>
+body {
+	background-color: #fafafa;
+	font-size: 1.0em;
+	padding: 0px;
+	margin: 0px;
+}
+.o-grid-container {
+	padding-left: 4px;
+	padding-right:4px;
+}
+.o-grid-row {
+	margin-left: 0px;
+	}
+.maintitle {
+	margin: 5px 0px 0px 0px;
+	color: #000000;
+	font-size: 1.4em;
+	font-weight: bold;
+	text-align: center;
+}
+button, select, div {
+	font-size: 1.0em;
+	max-width: 100%;
+}
+button, select {
+	background-color: #c0ffc0;
+}
+.info, #devinfo, #tvsel, #openstatus {
+	word-wrap: break-word;
+}
+.itemarea {
+	border: 1px solid #000000;
+	margin: 10px;
+	padding: 5px 0px;
+	background-color: #dddddd;
+}
+.subitemarea {
+	border: 0px solid #000000;
+	margin: 5px auto;
+	padding: 5px 0px;
+	background-color: #cccccc;
+}
+.channelPad {
+	margin: 2px 0px;
+	background-color: #a0d0f0;
+}
+input , select {
+	font-size:20px;
+	}
+#logarea {
+	overflow:scroll;
+	height: 260px;
+	}
+#log {
+	width:  95%;
+	min-height: 220px;
+	border: 1px solid #000000;
+	background-color: rgba( 255, 255, 255, 1.0);
+}
+p.logstr1 {
+	margin:  0px 2px 2px 2px;
+	padding: 0px ;
+	border:  0px ;
+	/*	border-bottom: 1px solid #d0d0d0 ; */
+	color: #000000 ;
+	background-color: #e8e8e8;
+	font-size: 16px ;
+	line-height: 100% ;
+	z-index: 10 ;
+	word-wrap: break-word;
+	}
+form {
+	margin-top: 10px;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var socket;
+	var host = window.location.host;
+	var webSocketLocation = "ws://" + host + "/antwapp/websocket";
+
+
+
+	var counter = 0;
+	var isTV = true;
+
+	function logdisp(str, color) {
+		var d_log = $("#log");
+//		while(30 <= d_log.find(".logstr").length ) {
+//			d_log.find(".logstr").filter(":last-first").children().remove() ;
+//			d_log.find(".logstr").filter(":last-first").remove() ;
+//		}
+		var classname = "logstr1" ;
+		var logstr = $('<p class="' + classname + '"></p>').clone() ;
+		if( !!color ) {
+			logstr.attr('style', 'color:'+color)
+		}
+		logstr.text(str);
+//		d_log.append( logstr ) ;
+		d_log.prepend( logstr ) ;
+	}
+
+	//
+	//
+	//
+	function setURLForCompanionDevice(idx) {
+		var setURLForCompanionDevice = {
+			"control": {
+				"devid": "",
+				"setURLForCompanionDevice": {
+					"url": "",
+					"options": {
+						"auto_start": 0,
+						"app_title": "",
+						"app_desc": ""
+					}
+				}
+			}
+		};
+
+		var url = document.getElementById("seturl").url[idx].value ;
+		var app_title = document.getElementById("seturl").app_title[idx].value ;
+		var app_desc = document.getElementById("seturl").app_desc[idx].value ;
+		var auto_start = (document.getElementById("seturl").auto_start[idx].value === "true") ? true : false;
+
+		setURLForCompanionDevice["control"]["devid"] = "hcex";
+		setURLForCompanionDevice["control"]["setURLForCompanionDevice"]["url"] = url ;
+		setURLForCompanionDevice["control"]["setURLForCompanionDevice"]["options"]["auto_start"] = auto_start ;
+		setURLForCompanionDevice["control"]["setURLForCompanionDevice"]["options"]["app_title"] = app_title ;
+		setURLForCompanionDevice["control"]["setURLForCompanionDevice"]["options"]["app_desc"] = app_desc ;
+
+		socket.send( JSON.stringify(setURLForCompanionDevice) );
+	}
+
+	//
+	//
+	//
+	function sendTextToCompanionDevice(idx) {
+		var sendTextToCompanionDevice = {
+			"message": {
+				"devid": "",
+				"sendTextToCompanionDevice": {
+					"text": ""
+				}
+			}
+		};
+
+		var message = document.getElementById("sendtext").message[idx].value ;
+
+		sendTextToCompanionDevice["message"]["devid"] = "hcex";
+		sendTextToCompanionDevice["message"]["sendTextToCompanionDevice"]["text"] = message ;
+		socket.send( JSON.stringify(sendTextToCompanionDevice) );
+	}
+
+	const getLogUrl = async function(){
+				const options = {
+					method: 'GET',
+					headers: {'Content-type': 'application/ld+json'}
+				}
+				return await (await fetch( "http://" + window.location.host + "/apps/Hybridcast", options)).json();
+			}
+
+
+	//// Main Process
+
+	getLogUrl()
+	.then( jsondata => { webSocketLocation = jsondata.actions.events.hybridcastCompanionConnectListener.forms[0].href })
+	.catch( error => {
+		console.log(error);
+		webSocketLocation =  "ws://" + host + "/antwapp/websocket";
+	})
+
+
+	if (!window.WebSocket) {
+		window.WebSocket = window.MozWebSocket;
+	}
+	if (window.WebSocket) {
+		socket = new WebSocket( webSocketLocation );
+		socket.onmessage = function(event) {
+			logdisp(event.data);
+		};
+		socket.onopen = function(event) {
+			var ta = document.getElementById('responseText');
+//			ta.value = "Web Socket opened!";
+			logdisp("Web Socket opened!");
+		};
+		socket.onclose = function(event) {
+			var ta = document.getElementById('responseText');
+//			ta.value = ta.value + "Web Socket closed";
+			logdisp("Web Socket closed");
+		};
+	}
+	else {
+		alert("Your browser does not support Web Socket.");
+	}
+
+</script>
+</head>
+<body>
+<div class="o-grid-container">
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12" class="maintitle">HCEX Test Page</div>
+	</div>
+
+	<form id="seturl"><div class="o-grid-row itemarea">
+		<div data-o-grid-colspan="12">setURLForCompanionDevice</div>
+		<div data-o-grid-colspan="11" class="subitemarea">
+			<div data-o-grid-colspan="5"><span>Title:</span><input type="text" name="app_title" value="Title1" size="20" maxlength="60" /></div>
+			<div data-o-grid-colspan="5"><span>Desc:</span><input type="text" name="app_desc" value="Description1" size="20" maxlength="60" /></div>
+			<div data-o-grid-colspan="2"><span>AutoStart:</span><input type="text" name="auto_start" value="true" size="5" maxlength="5" /></div>
+			<div data-o-grid-colspan="11"><span>URL:</span><input type="text" name="url" value="http://aaa.bbb.ccc/" size="40" maxlength="60" /></div>
+			<div data-o-grid-colspan="1"><button type="button" onclick="setURLForCompanionDevice(0);">Send</button></div>
+		</div>
+		<div data-o-grid-colspan="11" class="subitemarea">
+			<div data-o-grid-colspan="5"><span>Title:</span><input type="text" name="app_title" value="Title2" size="20" maxlength="60" /></div>
+			<div data-o-grid-colspan="5"><span>Desc:</span><input type="text" name="app_desc" value="Description2" size="20" maxlength="60" /></div>
+			<div data-o-grid-colspan="2"><span>AutoStart:</span><input type="text" name="auto_start" value="true" size="5" maxlength="5" /></div>
+			<div data-o-grid-colspan="11"><span>URL:</span><input type="text" name="url" value="http://ddd.eee.fff/" size="40" maxlength="60" /></div>
+			<div data-o-grid-colspan="1"><button type="button" onclick="setURLForCompanionDevice(1);">Send</button></div>
+		</div>
+		<div data-o-grid-colspan="11" class="subitemarea">
+			<div data-o-grid-colspan="5"><span>Title:</span><input type="text" name="app_title" value="Title3" size="20" maxlength="60" /></div>
+			<div data-o-grid-colspan="5"><span>Desc:</span><input type="text" name="app_desc" value="Description3" size="20" maxlength="60" /></div>
+			<div data-o-grid-colspan="2"><span>AutoStart:</span><input type="text" name="auto_start" value="true" size="5" maxlength="5" /></div>
+			<div data-o-grid-colspan="11"><span>URL:</span><input type="text" name="url" value="http://ggg.hhh.iii/" size="40" maxlength="60" /></div>
+			<div data-o-grid-colspan="1"><button type="button" onclick="setURLForCompanionDevice(2);">Send</button></div>
+		</div>
+	</div></form>
+
+	<form id="sendtext"><div class="o-grid-row itemarea">
+		<div data-o-grid-colspan="12">sendTextToCompanionDevice</div>
+		<div data-o-grid-colspan="11" class="subitemarea">
+		<div data-o-grid-colspan="11"><input type="text" name="message" value="Text1" size="50" maxlength="100" /></div>
+		<div data-o-grid-colspan="1"><button type="button" onclick="sendTextToCompanionDevice(0);">Send</button></div>
+		</div>
+		<div data-o-grid-colspan="11" class="subitemarea">
+		<div data-o-grid-colspan="11"><input type="text" name="message" value="Text2" size="50" maxlength="100" /></div>
+		<div data-o-grid-colspan="1"><button type="button" onclick="sendTextToCompanionDevice(1);">Send</button></div>
+		</div>
+		<div data-o-grid-colspan="11" class="subitemarea">
+		<div data-o-grid-colspan="11"><input type="text" name="message" value="Text3" size="50" maxlength="100" /></div>
+		<div data-o-grid-colspan="1"><button type="button" onclick="sendTextToCompanionDevice(2);">Send</button></div>
+		</div>
+	</div></form>
+
+	<div class="o-grid-row itemarea">
+		<div data-o-grid-colspan="12">Log</div>
+		<div data-o-grid-colspan="12"><div id="logarea"><div id="log"></div></div>
+	</div>
+</div>
+</body>

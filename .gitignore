@@ -1,0 +1,45 @@
+# localconfig
+local.properties
+
+# Eclipse
+.project
+.classpath
+.settings
+
+# Idea
+.idea
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Gradle
+.gradle
+.gradle/
+!gradle-wrapper.jar
+
+# Maven
+target
+
+# Build
+out/
+build/
+bin/
+.externalNativeBuild
+
+# Other 
+*.log
+*.swp
+*.bak
+*.ndk
+*.apk
+*.dex
+captures
+
+# Other Libs
+
+

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Antwapp Config</title>
+<meta name="description" content="">
+<style>
+	* { margin: 0px; padding: 0px; border: 0px; }
+	body {
+		padding:  3px; 
+		color: #000000 ;
+		background-color: #f0f0ff;
+		font-size: 16px;
+		}
+	.ChangeElem_Btn {
+		border: 1px solid rgba(0,0,0,0.0);
+		padding: 2px ;
+		font-size: 16px;
+		}
+	#setting {
+		/*	position: absolute; */
+		margin: 0px; padding: 10px;
+		/* width:  900px; height: 890px; left:   10px; top:    10px; */
+		color: #000000;
+		font-size:20px;
+		line-height: 110%;
+		z-index: 10000;
+		}
+	.tuneDelayButton {
+		border: 1px solid rgba(0,0,0,0.0);
+		padding: 0px 10px ;
+		margin: 5px 10px 0px 10px;
+		font-size: 20px;
+		vertical-align: top;
+		}
+	#config {
+		/* width:  900px; height: 925px; */
+		border: 1px solid #000000;
+		background-color: rgba( 255, 255, 255, 1.0);
+		}
+	p.attrtitle {
+		margin:  10px 0px 0px 0px ;
+		padding: 2px;
+		border:  0px ;
+		color: #2c2c2c ;
+		font-size: 18px ;
+		font-weight: bold ;
+		line-height: 100% ;
+		z-index: 10 ;
+		}
+	p.attrstr {
+		margin:  0px 0px 3px 5px ;
+		padding: 2px;
+		border:  0px ;
+		color: #2c2c2c ;
+		font-size: 16px ;
+		line-height: 100% ;
+		word-wrap: break-word;
+		z-index: 10 ;
+		}
+	.title {
+		font-size:24px;
+		margin: 0px 0px 5px 0px;
+		}
+	.subinfo {
+		margin: 10px 0px 0px 10px;
+		}
+	.subinfo2 {
+		margin: 0px 0px 0px 20px;
+		}
+	#hcsrc {
+		background-color: #ffffff;
+		}
+	.configBase {
+		margin: 0px;
+		padding: 5px;
+		border: 1px solid #000000;
+		background-color: #d0ffff;
+		}
+	.ConfigChange_Btn_Content {
+		margin: 0px 0px 0px 10px;
+		}
+	.CondifChange_Btn {
+		border: 1px solid rgba(0,0,0,0.0);
+		margin: 3px 1px;
+		padding: 2px 1px;
+		font-size: 16px;
+		background-color: #d0d0d0;
+		}
+	.CondifChange_Div {
+		border: 1px solid rgba(0,0,0,0.0);
+		margin: 3px 1px;
+		padding: 2px 1px;
+		font-size: 16px;
+		min-width: 100px;
+		background-color: #d0d0d0;
+		display: inline-block;
+		}
+	.ChangeElem_Btn:focus , .CondifChange_Btn:focus , .logbutton:focus {
+		border: 1px solid #ff0000;
+		background-color: rgba( 255, 0, 0, 0.1);
+		outline: none;
+		}
+</style>
+</head>
+<body>
+<div>AnTWapp Config<div>[Target IP Address: <span id="ipaddress"></span> ]</div></div>
+<div id="setting"><div id="config"></div></div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+<script src="./js/config.js"></script>
+<script type="text/javascript">
+	var antwappconfig_url = "" ;
+
+	window.addEventListener('load', function() {
+		var host = window.location.host;
+		console.log("host:" + host);
+		antwappconfig_url = "http://" + host + "/api/antwappconfig" ;
+
+		//disp IP Address
+		dispIpAddress(antwappconfig_url, "#ipaddress");
+		getConfig();
+	});
+</script>
+</body>
+</html>

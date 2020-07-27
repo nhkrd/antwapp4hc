@@ -1,0 +1,160 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/nhkrd/hyconet4j/sample/hcxp-json-schema/availableMedia_schema.json",
+    "type": "object",
+    "properties": {
+      "head": {
+        "$id": "/properties/head",
+        "type": "object",
+        "properties": {
+          "code": {
+            "$id": "/properties/head/properties/code",
+            "type": "number",
+            "title": "The Code Schema",
+            "default": 200,
+            "examples": [
+              200
+            ],
+            "minimum": 200,
+            "maximum": 599,
+            "enum": [
+              200,
+              400,
+              401,
+              500
+            ]
+          },
+          "message": {
+            "$id": "/properties/head/properties/message",
+            "type": "string",
+            "title": "The Message Schema",
+            "default": "OK",
+            "examples": [
+              "OK"
+            ],
+            "enum": [
+              "OK",
+              "Bad Request",
+              "Unauthorized",
+              "Internal Server Error"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ]
+      },
+      "body": {
+        "$id": "/properties/body",
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "$id": "/properties/body/properties/created_at",
+            "type": "string",
+            "title": "The Created_at Schema ",
+            "default": "",
+            "examples": [
+              "2018-01-01T00:00:00Z"
+            ]
+          },
+          "TD": {
+            "$id": "/properties/body/properties/TD",
+            "type": "string",
+            "title": "The Td Schema",
+            "default": "Available",
+            "examples": [
+              "Available"
+            ],
+            "enum": [
+              "Available",
+              "NotAvailable"
+            ]
+          },
+          "BS": {
+            "$id": "/properties/body/properties/BS",
+            "type": "string",
+            "title": "The Bs Schema",
+            "default": "Available",
+            "examples": [
+              "NotAvailable"
+            ],
+            "enum": [
+              "Available",
+              "NotAvailable"
+            ]
+          },
+          "CS": {
+            "$id": "/properties/body/properties/CS",
+            "type": "string",
+            "title": "The Cs Schema",
+            "default": "Available",
+            "examples": [
+              "NotAvailable"
+            ],
+            "enum": [
+              "Available",
+              "NotAvailable"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "allOf": [
+      {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 200}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "body": {
+            "required": [ "created_at", "TD", "BS", "CS" ]
+          }
+        }
+      },
+      "else":{
+        "properties": {
+            "body": { "maxProperties": 0 }
+          }
+        }
+    },
+    {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 400}}}}
+      },
+      "then": {
+        "properties": {
+          "head": { "properties":  {"message": { "enmu": ["Bad Request"]}}},
+          "body": { "maxProperties": 0 }
+        }
+      }
+    },
+    {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 401}}}}
+      },
+      "then": {
+        "properties": {
+          "head": { "properties":  {"message": { "enum": ["Unauthorized"]}}},
+          "body": { "maxProperties": 0 }
+        }
+      }
+    },
+    {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 500 }, "message": { "const": "Request Refused"}}}}
+      },
+      "then": {
+        "properties": {
+          "body": { "maxProperties": 0 }
+        }
+      }
+    }],
+    "additionalProperties": false,
+    "required": [
+      "head",
+      "body"
+    ]
+  }

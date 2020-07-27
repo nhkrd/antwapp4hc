@@ -1,0 +1,225 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/nhkrd/hyconet4j/sample/hcxp-json-schema/channels_schema.json",
+    "type": "object",
+    "properties": {
+      "head": {
+        "$id": "/properties/head",
+        "type": "object",
+        "properties": {
+          "code": {
+            "$id": "/properties/head/properties/code",
+            "type": "number",
+            "title": "The Code Schema",
+            "default": 0,
+            "examples": [
+              200
+            ],
+            "minimum": 200,
+            "maximum": 599,
+            "enum": [
+              200,
+              400,
+              401,
+              500
+            ]
+          },
+          "message": {
+            "$id": "/properties/head/properties/message",
+            "type": "string",
+            "title": "The Message Schema",
+            "default": "",
+            "examples": [
+              "OK"
+            ],
+            "enum": [
+              "OK",
+              "Bad Request",
+              "Unauthorized",
+              "Internal Server Error"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ]
+      },
+      "body": {
+        "$id": "/properties/body",
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "$id": "/properties/body/properties/created_at",
+            "type": "string",
+            "title": "The Created_at Schema ",
+            "default": "",
+            "examples": [
+              "2018-01-01T00:00:00Z"
+            ]
+          },
+          "media": {
+            "$id": "/properties/body/properties/media",
+            "type": "array",
+            "items": {
+              "$id": "/properties/body/properties/media/items",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "$id": "/properties/body/properties/media/items/properties/type",
+                  "type": "string",
+                  "title": "The Type Schema",
+                  "default": "",
+                  "examples": [
+                    "TD"
+                  ],
+                  "enum": [
+                    "TD",
+                    "BS",
+                    "CS"
+                  ]
+                },
+                "channels": {
+                  "$id": "/properties/body/properties/media/items/properties/channels",
+                  "type": "array",
+                  "items": {
+                    "$id": "/properties/body/properties/media/items/properties/channels/items",
+                    "type": "object",
+                    "properties": {
+                      "logical_channel_number": {
+                        "$id": "/properties/body/properties/media/items/properties/channels/items/properties/logical_channel_number",
+                        "type": "string",
+                        "title": "The Logical_channel_number Schema",
+                        "default": "011",
+                        "examples": [
+                          "011"
+                        ]
+                      },
+                      "resource": {
+                        "$id": "/properties/body/properties/media/items/properties/channels/items/properties/resource",
+                        "type": "object",
+                        "properties": {
+                          "original_network_id": {
+                            "$id": "/properties/body/properties/media/items/properties/channels/items/properties/resource/properties/original_network_id",
+                            "type": "number",
+                            "title": "The Original_network_id Schema",
+                            "default": 0,
+                            "examples": [
+                              32736
+                            ],
+                            "minimum": 0,
+                            "maximum": 65535
+                          },
+                          "transport_stream_id": {
+                            "$id": "/properties/body/properties/media/items/properties/channels/items/properties/resource/properties/transport_stream_id",
+                            "type": "number",
+                            "title": "The Transport_stream_id Schema",
+                            "default": 0,
+                            "examples": [
+                              32736
+                            ],
+                            "minimum": 0,
+                            "maximum": 65535
+                          },
+                          "service_id": {
+                            "$id": "/properties/body/properties/media/items/properties/channels/items/properties/resource/properties/service_id",
+                            "type": "number",
+                            "title": "The Service_id Schema",
+                            "default": 0,
+                            "examples": [
+                              1024
+                            ],
+                            "minimum": 0,
+                            "maximum": 65535
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "original_network_id",
+                          "transport_stream_id",
+                          "service_id"
+                        ]
+                      },
+                      "broadcast_channel_name": {
+                        "$id": "/properties/body/properties/media/items/properties/channels/items/properties/broadcast_channel_name",
+                        "type": "string",
+                        "title": "The Broadcast_channel_name Schema",
+                        "default": "",
+                        "examples": [
+                          "NHK総合・東京"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "logical_channel_number",
+                      "resource",
+                      "broadcast_channel_name"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "channels"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "allOf": [
+      {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 200}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "body": {
+            "required": [ "created_at", "media" ]
+          }
+        }
+      }
+    },
+    {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 400}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "head": { "properties":  {"message": { "const": "Bad Request"}}},
+          "body": { "maxProperties": 0 }
+        }
+      }
+    },
+    {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 401}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "head": { "properties":  {"message": { "const": "Unauthorized"}}},
+          "body": { "maxProperties": 0 }
+        }
+      }
+    },
+    {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 500 }, "message": { "const": "Request Refused"}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "body": { "maxProperties": 0 }
+        }
+      }
+    }],
+    "additionalProperties": false,
+    "required": [
+      "head",
+      "body"
+    ]
+}

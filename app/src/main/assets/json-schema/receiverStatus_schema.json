@@ -1,0 +1,186 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/nhkrd/hyconet4j/sample/hcxp-json-schema/receiverStatus_schema.json",
+    "type": "object",
+    "properties": {
+        "head": {
+            "$id": "/properties/head",
+            "type": "object",
+            "properties": {
+              "code": {
+                "$id": "/properties/head/properties/code",
+                "type": "number",
+                "title": "The Code Schema",
+                "default": 0,
+                "examples": [
+                  200
+                ],
+                "enum": [
+                  200,
+                  400,
+                  401,
+                  500
+                ]
+              },
+              "message": {
+                "$id": "/properties/head/properties/message",
+                "type": "string",
+                "title": "The Message Schema",
+                "default": "",
+                "examples": [
+                  "OK"
+                ],
+                "enum": [
+                  "OK",
+                  "Bad Request",
+                  "Unauthorized",
+                  "Internal Server Error"
+                ]
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ]
+          },
+      "body": {
+        "$id": "/properties/body",
+        "type": "object",
+        "properties": {
+          "status": {
+            "$id": "/properties/body/properties/status",
+            "type": "object",
+            "properties": {
+              "hybridcast": {
+                "$id": "/properties/body/properties/status/properties/hybridcast",
+                "type": "string",
+                "title": "The Hybridcast Schema",
+                "default": "Running",
+                "examples": [
+                  "Running"
+                ],
+                "enum": [
+                  "NotStarted",
+                  "Running"
+                ]
+              },
+              "companion_apps": {
+                "$id": "/properties/body/properties/status/properties/companion_apps",
+                "type": "number",
+                "title": "The Companion_apps Schema",
+                "default": 0,
+                "examples": [
+                  1
+                ]
+              },
+              "resource": {
+                "$id": "/properties/body/properties/status/properties/resource",
+                "type": "object",
+                "properties": {
+                  "original_network_id": {
+                    "$id": "/properties/body/properties/status/properties/resource/properties/original_network_id",
+                    "type": "number",
+                    "title": "The Original_network_id Schema",
+                    "default": 0,
+                    "examples": [
+                      32736
+                    ],
+                    "minimum": 0,
+                    "maximum": 65535
+                  },
+                  "transport_stream_id": {
+                    "$id": "/properties/body/properties/status/properties/resource/properties/transport_stream_id",
+                    "type": "number",
+                    "title": "The Transport_stream_id Schema",
+                    "default": 0,
+                    "examples": [
+                      32736
+                    ],
+                    "minimum": 0,
+                    "maximum": 65535
+                  },
+                  "service_id": {
+                    "$id": "/properties/body/properties/status/properties/resource/properties/service_id",
+                    "type": "number",
+                    "title": "The Service_id Schema",
+                    "default": 0,
+                    "examples": [
+                      1024
+                    ],
+                    "minimum": 0,
+                    "maximum": 65535
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "original_network_id",
+                  "transport_stream_id",
+                  "service_id" 
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "hybridcast",
+              "resource"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "allOf": [
+      {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 200}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "body": {
+            "required": ["status"]
+           }
+        }
+      }
+    },
+    {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 400}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "head": { "properties":  {"message": { "const": "Bad Request"}}},
+          "body": { "maxProperties": 0 }
+        }
+      }
+    },
+    {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 401}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "head": { "properties":  {"message": { "const": "Unauthorized"}}},
+          "body": { "maxProperties": 0 }
+        }
+      }
+    },
+    {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 500 }, "message": { "const": "Request Refused"}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "body": { "maxProperties": 0 }
+        }
+      }
+    }],
+    "additionalProperties": false,
+    "required": [
+      "head",
+      "body"
+    ]
+  }

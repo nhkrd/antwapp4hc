@@ -1,0 +1,310 @@
+{
+  "@context": [
+    "https://www.w3.org/2019/wot/td/v1",
+    {
+      "iot": "http://iotschema.org/",
+      "htv": "http://www.w3.org/2011/http#",
+      "om": "http://www.wurvoc.org/vocabularies/om-1.8/"
+    }
+  ],
+  "@type": "Thing",
+  "title": "HybridcastConnectReceiver",
+  "titles": {
+     "en": "HybridcastConnectReceiver",
+     "ja": "ハイコネプロトコル対応受信機"
+  },
+  "description": "HybridcastConnectEmulator:Antwapp",
+  "descriptions": {
+    "en": "HybridcastConnectEmulator:Antwapp",
+    "ja": "ハイコネエミュレーター"
+  },
+  "id": "URN:nhkrd:antwapp",
+  "version": {
+    "instance": "0.1",
+    "device": "DEVICEVERSION",
+    "protocolversion": "PROTOCOLVERSION"
+  },
+  "created": "2019-12-18T16:42:00Z",
+  "modified": "2019-12-18T18:42:00Z",
+  "base": "RESTBASEPREFIX",
+  "securityDefinitions": {
+    "bearer_sc": {},
+    "oauth2_code_sc": {},
+    "api_key_sc": {},
+    "nosec_sc": {"scheme": "nosec"}
+  },
+  "security": ["nosec_sc"],
+  "actions": {
+    "startAIT": {
+      "@type": "iot:tuneOn",
+      "title": "startAIT API: Tune the specified channel and launch the specified HybridcastWebApp from AIT",
+      "titles": {
+        "en": "Operation tune/launchApp",
+        "ja": "TV選局・Hybridcastアプリ起動"
+      },
+      "description": "tune the specified channel and launch the specified HybridcastWebApp from AIT on a TV set",
+      "descriptions": {
+        "en": "tune the specified channel and launch the specified Hybridcast WebApp from AIT on a TV set",
+        "ja": "TV選局・Hybridcastアプリ起動"
+      },
+      "input": {
+        "type": "object",
+        "properties": {
+          "resource": {
+            "type": "object",
+            "properties": {
+              "original_network_id": {
+                "type": "number",
+                "title": "The Original_network_id Schema",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "transport_stream_id": {
+                "type": "number",
+                "title": "The Transport_stream_id Schema",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "service_id": {
+                "type": "number",
+                "title": "The Service_id Schema",
+                "minimum": 0,
+                "maximum": 65535
+              }
+            }
+          },
+          "hybridcast": {
+            "type": "object",
+            "properties": {
+              "aiturl": {
+                  "type": "string",
+                  "title": "The Aiturl Schema"
+              },
+              "orgid": {
+                "type": "number",
+                "title": "The Orgid Schema",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "appid": {
+                "type": "number",
+                "title": "The Appid Schema",
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          }
+        }
+      },
+      "uriVariables": {
+        "mode": {
+            "title": "launchmode: ",
+            "type": "string",
+            "enum": ["tune", "app"]
+        }
+      },
+      "forms": [{
+        "href": "hybridcast{?mode}",
+        "contentType": "application/json",
+        "htv:methodName": "POST",
+        "scopes": ["full_access"],
+        "response": {
+          "contentType": "application/json"
+        }
+      }]
+    },
+    "receiverStatus": {
+      "title": "HybridcastReceiveStatus",
+      "titles": {
+        "en": "HybridcastReceiverStatus",
+        "ja": "受信機状態"
+      },
+      "description": "HybridcastReceiverStatus",
+      "descriptions": {
+        "en": "HybridcastReceiverStatus",
+        "ja": "受信機状態"
+      },
+      "properties":{
+        "head":{"type":"object", "properties":{"code":{},"message":{}}},
+        "body":{"type":"object", "properties":{
+          "status": {
+            "type": "object",
+            "properties": {
+              "hybridcast": {
+                "type": "string",
+                "title": "The status of Hybridcast Browser",
+                "enum": [ "NotStarted", "Running" ]
+              },
+              "companion_apps": {
+                "type": "number",
+                "title": "The number of Companion_apps"
+              },
+              "resource": {
+                "type": "object",
+                "properties": {
+                  "original_network_id": {
+                    "type": "number",
+                    "title": "The Original_network_id of broadcasting",
+                    "minimum": 0,
+                    "maximum": 65535
+                  },
+                  "transport_stream_id": {
+                    "type": "number",
+                    "title": "The Transport_stream_id of broadcasting",
+                    "minimum": 0,
+                    "maximum": 65535
+                  },
+                  "service_id": {
+                    "type": "number",
+                    "title": "Service_id of broadcasting",
+                    "minimum": 0,
+                    "maximum": 65535
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "forms": [{
+        "href": "status",
+        "contentType": "application/json",
+        "htv:methodName": "GET",
+        "scopes": ["full_access"]
+      }]
+    },
+    "media": {
+      "title": "available media on a TV set",
+      "titles": {
+        "en": "available media on a TV set",
+        "ja": "メディア利用可否"
+      },
+      "description": "available media on a TV set",
+      "descriptions": {
+        "en": "available media on a TV set",
+        "ja": "メディア利用可否"
+      },
+      "properties":{
+        "head":{"type":"object", "properties":{"code":{},"message":{}}},
+        "body":{"type":"object", "properties":{
+            "created_at": {
+                "type": "string",
+              "title": "The date of the file created"
+            },
+            "TD": {
+              "type": "string",
+              "title": "Availability of receiving Telestrial Digital broadcasting",
+              "enum": [ "Available", "NotAvailable" ]
+            },
+            "BS": {
+              "type": "string",
+              "title": "Availability of receiving Broadcasting Satelite",
+              "enum": [ "Available", "NotAvailable" ]
+            },
+            "CS": {
+              "type": "string",
+              "title": "Availability of receiving Comunication Satelite",
+              "enum": [ "Available", "NotAvailable" ]
+            }
+          }
+        }
+      },
+      "forms": [{
+        "href": "media",
+        "contentType": "application/json",
+        "htv:methodName": "GET",
+        "scopes": ["full_access"]
+      }]
+    },
+    "task": {
+      "title": "TaskStatus",
+      "titles": {
+        "en": "TaskStatus",
+        "ja": "起動選局要求可否"
+      },
+      "description": "TaskStaus of Launching",
+      "descriptions": {
+        "en": "TaskStatus of Launching",
+        "ja": "起動選局要求可否"
+      },
+      "properties":{
+        "head":{"type":"object", "properties":{"code":{},"message":{}}},
+        "body":{"type":"object", "properties":{
+            "taskid": {
+              "type": "string",
+              "title": "The Taskid of launching request"
+            }
+          }
+        }
+      },
+      "forms": [{
+        "href": "hybridcast",
+        "contentType": "application/json",
+        "htv:methodName": "GET",
+        "scopes": ["full_access"]
+      }]
+    },
+    "channels": {
+      "title": "Available channels information on a TV set",
+      "titles": {
+        "en": "Available channels information on a TV set",
+        "ja": "選局チャンネル情報"
+      },
+      "description": "Available channels infomation on a TV set",
+      "descriptions": {
+        "en": "Available channels information on a TV set",
+        "ja": "選局チャンネル情報"
+ 
+      },
+      "properties":{
+        "head":{"type":"object", "properties":{"code":{},"message":{}}},
+        "body":{"type":"object", "properties":{}}
+      },
+      "uriVariables": {
+        "media": {
+            "title": "target media: TD/BS/CS",
+            "type": "string",
+            "enum": ["TD","BS","CS"]
+        }
+      }, 
+      "forms": [{
+        "href": "channels{?media}",
+        "contentType": "application/json",
+        "htv:methodName": "GET",
+        "scopes": ["full_access"]
+      }]
+    }
+  },
+  "events": {
+    "hybridcastCompanionConnectListener": {
+      "title": "Hybridcast Companion Connection",
+      "data": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "object",
+            "properties":{
+              "devid": {
+                "type": "string"
+              },
+              "sendTextToCompanionDevice": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          } 
+        }
+      },
+      "forms": [{
+        "href": "WSENDPOINT",
+        "contentType": "application/json",
+        "subprotocol": "Hybridcast"
+      }]
+    }
+  }
+}
+    }

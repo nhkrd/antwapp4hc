@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/nhkrd/hyconet4j/sample/hcxp-json-schema/ws_sendTextToHostDevice_schema.json",
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "message": {
+      "$id": "/properties/message",
+      "type": "object",
+      "properties": {
+        "devid": {
+          "$id": "/properties/message/properties/devid",
+          "type": "string",
+          "title": "The Devid Schema",
+          "default": "",
+          "examples": [
+            "abc-ddd-ddd-ddd"
+          ],
+          "minLength": 1
+        },
+        "sendTextToHostDevice": {
+          "$id": "/properties/message/properties/sendTextToHostDevice",
+          "type": "object",
+          "properties": {
+            "text": {
+              "$id": "/properties/message/properties/sendTextToHostDevice/properties/text",
+              "type": "string",
+              "title": "The Text Schema",
+              "default": "",
+              "examples": [
+                "1233455"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "text"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "devid",
+        "sendTextToHostDevice"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "message"
+  ]
+}

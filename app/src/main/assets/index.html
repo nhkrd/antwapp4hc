@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
+<title>Antwapp Utilities</title>
+<meta name="description" content="">
+<style>
+	body { background-color: #ffffff; font-size:20px;}
+	#vObj {position:absolute; top:0px; left:1440px; width:480px; height:270px;}
+	.antwapplink { boder: 1px solid #0000ff; color: #0000ff; font-size:20px;}
+</style>
+</head>
+<body>
+<div>AnTWapp Utilities [Target Host: <span id="hostinfo"></span>]</div>
+<div>
+	<p class="antwapplink" id="console.html">DebugConsoleOnTV</p>
+	<p class="antwapplink" id="config.html">Config</p>
+	<p class="antwapplink" id="wsclient.html">Web Socket</p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var host = null;
+	window.addEventListener('load', function() {
+		host = window.location.host;
+		console.log("hostinfo:" + host);
+		document.getElementById("hostinfo").innerHTML = host;
+	});
+
+	$(".antwapplink").on("click", function() {
+//		document.getElementById("hostinfo").innerHTML = this.id;
+		location.href = "http://" + host + "/" + this.id;
+	});
+</script>
+</body>
+</html>

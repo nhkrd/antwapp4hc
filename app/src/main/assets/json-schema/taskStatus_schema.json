@@ -1,0 +1,167 @@
+  {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/nhkrd/hyconet4j/sample/hcxp-json-schema/taskStatus_schema.json",
+    "type": "object",
+    "properties": {
+      "head": {
+        "$id": "/properties/head",
+        "type": "object",
+        "properties": {
+          "code": {
+            "$id": "/properties/head/properties/code",
+            "type": "number",
+            "title": "The Code Schema",
+            "default": 200,
+            "examples": [
+              200
+            ],
+            "enum": [
+              200,
+              400,
+              401,
+              500
+            ]
+          },
+          "message": {
+            "$id": "/properties/head/properties/message",
+            "type": "string",
+            "title": "The Message Schema",
+            "default": "",
+            "examples": [
+              "OK"
+            ],
+            "enum":[
+              "OK",
+              "Bad Request",
+              "Unauthorized",
+              "Internal Server Error"
+            ]
+          }
+        }
+      },
+      "body": {
+        "$id": "/properties/body",
+        "type": "object",
+        "properties": {
+          "taskid": {
+            "$id": "/properties/body/properties/taskid",
+            "type": "string",
+            "title": "The Taskid Schema",
+            "default": "15180375",
+            "examples": [
+              "15180375"
+            ],
+            "not" : {"type" : "null"},
+            "minLength" : 1
+          },
+          "result": {
+            "$id": "/properties/body/properties/result",
+            "type": "object",
+            "properties": {
+              "status": {
+                "$id": "/properties/body/properties/result/properties/status",
+                "type": "string",
+                "title": "The Status Schema",
+                "default": "Done",
+                "examples": [
+                  "Done"
+                ],
+                "enum": [
+                  "Done",
+                  "InProcess",
+                  "Error"
+                ]
+              },
+              "code": {
+                "$id": "/properties/body/properties/result/properties/code",
+                "type": "number",
+                "title": "The Code Schema",
+                "default": 200,
+                "examples": [
+                    200
+                ],
+                "enum": [
+                    200,
+                    400,
+                    401,
+                    500
+                ]
+              },
+              "message": {
+                "$id": "/properties/body/properties/result/properties/message",
+                "type": "string",
+                "title": "The Message Schema",
+                "default": "OK",
+                "examples": [
+                    "OK"
+                ],
+                "enum": [
+                    "OK",
+                    "Bad Request",
+                    "Unauthorized",
+                    "Internal Server Error"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [ "status", "code", "message"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "allOf": [
+      {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 200}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "body": {
+            "required": ["taskid" ,"result"]
+           }
+        }
+      }
+    },
+    {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 400}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "head": { "properties":  {"message": { "const": "Bad Request"}}},
+          "body": { "maxProperties": 0 }
+        }
+      }
+    },
+    {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 401}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "head": { "properties":  {"message": { "const": "Unauthorized"}}},
+          "body": { "maxProperties": 0 }
+        }
+      }
+    },
+    {
+      "if":{
+        "properties": {"head": { "properties":  {"code": { "const": 500 }, "message": { "const": "Request Refused"}}}},
+        "required": ["head", "body"]
+      },
+      "then": {
+        "properties": {
+          "body": { "maxProperties": 0 }
+        }
+      }
+    }],
+    "additionalProperties": false,
+    "required": [
+      "head",
+      "body"
+    ]
+  }

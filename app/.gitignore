@@ -1,0 +1,10 @@
+/build
+
+*.iml
+libs/*.so
+libs/jni
+libs/jnilibs
+
+src/main/jni
+src/main/jnilibs
+

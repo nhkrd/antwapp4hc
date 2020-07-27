@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<isdb:ServiceDiscovery
+xmlns:isdb="urn:arib:isdb:2012"
+xmlns:ipi="urn:dvb:metadata:iptv:sdns:2008-1"
+xmlns:mhp="urn:dvb:mhp:2009"
+xmlns:tva="urn:tva:metadata:2005"
+xmlns:mpeg7="urn:tva:mpeg7:2005"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="urn:arib:isdb:2012 isdb_xmlait.xsd">
+<isdb:ApplicationDiscovery DomainName="127.0.0.1">
+	<isdb:ApplicationList>
+		<isdb:Application>
+			<isdb:applicationIdentifier>
+				<isdb:orgId>1</isdb:orgId>
+				<isdb:appId>1</isdb:appId>
+			</isdb:applicationIdentifier>
+			<isdb:applicationDescriptor>
+				<isdb:type>
+					<isdb:IsdbApp>ISDB-HTML</isdb:IsdbApp>
+				</isdb:type>
+				<isdb:controlCode>AUTOSTART</isdb:controlCode>
+				<isdb:priority>ff</isdb:priority>
+				<isdb:version>00</isdb:version>
+				<isdb:mhpVersion>
+					<mhp:profile>1</mhp:profile>
+					<mhp:versionMajor>1</mhp:versionMajor>
+					<mhp:versionMinor>1</mhp:versionMinor>
+					<mhp:versionMicro>1</mhp:versionMicro>
+				 </isdb:mhpVersion>
+			</isdb:applicationDescriptor>
+			<isdb:applicationTransport xsi:type="isdb:HTTPTransportType">
+				 <isdb:URLBase>http://127.0.0.1:8887</isdb:URLBase>
+			</isdb:applicationTransport>
+			<isdb:applicationLocation>/</isdb:applicationLocation>
+			<isdb:applicationBoundaryAndPermissionDescriptor>
+				<isdb:boundaryAndPermission>
+					<isdb:permissionBitmap>1fff</isdb:permissionBitmap>
+				</isdb:boundaryAndPermission>
+			</isdb:applicationBoundaryAndPermissionDescriptor>
+		</isdb:Application>
+	</isdb:ApplicationList>
+</isdb:ApplicationDiscovery>
+</isdb:ServiceDiscovery>

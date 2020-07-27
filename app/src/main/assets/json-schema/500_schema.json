@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/nhkrd/hyconet4j/sample/hcxp-json-schema/500_schema.json",
+    "type": "object",
+    "title": "The Root Schema",
+    "properties": {
+      "head": {
+        "$id": "#/properties/head",
+        "type": "object",
+        "properties": {
+          "code": {
+            "$id": "#/properties/head/properties/code",
+            "type": "integer",
+            "title": "The Code Schema",
+            "default": 500,
+            "examples": [
+              500
+            ],
+            "enum": [
+              500
+            ]
+          },
+          "message": {
+            "$id": "/properties/head/properties/message",
+            "type": "string",
+            "title": "The Message Schema",
+            "default": "Internal Server Error",
+            "examples": [
+              "Internal Server Error"
+            ],
+            "enum": [
+              "Internal Server Error"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "message"
+        ]
+      },
+      "body": {
+        "$id": "/properties/body",
+        "type": "object",
+        "title": "The Body Schema",
+        "maxProperties": 0
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "head",
+      "body"
+    ]
+  }

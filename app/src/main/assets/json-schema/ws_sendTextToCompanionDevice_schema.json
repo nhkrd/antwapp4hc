@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/nhkrd/hyconet4j/sample/hcxp-json-schema/ws_sendTextToCompanionDevice_schema.json",
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "message": {
+      "$id": "/properties/message",
+      "type": "object",
+      "properties": {
+        "devid": {
+          "$id": "/properties/message/properties/devid",
+          "type": "string",
+          "title": "The Devid Schema",
+          "default": "",
+          "examples": [
+            "DestinationID"
+          ],
+          "minLength": 1
+        },
+        "sendTextToCompanionDevice": {
+          "$id": "/properties/message/properties/sendTextToCompanionDevice",
+          "type": "object",
+          "properties": {
+            "text": {
+              "$id": "/properties/message/properties/sendTextToCompanionDevice/properties/text",
+              "type": "string",
+              "title": "The Text Schema",
+              "default": "",
+              "examples": [
+                "WebsocketText"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "text"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "devid",
+        "sendTextToCompanionDevice"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "message"
+  ]
+}

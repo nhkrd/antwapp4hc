@@ -166,7 +166,9 @@ reference: [W3C TPAC 2018: RecentAchievementHybridcast](https://www.w3.org/2011/
 [W3C TPAC 2019: RecentAchievementHybridcast](https://www.w3.org/2011/webtv/wiki/images/d/d3/RecentAchievementHybridcast_TPAC20190916.pdf) p.11 "Supposed use cases demo (2)"のスライドから抜粋
 
 
-# ハイコネ仕様規定API
+# Hybridcast Connect Protocol APIs
+
+ハイコネ仕様規定API
 
 ハイコネプロトコルおよびAPIをソフトウェア実装する場合に特に必要とする箇所を抜粋して紹介します.
 詳細は、[IPTVFJ STD-0013](#iptvfj-std-0013) ハイブリッドキャスト運用規定 7章"を参照.

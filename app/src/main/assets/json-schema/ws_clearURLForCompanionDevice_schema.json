@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/nhkrd/hyconet4j/sample/hcxp-json-schema/ws_clearURLForCompanionDevice_schema.json",
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "control": {
+      "$id": "/properties/control",
+      "type": "object",
+      "properties": {
+        "devid": {
+          "$id": "/properties/control/properties/devid",
+          "type": "string",
+          "title": "The Devid Schema ",
+          "default": "",
+          "examples": [
+            "送信先端末 ID"
+          ],
+          "minLength": 1
+        },
+        "setURLForCompanionDevice": {
+          "$id": "/properties/control/properties/setURLForCompanionDevice",
+          "type": "object",
+          "properties": {
+            "url": {
+              "$id": "/properties/control/properties/setURLForCompanionDevice/properties/url",
+              "type": "string",
+              "title": "The Url Schema ",
+              "default": "",
+              "enum": [""],
+              "examples": [
+                ""
+              ]
+            },
+            "options": {
+              "$id": "/properties/control/properties/setURLForCompanionDevice/properties/options",
+              "type": "object",
+              "properties": {
+                "auto_start": {
+                  "$id": "/properties/control/properties/setURLForCompanionDevice/properties/options/properties/auto_start",
+                  "type": "boolean",
+                  "title": "The Auto_start Schema ",
+                  "default": false,
+                  "enum": [false],
+                  "examples": [
+                    false
+                  ]
+                },
+                "app_title": {
+                  "$id": "/properties/control/properties/setURLForCompanionDevice/properties/options/properties/app_title",
+                  "type": "string",
+                  "title": "The App_title Schema ",
+                  "default": "",
+                  "enum": [""],
+                  "examples": [
+                    ""
+                  ]
+                },
+                "app_desc": {
+                  "$id": "/properties/control/properties/setURLForCompanionDevice/properties/options/properties/app_desc",
+                  "type": "string",
+                  "title": "The App_desc Schema ",
+                  "default": "",
+                  "enum": [""],
+                  "examples": [
+                    ""
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "auto_start",
+                "app_title",
+                "app_desc"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "url",
+            "options"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "devid",
+        "setURLForCompanionDevice"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "control"
+  ]
+}

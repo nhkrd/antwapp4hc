@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service xmlns="urn:dial-multiscreen-org:schemas:dial" xmlns:iptv="urn:iptv:HybridcastApplication:2015" dialVer="2.1">
+    <name>Hybridcast Application</name>
+    <options allowStop="false"/>
+    <state>statexxxxx</state>
+    <additionalData>
+        <iptv:X_Hybridcast_TVControlURL>[TVControlURL]</iptv:X_Hybridcast_TVControlURL>
+        <iptv:X_Hybridcast_App2AppURL>[WSServerURL]</iptv:X_Hybridcast_App2AppURL>
+        <iptv:X_Hybridcast_ServerInfo>[ServerInfo]</iptv:X_Hybridcast_ServerInfo>
+    </additionalData>
+</service>

@@ -1,0 +1,153 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/nhkrd/hyconet4j/sample/hcxp-json-schema/startAIT_reponse_schema.json",
+	"type": "object",
+	"properties": {
+		"head": {
+			"$id": "/properties/head",
+			"type": "object",
+			"properties": {
+				"code": {
+					"$id": "/properties/head/properties/code",
+                    "type": "number",
+					"title": "The Code Schema",
+					"default": 0,
+					"examples": [
+						201
+					],
+                    "minimum": 200,
+                    "maximum": 599,
+					"enum": [
+						201,
+						400,
+						401,
+						403,
+						500,
+						503
+					]
+				},
+				"message": {
+					"$id": "/properties/head/properties/message",
+					"type": "string",
+					"title": "The Message Schema",
+					"default": "",
+					"examples": [
+						"Created"
+					],
+					"enum": [
+						"Created",
+						"Bad Request",
+						"Unauthorized",
+						"Unacceptable AIT Specified",
+						"Processing Another Request",
+						"Request Refused",
+						"Hybridcast Disabled",
+						"Internal Server Error"
+					]
+				}
+			},
+			"required": [
+				"code",
+				"message"
+			]
+		},
+		"body": {
+			"$id": "/properties/body",
+			"type": "object",
+			"properties": {
+				"taskid": {
+					"$id": "/properties/body/properties/taskid",
+					"type": "string",
+					"title": "The Taskid Schema",
+					"default": "15180375",
+					"examples": [
+						"15180375"
+					],
+					"minLength": 1,
+					"not": { "type": "null"}
+				}
+			},
+			"additionalProperties": false
+		}
+	},
+	"allOf": [
+		{
+		"if":{
+			"properties": {"head": { "properties":  {"code": { "const": 201}}}},
+			"required": ["head", "body"]
+		},
+		"then": {
+			"properties": {
+				"head": { "properties":  {"message": { "enum": ["Created"]}}},
+				"body": {"required": [ "taskid" ] }
+			}
+		},
+		"else":{
+			"properties": {
+				"body": { "maxProperties": 0 }
+			}
+		}
+	},
+	{
+		"if":{
+			"properties": {"head": { "properties":  {"code": { "const": 400}}}},
+			"required": ["head", "body"]
+		},
+		"then": {
+			"properties": {
+				"head": { "properties":  {"message": { "enum": ["Bad Request"]}}},
+				"body": { "maxProperties": 0 }
+			}
+		}
+	},
+	{
+		"if":{
+			"properties": {"head": { "properties":  {"code": { "const": 401}}}},
+			"required": ["head", "body"]
+		},
+		"then": {
+			"properties": {
+				"head": { "properties":  {"message": { "enum": ["Unauthorized"]}}},
+				"body": { "maxProperties": 0 }
+			}
+		}
+	},
+	{
+		"if":{
+			"properties": {"head": { "properties":  {"code": { "const": 500 }, "message": { "const": "Processing Another Request"}}}},
+			"required": ["head", "body"]
+		},
+		"then": {
+			"properties": {"body": { "maxProperties": 0 }}
+		}
+	},
+	{
+		"if":{
+			"properties": {"head": { "properties":  {"code": { "const": 500 }, "message": { "const": "Request Refused"}}}},
+			"required": ["head", "body"]
+		},
+		"then": {
+			"properties": {
+				"body": { "maxProperties": 0 }
+			}
+		}
+	},
+	{
+		"if":{
+			"properties": {"head": { "properties":  {"code": { "const": 503 }}}},
+			"required": ["head", "body"]
+		},
+		"then": {
+			"properties": {
+				"head": { "properties":  {"message": { "enum": ["Hybridcast Disabled"]}}},
+				"body": { "maxProperties": 0 }
+			}
+		}
+	}
+	],
+	"additionalProperties": false,
+	"required": [
+		"head",
+		"body"
+	]
+}

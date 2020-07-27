@@ -36,7 +36,7 @@ Antwapp4hcは、IPTV Forum Japanにおいて2018年９月に標準規格化さ�
     - FireTVStick（第2世代モデル）: Fire OS 5.2.6.6(AndroidOS:5.1 base)
     - FireTVStick（第3世代モデル）: Fire OS 6.2.6.6(AndroidOS:7.0 base)
 
-- Dependencies
+- Dependencies (for more dettail, see file "build.gradle")
   - commons-codec-1.10.jar
   - jzlib-1.1.3.jar
   - netty-buffer-4.1.48.Final.jar
@@ -47,6 +47,10 @@ Antwapp4hcは、IPTV Forum Japanにおいて2018年９月に標準規格化さ�
   - netty-transport-4.1.48.Final.jar
   - netty-handler-4.1.48.Final.jar
   - JSON-java-20170220.jar (NOTICE: see [License](#license))
+  - Android SDK/packages
+    - com.android.tools.build:gradle:3.5.3
+    - com.android.support:leanback-v17:21.0.3
+    - com.google.android.gms:play-services:8.3.0
 
 ---
 
@@ -62,14 +66,14 @@ Android Studio 使ってビルドを実施する.
 ### docker
 
 Use docker to build.
-"docker-compose" also be available to build.
+"docker-compose" also is available to build.
 
 docker を使ってビルドを実施する.
 docker-composeを使うこともできる。
 
 ```bash
 $ ./make_docker_image.sh
-$ ./build_in_docker.sh]
+$ ./build_in_docker.sh
 ```
 
 or
@@ -87,11 +91,6 @@ $ docker-compose up
   - JSON-java-20170220.jar (NOTICE: see [License](#license))
 
 
-### ./build
-
-Directory automatiaclly generated when building this android app.
-
-ビルド実行時に必要なディレクトリでビルド時にgradleにより自動作成される.
 
 ### ./docs
 
@@ -161,10 +160,10 @@ After installing to the device(AndroidTV Receiver or FireStick, etc), "antwapp4h
 
 ### Application View
 
-"Antwapp4hc" has application views(views as Android App) to display debug messages and to set configuration that changes functions of antwapp4hc. These views are shown on a display of device and you can check log message of "Antwapp4hc" as debug information and change configuration to debug Hybridcast Connect protocol. For more details, see [antwapp_ui.md](./antwapp_ui.md).
+"Antwapp4hc" has application views(views as Android App) to display debug messages and to set configuration that changes functions of antwapp4hc. These views are shown on a display of device and you can check log message of "Antwapp4hc" as debug information and change configuration to debug Hybridcast Connect protocol. For more details, see [antwapp_ui.md](./docs/antwapp_ui.md).
 
 
-"Antwapp4hc"は、デバッグメッセージの表示や設定変更のためのアプリ画面をAndroidアプリとしてを用意しています。デバイス上のディスプレイにてアプリの画面として表示し、デバッグのためのlog表示、設定変更ができます。以下はその説明です。詳細は[antwapp_ui.md](./antwapp_ui.md)を参照。
+"Antwapp4hc"は、デバッグメッセージの表示や設定変更のためのアプリ画面をAndroidアプリとしてを用意しています。デバイス上のディスプレイにてアプリの画面として表示し、デバッグのためのlog表示、設定変更ができます。以下はその説明です。詳細は[antwapp_ui.md](./docs/antwapp_ui.md)を参照。
 
 - Log Area
 - startAIT Request Information Area
@@ -178,7 +177,7 @@ After installing to the device(AndroidTV Receiver or FireStick, etc), "antwapp4h
 #### Tabs on the Window
 
 Tab is implemented as a button to switch window. Here is a lineup of windows. 
-このタブはボタンとして機能し、以下の画面に切り替えることができる。詳細は[antwapp_ui.md](./antwapp_ui.md)を参照。
+このタブはボタンとして機能し、以下の画面に切り替えることができる。詳細は[antwapp_ui.md](./docs/antwapp_ui.md)を参照。
 
 - "ログ表示" -- Log
 
@@ -202,9 +201,9 @@ Tab is implemented as a button to switch window. Here is a lineup of windows.
 ---
 ## HTMLs
 
-"antwapp4hc" serves html as console or remote view. Some part of these htmls are sample for checking data and APIs.
+"antwapp4hc" serves htmls as console view on AndroidTV App or remote view on WebBroser. Some part of these htmls are sample for checking data and APIs.
 
-"antwapp4hc"はコンソール画面およびリモート画面をHTMLで提供している。一部はantwapp4cのAPIのUIとしてのサンプルとなっている。
+"antwapp4hc"はAndroidTVアプリのコンソール画面およびwebBrowserで表示可能な画面をHTMLで提供している。一部はantwapp4cのAPIのUIとしてのサンプルとなっている。
 
 ```
 -- assets
@@ -219,17 +218,19 @@ Tab is implemented as a button to switch window. Here is a lineup of windows.
   `-- wsclient.html<-- websocket client for checking data and APIs
 ```
 
-- access
+- access to HTMLs on webBrowser
 
   ```
   http://[IPAddress]:8887/[html-file-name]
+  
+  Ex. http://[IPAddress]:8887/console.html
   ```
 
 ---
 
 ## [APIs](./docs/apidocs.md)
 
-"antwapp4hc" is the android application that serves many APIs as the Rest and Websocket server. "antwapp4hc" has two kinds of the APIs below.The part of these APIs are standardized in "[IPTVFJ STD-0013](#iptvfj-std-0013)". 
+"antwapp4hc" is the android application that serves many APIs as the Rest and Websocket server. "antwapp4hc" has two kinds of the APIs below.The part of these APIs are standardized in "[IPTVFJ STD-0013](./HybridcastConnect.md#iptvfj-std-0013)". 
 
 For more details, see [API documents](./docs/apidocs.md).
 
@@ -239,7 +240,7 @@ For more details, see [API documents](./docs/apidocs.md).
 
 ---
 
-antwapp4hcは、Rest/Websocketサーバーとして動作し、以下２種類のwebAPIを提供する。このAPIの一部は[IPTVFJ STD-0013](#iptvfj-std-0013)にて規定されている。
+antwapp4hcは、Rest/Websocketサーバーとして動作し、以下２種類のwebAPIを提供する。このAPIの一部は[IPTVFJ STD-0013](./HybridcastConnect.md#iptvfj-std-0013)にて規定されている。
 
 詳細は[API documents](./docs/apidocs.md)を参照。
 
@@ -271,11 +272,11 @@ And see additional side information: "antwapp4hc" repository includes third part
 
     It is the standard Java implementation in JSON. But for Android Develepment, there's [confliction problem between JSON-java and android](https://github.com/stleary/JSON-java/wiki/JSON-Java-for-Android-developers), then this "antwapp4hc" repository soloves the problem by changing package name from "org.json" to "JSON-java". see [License](https://github.com/stleary/JSON-java/blob/master/LICENSE).
 
-- focus-manager.js (MIT License)
+- focus-manager.js (BSD-3-Clause)
 
-  AndroidTVやFireStickなどのデバイス上の画面フォーカス遷移のためにfocus-managerを利用している。ライセンスについては[focus-manager.js](../app/src/main/assets/js/focus-manager.js)を参照。
+  AndroidTVやFireStickなどのデバイス上の画面フォーカス遷移のためにfocus-managerを利用している。ライセンスについては[focus-manager.js](./app/src/main/assets/js/focus-manager.js)を参照。
 
-  use [focus-manager.js](../app/src/main/assets/js/focus-manager.js) in htmls to switch focus on the display of a device(AndroidTV/FireStick,etc). see License in [focus-manager.js](../app/src/main/assets/js/focus-manager.js).
+  "antwapp4hc" uses [focus-manager.js](./app/src/main/assets/js/focus-manager.js) in htmls to switch focus on the display of a device(AndroidTV/FireStick,etc). see License in [focus-manager.js](./app/src/main/assets/js/focus-manager.js).
 
 
 

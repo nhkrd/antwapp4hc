@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f0ffffff">
+
+        <WebView
+            android:id="@+id/webview_message"
+            android:layout_width="1920px"
+            android:layout_height="135px"
+            android:background="#c0000000">
+        </WebView>
+
+</LinearLayout>
