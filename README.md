@@ -247,6 +247,17 @@ antwapp4hcは、Rest/Websocketサーバーとして動作し、以下２種類�
 - ハイコネの規格仕様通りのRESTAPIおよびwebsocketAPI
 - antwapp4hcの管理・制御のためのRESTAPI・websocketAPI
 
+---
+
+## Rererence implementation for W3C WoT Device
+
+"antwapp4hc"は、W3C Web of Things(WoT)IG/WGにおける以下機能の一部をリファレンス実装し、WoTグループのPlugfest(相互運用テストイベント)に貢献しています。
+
+"antwapp4hc" also contributes to W3C Web of Things(WoT) IG/WG as a reference implementation for Plugfest(Interoperability TestEvent) or WoT Group. In detail, the functions below are implemented.
+
+- Wot Discovery: mDNS-SD.
+- WoT ThingDescription: ThingDescription for Hybridcast-Connect implemented TVSet.
+
 
 # License
 

@@ -1,5 +1,9 @@
 package jp.or.nhk.rd.antwapp4hc ;
 
+import java.net.InetAddress;
+import java.util.HashMap;
+import java.util.Map;
+
 import io.netty.handler.codec.http.HttpResponseStatus;
 
 /**
@@ -181,7 +185,12 @@ class Const {
 				final static String File = "File";
 			}
 		}
+		final static class mDNS {
+			final static String Name = "mDNS" ;
+		}
+
 	}
+
 	// future: it is Hybridcast Connect Protocol parameters so that move to HyconetHandlerInterface
 	final static class HybridcastBrowserStatus {
 		final static String Running = "Running" ;
@@ -230,5 +239,17 @@ class Const {
 		final static HttpResponseStatus Internalservererror = new HttpResponseStatus( 500, "Internal server error");
 		final static HttpResponseStatus BadRequestInternalProcessing = new HttpResponseStatus( 51400, "Bad Request InternalProcessing");
 		final static HttpResponseStatus DenyInternalProcessing = new HttpResponseStatus( 51500, "Deny InternalProcessing");
+	}
+
+	// deprecated, move to WotHandlerInterface for the future because these params are defined as a WoT-Discovery in W3C WoT-Architecture
+	// see reference, https://github.com/w3c/wot-discovery
+	final static class mDNS {
+		final static String serviceName = "Antwapp4hc" ;
+		final static String serviceType = "_wot._tcp" ;
+		final static int port = 8887 ;
+		final static Map<String, String> txt = new HashMap<String, String>() {{
+			put("type", "Thing");
+			put("td", "/td/nhktv.jsonld");
+		}};
 	}
 }

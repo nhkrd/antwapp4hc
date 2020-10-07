@@ -254,7 +254,7 @@
       "descriptions": {
         "en": "Available channels information on a TV set",
         "ja": "選局チャンネル情報"
- 
+
       },
       "properties":{
         "head":{"type":"object", "properties":{"code":{},"message":{}}},
@@ -266,7 +266,7 @@
             "type": "string",
             "enum": ["TD","BS","CS"]
         }
-      }, 
+      },
       "forms": [{
         "href": "channels{?media}",
         "contentType": "application/json",
@@ -296,7 +296,7 @@
                 }
               }
             }
-          } 
+          }
         }
       },
       "forms": [{

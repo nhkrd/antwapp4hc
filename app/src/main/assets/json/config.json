@@ -5,6 +5,7 @@
     "tuneMode": "Emulator",
     "tuneDelay": "2000",
     "hcViewMode": "Debug",
+    "mDNS": true,
     "aitload": true,
     "aitVerifierMode": "AllOK",
     "aitVerifierUrl": "http://127.0.0.1:8887/api/aitverifier|https://example.com/api/validation|PASS",

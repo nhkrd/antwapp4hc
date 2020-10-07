@@ -80,6 +80,7 @@ class AnTWappConfigManager {
         config.put( Const.Config.SetUrlAppTitle.Name, "");
         config.put( Const.Config.SetUrlAppDesc.Name, "");
         config.put( Const.Config.WSBroadcastMode.Name, true);
+        config.put( Const.Config.mDNS.Name, true );
 
     }
 
@@ -201,6 +202,9 @@ class AnTWappConfigManager {
                     }
                     if (configJson.has(Const.Config.tuneDelay.Name)) {
                         config.put(Const.Config.tuneDelay.Name, configJson.getInt(Const.Config.tuneDelay.Name));
+                    }
+                    if (configJson.has(Const.Config.mDNS.Name)) {
+                        config.put(Const.Config.mDNS.Name, configJson.get(Const.Config.mDNS.Name));
                     }
                 } catch (org.json.JSONjava.JSONException e) {
                     //TODO:forOSS
@@ -502,6 +506,10 @@ class AnTWappConfigManager {
         if( reqConfig.has(Const.Config.WSBroadcastMode.Name)) {
             Boolean wsBroadcastMode = (Boolean) reqConfig.get(Const.Config.WSBroadcastMode.Name);
             config.put(Const.Config.WSBroadcastMode.Name, wsBroadcastMode);
+        }
+        if( reqConfig.has(Const.Config.mDNS.Name)) {
+            Boolean mDNS = (Boolean) reqConfig.get(Const.Config.mDNS.Name);
+            config.put(Const.Config.mDNS.Name, mDNS);
         }
 
         if( channlesObj_reset ) {

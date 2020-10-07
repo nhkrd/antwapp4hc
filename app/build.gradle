@@ -12,10 +12,10 @@ android {
         buildToolsVersion '28.0.3'
         minSdkVersion 22
         targetSdkVersion 22
-        versionCode 20200727
+        versionCode 20201007
         multiDexEnabled true
         applicationId "jp.or.nhk.rd.antwapp4hc"
-        versionName 'v2.0.0' + "-" + versionCode + "_" + secondsSinceEpoch
+        versionName 'v2.1.0' + "-" + versionCode + "_" + secondsSinceEpoch
     }
 
     buildTypes {

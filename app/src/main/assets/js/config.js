@@ -10,7 +10,8 @@ var attrs = {
     "wsBroadcastMode":1,
     "aitVerify":2,
     "hcViewMode":3,
-    "save":4
+    "mDNS":4,
+    "save":5
 };
 var Url_index = {"Internal":0, "External":1, "AllOK":2};
 var aitVerifierUrl = {};
@@ -59,6 +60,7 @@ function dispConfig(data) {
     if( configAll['channelsFrom']) { configNew['channelsFrom'] = configAll['channelsFrom']; }
     if( configAll['tuneMode']) { configNew['tuneMode'] = configAll['tuneMode']; }
     if( configAll['hcViewMode']) { configNew['hcViewMode'] = configAll['hcViewMode']; }
+    if( configAll['mDNS']) { configNew['mDNS'] = configAll['mDNS']; }
     if( configAll['tuneDelay']) { configNew['tuneDelay'] = configAll['tuneDelay']; }
 
     var configBase = $('<div class="configBase"></div>');
@@ -68,6 +70,7 @@ function dispConfig(data) {
                     + '<div><button class="CondifChange_Btn focusable">wsBroadcastMode(true, false)</button><span id="cc_wsbroadcastmode"></span></div>'
                     + '<div class=input-group><button class="CondifChange_Btn focusable">aitVerify(External, Internal, AllOK)</button><span id="cc_aitVerifierMode"></span><span> : </span><input id="cc_aitVerifierURL" type="text" value="" ></div>'
                     + '<div><button class="CondifChange_Btn focusable">hcViewMode(Debug, Full, Both)</button><span id="cc_hcviewmode"></span></div>'
+                    + '<div><button class="CondifChange_Btn focusable">mDNS(ON, OFF)</button><span id="cc_mdns"></span></div>'
                     + '<div><div class="CondifChange_Div">tuneDelay(<span id="cc_tuneDelay"></span> msec)</div><button class="tuneDelayButton focusable" onclick="delayup();">▲</button><button class="tuneDelayButton focusable" onclick="delaydown();">▼</button></div>'
                     + '<div><button class="CondifChange_Btn focusable">設定更新</button></div>'
                     + '</div>';
@@ -129,6 +132,7 @@ function configUpdate() {
     $('#cc_wsbroadcastmode').text( configNew['wsBroadcastMode']? "true":"false" );
 	$('#cc_aitVerifierMode').text( configNew['aitVerifierMode'] );
 	$('#cc_hcviewmode').text( configNew['hcViewMode'] );
+    $('#cc_mdns').text( configNew['mDNS']? "ON":"OFF" );
 	$('#cc_tuneDelay').text( configNew['tuneDelay'] );
 
     aitVerifierUrl = configNew['aitVerifierUrl'].split('|');
@@ -170,6 +174,10 @@ function configUpdate() {
 					configNew['hcViewMode'] = "Debug";
 				}
 				$('#cc_hcviewmode').text( configNew['hcViewMode'] );
+			}
+			else if( index == attrs["mDNS"] ) {
+				configNew['mDNS'] = !configNew['mDNS'];
+				$('#cc_mdns').text( configNew['mDNS']? "ON":"OFF" );
 			}
 			else  if( index == attrs["save"] ) {
 				postConfig();

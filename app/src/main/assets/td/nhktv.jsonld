@@ -1,0 +1,227 @@
+{
+  "@context": [
+    "https://www.w3.org/2019/wot/td/v1",
+    {
+      "htv": "http://www.w3.org/2011/http#"
+    }
+  ],
+  "@type": "Thing",
+  "title": "HybridcastConnectReceiver",
+  "titles": {
+    "en": "HybridcastConnectReceiver",
+    "ja": "ハイコネプロトコル対応受信機"
+  },
+  "description": "HybridcastConnectEmulator:Antwapp",
+  "descriptions": {
+    "en": "HybridcastConnectEmulator:Antwapp",
+    "ja": "ハイコネエミュレーター"
+  },
+  "id": "URN:nhkrd:antwapp",
+  "securityDefinitions": {
+    "nosec_sc": {
+      "scheme": "nosec"
+    }
+  },
+  "security": ["nosec_sc"],
+  "properties": {
+    "receiverStatus":{
+      "title": "HybridcastReceiverStatus",
+      "titles": {
+        "en": "HybridcastReceiverStatus",
+        "ja": "受信機状態"
+      },
+      "description": "HybridcastReceiverStatus",
+      "descriptions": {
+        "en": "HybridcastReceiverStatus",
+        "ja": "受信機状態"
+      },
+      "properties" :{
+        "head":{"type":"object", "properties":{"code":{},"message":{}}},
+        "body":{"type":"object", "properties":{
+          "status": {
+            "type": "object",
+            "properties": {
+              "hybridcast": {
+                "type": "string",
+                "title": "The status of Hybridcast Browser",
+                "enum": [ "NotStarted", "Running" ]
+              },
+              "companion_apps": {
+                "type": "number",
+                "title": "The number of Companion_apps"
+              },
+              "resource": {
+                "type": "object",
+                "properties": {
+                  "original_network_id": {
+                    "type": "number",
+                    "title": "The Original_network_id of broadcasting",
+                    "minimum": 0,
+                    "maximum": 65535
+                  },
+                  "transport_stream_id": {
+                    "type": "number",
+                    "title": "The Transport_stream_id of broadcasting",
+                    "minimum": 0,
+                    "maximum": 65535
+                  },
+                  "service_id": {
+                    "type": "number",
+                    "title": "Service_id of broadcasting",
+                    "minimum": 0,
+                    "maximum": 65535
+                  }
+                }
+              }
+            }
+          }
+        }
+        }
+      },
+      "forms" : [{
+        "href": "http://URLBASE/antwapp/tvcontrol/status",
+        "contentType": "application/json",
+        "htv:methodName": "GET",
+        "op":"readproperty"
+      }]
+    },
+    "media": {
+      "title": "available media on a TV set",
+      "titles": {
+        "en": "available media on a TV set",
+        "ja": "メディア利用可否"
+      },
+      "description": "available media on a TV set",
+      "descriptions": {
+        "en": "available media on a TV set",
+        "ja": "メディア利用可否"
+      },
+      "properties":{
+        "head":{"type":"object", "properties":{"code":{},"message":{}}},
+        "body":{"type":"object", "properties":{
+            "created_at": {
+                "type": "string",
+              "title": "The date of the file created"
+            },
+            "TD": {
+              "type": "string",
+              "title": "Availability of receiving Telestrial Digital broadcasting",
+              "enum": [ "Available", "NotAvailable" ]
+            },
+            "BS": {
+              "type": "string",
+              "title": "Availability of receiving Broadcasting Satelite",
+              "enum": [ "Available", "NotAvailable" ]
+            },
+            "CS": {
+              "type": "string",
+              "title": "Availability of receiving Comunication Satelite",
+              "enum": [ "Available", "NotAvailable" ]
+            }
+          }
+        }
+      },
+      "forms": [{
+        "href": "http://URLBASE/antwapp/tvcontrol/channels?media=TD",
+        "contentType": "application/json",
+        "htv:methodName": "GET",
+        "op":"readproperty",
+        "scopes": ["full_access"]
+      }]
+    }
+  },
+  "actions": {
+    "startAIT": {
+      "safe": true,
+      "idempotent": false,
+      "forms": [{
+        "op": "invokeaction",
+        "contentType": "application/json",
+        "href": "http://URLBASE/antwapp/tvcontrol/hybridcast{?mode}",
+        "htv:methodName": "POST"
+      }],
+      "input": {
+        "type": "object",
+        "properties": {
+          "resource": {
+            "type": "object",
+            "properties": {
+              "original_network_id": {
+                "type": "number",
+                "title": "The Original_network_id Schema",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "transport_stream_id": {
+                "type": "number",
+                "title": "The Transport_stream_id Schema",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "service_id": {
+                "type": "number",
+                "title": "The Service_id Schema",
+                "minimum": 0,
+                "maximum": 65535
+              }
+            }
+          },
+          "hybridcast": {
+            "type": "object",
+            "properties": {
+              "aiturl": {
+                "type": "string",
+                "title": "The Aiturl Schema"
+              },
+              "orgid": {
+                "type": "number",
+                "title": "The Orgid Schema",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "appid": {
+                "type": "number",
+                "title": "The Appid Schema",
+                "minimum": 0,
+                "maximum": 4294967295
+              }
+            }
+          }
+        }
+      },
+      "uriVariables": {
+        "mode": {
+          "title": "launchmode: ",
+          "type": "string",
+          "enum": ["tune", "app"]
+        }
+      }
+
+    }
+  },
+  "events": {
+    "hybridcastCompanionConnectListener": {
+      "title": "Message is emitted.",
+      "titles": {
+        "en": "Message is emitted.",
+        "ja": "メッセージが送出された．"
+      },
+      "data": {
+        "type": "object"
+      },
+      "properties": {
+        "value": {
+          "type": "number"
+        }
+      },
+      "forms": [
+        {
+          "href": "ws://URLBASE/antwapp/websocket",
+          "op": "subscribeevent",
+          "contentType": "application/json",
+          "subprotocol": "Hybridcast"
+        }
+      ]
+    }
+  }
+}

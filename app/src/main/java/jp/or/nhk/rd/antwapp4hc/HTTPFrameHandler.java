@@ -39,6 +39,7 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 
 import java.util.List;
@@ -427,6 +428,7 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                         .put( Const.Config.aitVerifierMode.Name, configMan.get(Const.Config.aitVerifierMode.Name) )
                         .put( Const.Config.aitVerifierUrl.Name, configMan.get(Const.Config.aitVerifierUrl.Name) )
                         .put( Const.Config.WSBroadcastMode.Name, configMan.get(Const.Config.WSBroadcastMode.Name) )
+                        .put( Const.Config.mDNS.Name, configMan.get(Const.Config.mDNS.Name) )
                     )
 
                 );
@@ -480,6 +482,8 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
             try {
                 reqConfig = new JSONObject(body);
                 configMan.updateConfig(reqConfig);
+
+                WebViewActivity.getActivity().mDNSControl();
             }
             catch (JSONException e){
             }
@@ -856,7 +860,7 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
             //send response
             ByteBuf content = Unpooled.copiedBuffer( tdstr.getBytes() );
             FullHttpResponse res = new DefaultFullHttpResponse(HTTP_1_1, OK, content);
-            res.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/ld+json");
+            res.headers().set(HttpHeaderNames.CONTENT_TYPE, WotHandlerInterface.mimeParameter);
             HttpUtil.setContentLength(res, content.readableBytes());
             sendHttpResponse(ctx, req, res, false);
         }
@@ -966,6 +970,18 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
     public Boolean isRequestHeaderValid(ChannelHandlerContext ctx, FullHttpRequest req) {
         Boolean isValid = true; //default true
         // write validation logic on Request Header in common or at any request type.
+
+        String method = req.method().toString();
+        if( method.toUpperCase().equals("POST")) {
+            String content_type = req.headers().get("content-type");
+            if( (content_type == null) || (content_type.toLowerCase().indexOf("application/json")) < 0 ) {
+                isValid = false;
+                send_loginfo(Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Error, "isRequestHeaderValid()", method + " " + content_type, Const.LogRed, "");
+            }
+            else {
+                send_loginfo(Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Success, "isRequestHeaderValid()", method + " " + content_type, Const.LogBlue, "");
+            }
+        }
 
         return isValid;
     }
@@ -2094,6 +2110,30 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
     }
 
     /**
+     * HTTPレスポンスとして返す内容を編集する
+     * @param req
+     * @param content
+     * @return editedResponse
+     */
+    public ByteBuf editResponse(FullHttpRequest req, ByteBuf content) {
+        ByteBuf editedContent;
+
+
+        if( req.uri().equals("/td/nhktv.jsonld") ) {
+            // this may move to a method in WotHandlerInterface.java
+            String temp1 = content.toString(Charset.forName("UTF-8"));
+            String temp2 = temp1.replaceAll("URLBASE", req.headers().get(HttpHeaderNames.HOST));
+            byte[] temp3 = temp2.getBytes(Charset.forName("UTF-8"));
+            editedContent = Unpooled.copiedBuffer(temp3);
+        }
+        else {
+            editedContent = content;
+        }
+
+        return editedContent;
+    }
+
+    /**
      * 指定されたファイルの内容をHTTPレスポンスとして返す
      * @param ctx
      * @param req
@@ -2112,6 +2152,7 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
             }
             else {
                 content = Unpooled.copiedBuffer(data);
+                content = editResponse(req, content);
                 FullHttpResponse res = new DefaultFullHttpResponse(HTTP_1_1, OK, content);
                 switch(type) {
                     case "html":
@@ -2125,6 +2166,9 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                         break;
                     case "json":
                         res.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json; charset=UTF-8");
+                        break;
+                    case "jsonld":
+                        res.headers().set(HttpHeaderNames.CONTENT_TYPE, WotHandlerInterface.mimeParameter);
                         break;
                     case "xml":
                         res.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/xml; charset=UTF-8");
@@ -2228,6 +2272,8 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                 sendResponse(ctx, req, req.uri().substring(1), "js");
             } else if (req.uri().substring(0, 6).equals("/json/")) {
                 sendResponse(ctx, req, req.uri().substring(1), "json");
+            } else if (req.uri().substring(0, 4).equals("/td/")) {
+                sendResponse(ctx, req, req.uri().substring(1), "jsonld");
             }
             else if ("/favicon.ico".equals(url_loc)) {
                 sendResponse(ctx, req, req.uri().substring(1), "ico");

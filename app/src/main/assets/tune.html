@@ -10,8 +10,11 @@
 	margin: 0px; padding: 0px; border: 0px;
 	}
 body {
+<!--	background: url("img/tt_all.gif"); -->
+	background-size: cover;
 	margin: 0px; padding: 0px; border: 0px;
-	background-color: #a0a0a0; font-size:20px;
+	<!-- background-color: #a0a0a0; -->
+	font-size:20px;
 	}
 #vObj {position:absolute; top:0px; left:1440px; width:480px; height:270px;
 	}
@@ -118,10 +121,11 @@ window.addEventListener('load', function() {
 		$("#hcmode").text( hcjson["mode"] ) ; 
 		$("#nwid").text( hcjson["resource"]["original_network_id"] ) ; 
 		$("#tsid").text( hcjson["resource"]["transport_stream_id"] ) ; 
-		$("#svid").text( hcjson["resource"]["service_id"] ) ; 
-		
-		$("#chnumber").text( hcjson["logical_channel_number"] ) ; 
-		$("#chname").text( hcjson["broadcast_channel_name"] ) ; 
+		$("#svid").text( hcjson["resource"]["service_id"] ) ;
+
+		$("#chnumber").text( hcjson["logical_channel_number"] ) ;
+		$("#chname").text( hcjson["broadcast_channel_name"] ) ;
+
 	})
 	.fail(function() {
 	});

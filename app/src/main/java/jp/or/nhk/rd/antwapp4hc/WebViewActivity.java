@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.content.res.AssetManager;
+import android.net.nsd.NsdManager;
+import android.net.nsd.NsdServiceInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -35,6 +37,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.Runnable;
 import java.net.HttpURLConnection;
+import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.net.SocketTimeoutException;
 import javax.net.ssl.HttpsURLConnection;
 //import java.net.URI;
@@ -795,6 +799,13 @@ public class WebViewActivity extends FragmentActivity  {
             webview_hcsub.setWebContentsDebuggingEnabled(true);
             webview_hcsub.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         }
+
+
+        ////////////////////////////////////////////////////////////////////
+//      mDNS
+        this.mDNSControl();
+        ////////////////////////////////////////////////////////////////////
+
     }
 
     /**
@@ -908,5 +919,80 @@ public class WebViewActivity extends FragmentActivity  {
             retc = super.onKeyDown(keyCode, event);
         }
         return retc;
+    }
+
+    /**
+     * mDNS-SD Implementation
+     */
+    NsdManager nsdManager = null;
+    Boolean mDNS_active = false;
+    NsdManager.RegistrationListener registrationListener = new NsdManager.RegistrationListener() {
+        @Override
+        public void onServiceRegistered(NsdServiceInfo NsdServiceInfo) {
+            // Save the service name. Android may have changed it in order to
+            // resolve a conflict, so update the name you initially requested
+            // with the name Android actually used.
+            String serviceName = NsdServiceInfo.getServiceName();
+        }
+
+        @Override
+        public void onRegistrationFailed(NsdServiceInfo serviceInfo, int errorCode) {
+            // Registration failed! Put debugging code here to determine why.
+        }
+
+        @Override
+        public void onServiceUnregistered(NsdServiceInfo arg0) {
+            // Service has been unregistered. This only happens when you call
+            // NsdManager.unregisterService() and pass in this listener.
+        }
+
+        @Override
+        public void onUnregistrationFailed(NsdServiceInfo serviceInfo, int errorCode) {
+            // Unregistration failed. Put debugging code here to determine why.
+        }
+    };
+
+
+    /**
+     * registerService
+     */
+    public void registerService() {
+        // Create the NsdServiceInfo object, and populate it.
+        NsdServiceInfo serviceInfo = new NsdServiceInfo();
+
+        serviceInfo.setServiceName(WotHandlerInterface.mDNS.serviceName);
+        serviceInfo.setServiceType(WotHandlerInterface.mDNS.serviceType);
+        serviceInfo.setPort(WotHandlerInterface.mDNS.port);
+        for( String key : WotHandlerInterface.mDNS.txt.keySet()) {
+            serviceInfo.setAttribute(key, WotHandlerInterface.mDNS.txt.get(key));
+        }
+
+        if(nsdManager == null) {
+            nsdManager = (NsdManager) WebViewActivity.getContext().getSystemService(Context.NSD_SERVICE);
+        }
+        nsdManager.registerService( serviceInfo, NsdManager.PROTOCOL_DNS_SD, registrationListener );
+        mDNS_active = true;
+    }
+
+    /**
+     * registerService
+     */
+    public void unregisterService() {
+        nsdManager.unregisterService(registrationListener);
+        mDNS_active = false;
+    }
+
+    // Device dependent settings
+    public void mDNSControl() {
+        if( (mDNS_active == false) && (Boolean)configMan.get( Const.Config.mDNS.Name )) {
+            Log.i("mDNS", "registerService()");
+            this.registerService();
+            mDNS_active = true;
+        }
+        else if( (mDNS_active == true) && !(Boolean)configMan.get( Const.Config.mDNS.Name )) {
+            Log.i("mDNS", "unregisterService()");
+            this.unregisterService();
+            mDNS_active = false;
+        }
     }
 }

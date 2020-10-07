@@ -9,6 +9,2283 @@
                     "original_network_id": 32736,
                     "service_id": 1024
                 },
+                "broadcast_channel_name": "ＮＨＫ総合・関東広域"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32737,
+                    "original_network_id": 32737,
+                    "service_id": 1032
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・関東広域"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32738,
+                    "original_network_id": 32738,
+                    "service_id": 1040
+                },
+                "broadcast_channel_name": "日本テレビ放送網・関東広域"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32739,
+                    "original_network_id": 32739,
+                    "service_id": 1048
+                },
+                "broadcast_channel_name": "ＴＢＳテレビ・関東広域"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32740,
+                    "original_network_id": 32740,
+                    "service_id": 1056
+                },
+                "broadcast_channel_name": "フジテレビジョン・関東広域"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32741,
+                    "original_network_id": 32741,
+                    "service_id": 1064
+                },
+                "broadcast_channel_name": "テレビ朝日・関東広域"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32742,
+                    "original_network_id": 32742,
+                    "service_id": 1072
+                },
+                "broadcast_channel_name": "テレビ東京・関東広域"
+            },
+            {
+                "logical_channel_number": "121",
+                "resource": {
+                    "transport_stream_id": 32744,
+                    "original_network_id": 32744,
+                    "service_id": 1088
+                },
+                "broadcast_channel_name": "放送大学学園・関東広域"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32721,
+                    "original_network_id": 32721,
+                    "service_id": 2056
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・近畿広域"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32722,
+                    "original_network_id": 32722,
+                    "service_id": 2064
+                },
+                "broadcast_channel_name": "毎日放送・近畿広域"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32723,
+                    "original_network_id": 32723,
+                    "service_id": 2072
+                },
+                "broadcast_channel_name": "朝日放送・近畿広域"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32724,
+                    "original_network_id": 32724,
+                    "service_id": 2080
+                },
+                "broadcast_channel_name": "関西テレビ放送・近畿広域"
+            },
+            {
+                "logical_channel_number": "101",
+                "resource": {
+                    "transport_stream_id": 32725,
+                    "original_network_id": 32725,
+                    "service_id": 2088
+                },
+                "broadcast_channel_name": "讀賣テレビ放送・近畿広域"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32705,
+                    "original_network_id": 32705,
+                    "service_id": 3080
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・中京広域"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32706,
+                    "original_network_id": 32706,
+                    "service_id": 3088
+                },
+                "broadcast_channel_name": "東海テレビ放送・中京広域"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32707,
+                    "original_network_id": 32707,
+                    "service_id": 3096
+                },
+                "broadcast_channel_name": "ＣＢＣテレビ・中京広域"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32708,
+                    "original_network_id": 32708,
+                    "service_id": 3104
+                },
+                "broadcast_channel_name": "名古屋テレビ放送・中京広域"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32709,
+                    "original_network_id": 32709,
+                    "service_id": 3112
+                },
+                "broadcast_channel_name": "中京テレビ放送・中京広域"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32690,
+                    "original_network_id": 32690,
+                    "service_id": 4112
+                },
+                "broadcast_channel_name": "北海道放送・北海道域"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32691,
+                    "original_network_id": 32691,
+                    "service_id": 4120
+                },
+                "broadcast_channel_name": "札幌テレビ放送・北海道域"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32692,
+                    "original_network_id": 32692,
+                    "service_id": 4128
+                },
+                "broadcast_channel_name": "北海道テレビ放送・北海道域"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32693,
+                    "original_network_id": 32693,
+                    "service_id": 4136
+                },
+                "broadcast_channel_name": "北海道文化放送・北海道域"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32694,
+                    "original_network_id": 32694,
+                    "service_id": 4144
+                },
+                "broadcast_channel_name": "テレビ北海道・北海道域"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32674,
+                    "original_network_id": 32674,
+                    "service_id": 5136
+                },
+                "broadcast_channel_name": "西日本放送・岡山香川"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32675,
+                    "original_network_id": 32675,
+                    "service_id": 5144
+                },
+                "broadcast_channel_name": "瀬戸内海放送・岡山香川"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32676,
+                    "original_network_id": 32676,
+                    "service_id": 5152
+                },
+                "broadcast_channel_name": "山陽放送・岡山香川"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32677,
+                    "original_network_id": 32677,
+                    "service_id": 5160
+                },
+                "broadcast_channel_name": "テレビせとうち・岡山香川"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32678,
+                    "original_network_id": 32678,
+                    "service_id": 5168
+                },
+                "broadcast_channel_name": "岡山放送・岡山香川"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32658,
+                    "original_network_id": 32658,
+                    "service_id": 6160
+                },
+                "broadcast_channel_name": "山陰中央テレビジョン放送・島根鳥取"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32659,
+                    "original_network_id": 32659,
+                    "service_id": 6168
+                },
+                "broadcast_channel_name": "山陰放送・島根鳥取"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32660,
+                    "original_network_id": 32660,
+                    "service_id": 6176
+                },
+                "broadcast_channel_name": "日本海テレビジョン放送・島根鳥取"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32592,
+                    "original_network_id": 32592,
+                    "service_id": 10240
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・北海道（札幌）"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32593,
+                    "original_network_id": 32593,
+                    "service_id": 10248
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・北海道（札幌）"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32594,
+                    "original_network_id": 32594,
+                    "service_id": 10256
+                },
+                "broadcast_channel_name": "北海道放送・北海道（札幌）"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32595,
+                    "original_network_id": 32595,
+                    "service_id": 10264
+                },
+                "broadcast_channel_name": "札幌テレビ放送・北海道（札幌）"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32596,
+                    "original_network_id": 32596,
+                    "service_id": 10272
+                },
+                "broadcast_channel_name": "北海道テレビ放送・北海道（札幌）"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32597,
+                    "original_network_id": 32597,
+                    "service_id": 10280
+                },
+                "broadcast_channel_name": "北海道文化放送・北海道（札幌）"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32598,
+                    "original_network_id": 32598,
+                    "service_id": 10288
+                },
+                "broadcast_channel_name": "テレビ北海道・北海道（札幌）"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32576,
+                    "original_network_id": 32576,
+                    "service_id": 11264
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・北海道（函館）"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32577,
+                    "original_network_id": 32577,
+                    "service_id": 11272
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・北海道（函館）"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32578,
+                    "original_network_id": 32578,
+                    "service_id": 11280
+                },
+                "broadcast_channel_name": "北海道放送・北海道（函館）"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32579,
+                    "original_network_id": 32579,
+                    "service_id": 11288
+                },
+                "broadcast_channel_name": "札幌テレビ放送・北海道（函館）"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32580,
+                    "original_network_id": 32580,
+                    "service_id": 11296
+                },
+                "broadcast_channel_name": "北海道テレビ放送・北海道（函館）"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32581,
+                    "original_network_id": 32581,
+                    "service_id": 11304
+                },
+                "broadcast_channel_name": "北海道文化放送・北海道（函館）"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32582,
+                    "original_network_id": 32582,
+                    "service_id": 11312
+                },
+                "broadcast_channel_name": "テレビ北海道・北海道（函館）"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32560,
+                    "original_network_id": 32560,
+                    "service_id": 12288
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・北海道（旭川）"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32561,
+                    "original_network_id": 32561,
+                    "service_id": 12296
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・北海道（旭川）"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32562,
+                    "original_network_id": 32562,
+                    "service_id": 12304
+                },
+                "broadcast_channel_name": "北海道放送・北海道（旭川）"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32563,
+                    "original_network_id": 32563,
+                    "service_id": 12312
+                },
+                "broadcast_channel_name": "札幌テレビ放送・北海道（旭川）"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32564,
+                    "original_network_id": 32564,
+                    "service_id": 12320
+                },
+                "broadcast_channel_name": "北海道テレビ放送・北海道（旭川）"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32565,
+                    "original_network_id": 32565,
+                    "service_id": 12328
+                },
+                "broadcast_channel_name": "北海道文化放送・北海道（旭川）"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32566,
+                    "original_network_id": 32566,
+                    "service_id": 12336
+                },
+                "broadcast_channel_name": "テレビ北海道・北海道（旭川）"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32544,
+                    "original_network_id": 32544,
+                    "service_id": 13312
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・北海道（帯広）"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32545,
+                    "original_network_id": 32545,
+                    "service_id": 13320
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・北海道（帯広）"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32546,
+                    "original_network_id": 32546,
+                    "service_id": 13328
+                },
+                "broadcast_channel_name": "北海道放送・北海道（帯広）"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32547,
+                    "original_network_id": 32547,
+                    "service_id": 13336
+                },
+                "broadcast_channel_name": "札幌テレビ放送・北海道（帯広）"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32548,
+                    "original_network_id": 32548,
+                    "service_id": 13344
+                },
+                "broadcast_channel_name": "北海道テレビ放送・北海道（帯広）"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32549,
+                    "original_network_id": 32549,
+                    "service_id": 13352
+                },
+                "broadcast_channel_name": "北海道文化放送・北海道（帯広）"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32550,
+                    "original_network_id": 32550,
+                    "service_id": 13360
+                },
+                "broadcast_channel_name": "テレビ北海道・北海道（帯広）"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32528,
+                    "original_network_id": 32528,
+                    "service_id": 14336
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・北海道（釧路）"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32529,
+                    "original_network_id": 32529,
+                    "service_id": 14344
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・北海道（釧路）"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32530,
+                    "original_network_id": 32530,
+                    "service_id": 14352
+                },
+                "broadcast_channel_name": "北海道放送・北海道（釧路）"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32531,
+                    "original_network_id": 32531,
+                    "service_id": 14360
+                },
+                "broadcast_channel_name": "札幌テレビ放送・北海道（釧路）"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32532,
+                    "original_network_id": 32532,
+                    "service_id": 14368
+                },
+                "broadcast_channel_name": "北海道テレビ放送・北海道（釧路）"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32533,
+                    "original_network_id": 32533,
+                    "service_id": 14376
+                },
+                "broadcast_channel_name": "北海道文化放送・北海道（釧路）"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32534,
+                    "original_network_id": 32534,
+                    "service_id": 14384
+                },
+                "broadcast_channel_name": "テレビ北海道・北海道（釧路）"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32512,
+                    "original_network_id": 32512,
+                    "service_id": 15360
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・北海道（北見）"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32513,
+                    "original_network_id": 32513,
+                    "service_id": 15368
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・北海道（北見）"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32514,
+                    "original_network_id": 32514,
+                    "service_id": 15376
+                },
+                "broadcast_channel_name": "北海道放送・北海道（北見）"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32515,
+                    "original_network_id": 32515,
+                    "service_id": 15384
+                },
+                "broadcast_channel_name": "札幌テレビ放送・北海道（北見）"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32516,
+                    "original_network_id": 32516,
+                    "service_id": 15392
+                },
+                "broadcast_channel_name": "北海道テレビ放送・北海道（北見）"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32517,
+                    "original_network_id": 32517,
+                    "service_id": 15400
+                },
+                "broadcast_channel_name": "北海道文化放送・北海道（北見）"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32518,
+                    "original_network_id": 32518,
+                    "service_id": 15408
+                },
+                "broadcast_channel_name": "テレビ北海道・北海道（北見）"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32496,
+                    "original_network_id": 32496,
+                    "service_id": 16384
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・北海道（室蘭）"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32497,
+                    "original_network_id": 32497,
+                    "service_id": 16392
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・北海道（室蘭）"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32498,
+                    "original_network_id": 32498,
+                    "service_id": 16400
+                },
+                "broadcast_channel_name": "北海道放送・北海道（室蘭）"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32499,
+                    "original_network_id": 32499,
+                    "service_id": 16408
+                },
+                "broadcast_channel_name": "札幌テレビ放送・北海道（室蘭）"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32500,
+                    "original_network_id": 32500,
+                    "service_id": 16416
+                },
+                "broadcast_channel_name": "北海道テレビ放送・北海道（室蘭）"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32501,
+                    "original_network_id": 32501,
+                    "service_id": 16424
+                },
+                "broadcast_channel_name": "北海道文化放送・北海道（室蘭）"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32502,
+                    "original_network_id": 32502,
+                    "service_id": 16432
+                },
+                "broadcast_channel_name": "テレビ北海道・北海道（室蘭）"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32480,
+                    "original_network_id": 32480,
+                    "service_id": 17408
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・宮城"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32481,
+                    "original_network_id": 32481,
+                    "service_id": 17416
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・宮城"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32482,
+                    "original_network_id": 32482,
+                    "service_id": 17424
+                },
+                "broadcast_channel_name": "東北放送・宮城"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32483,
+                    "original_network_id": 32483,
+                    "service_id": 17432
+                },
+                "broadcast_channel_name": "仙台放送・宮城"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32484,
+                    "original_network_id": 32484,
+                    "service_id": 17440
+                },
+                "broadcast_channel_name": "宮城テレビ放送・宮城"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32485,
+                    "original_network_id": 32485,
+                    "service_id": 17448
+                },
+                "broadcast_channel_name": "東日本放送・宮城"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32464,
+                    "original_network_id": 32464,
+                    "service_id": 18432
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・秋田"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32465,
+                    "original_network_id": 32465,
+                    "service_id": 18440
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・秋田"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32466,
+                    "original_network_id": 32466,
+                    "service_id": 18448
+                },
+                "broadcast_channel_name": "秋田放送・秋田"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32467,
+                    "original_network_id": 32467,
+                    "service_id": 18456
+                },
+                "broadcast_channel_name": "秋田テレビ・秋田"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32468,
+                    "original_network_id": 32468,
+                    "service_id": 18464
+                },
+                "broadcast_channel_name": "秋田朝日放送・秋田"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32448,
+                    "original_network_id": 32448,
+                    "service_id": 19456
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・山形"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32449,
+                    "original_network_id": 32449,
+                    "service_id": 19464
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・山形"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32450,
+                    "original_network_id": 32450,
+                    "service_id": 19472
+                },
+                "broadcast_channel_name": "山形放送・山形"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32451,
+                    "original_network_id": 32451,
+                    "service_id": 19480
+                },
+                "broadcast_channel_name": "山形テレビ・山形"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32452,
+                    "original_network_id": 32452,
+                    "service_id": 19488
+                },
+                "broadcast_channel_name": "テレビユー山形・山形"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32453,
+                    "original_network_id": 32453,
+                    "service_id": 19496
+                },
+                "broadcast_channel_name": "さくらんぼﾃﾚﾋﾞｼﾞｮﾝ・山形"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32432,
+                    "original_network_id": 32432,
+                    "service_id": 20480
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・岩手"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32433,
+                    "original_network_id": 32433,
+                    "service_id": 20488
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・岩手"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32434,
+                    "original_network_id": 32434,
+                    "service_id": 20496
+                },
+                "broadcast_channel_name": "アイビーシー岩手放送・岩手"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32435,
+                    "original_network_id": 32435,
+                    "service_id": 20504
+                },
+                "broadcast_channel_name": "テレビ岩手・岩手"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32436,
+                    "original_network_id": 32436,
+                    "service_id": 20512
+                },
+                "broadcast_channel_name": "岩手めんこいテレビ・岩手"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32437,
+                    "original_network_id": 32437,
+                    "service_id": 20520
+                },
+                "broadcast_channel_name": "岩手朝日テレビ・岩手"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32416,
+                    "original_network_id": 32416,
+                    "service_id": 21504
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・福島"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32417,
+                    "original_network_id": 32417,
+                    "service_id": 21512
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・福島"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32418,
+                    "original_network_id": 32418,
+                    "service_id": 21520
+                },
+                "broadcast_channel_name": "福島テレビ・福島"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32419,
+                    "original_network_id": 32419,
+                    "service_id": 21528
+                },
+                "broadcast_channel_name": "福島中央テレビ・福島"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32420,
+                    "original_network_id": 32420,
+                    "service_id": 21536
+                },
+                "broadcast_channel_name": "福島放送・福島"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32421,
+                    "original_network_id": 32421,
+                    "service_id": 21544
+                },
+                "broadcast_channel_name": "テレビユー福島・福島"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32400,
+                    "original_network_id": 32400,
+                    "service_id": 22528
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・青森"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32401,
+                    "original_network_id": 32401,
+                    "service_id": 22536
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・青森"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32402,
+                    "original_network_id": 32402,
+                    "service_id": 22544
+                },
+                "broadcast_channel_name": "青森放送・青森"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32403,
+                    "original_network_id": 32403,
+                    "service_id": 22552
+                },
+                "broadcast_channel_name": "青森テレビ・青森"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32404,
+                    "original_network_id": 32404,
+                    "service_id": 22560
+                },
+                "broadcast_channel_name": "青森朝日放送・青森"
+            },
+            {
+                "logical_channel_number": "091",
+                "resource": {
+                    "transport_stream_id": 32391,
+                    "original_network_id": 32391,
+                    "service_id": 23608
+                },
+                "broadcast_channel_name": "東京メトロポリタンテレビジョン・東京"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32375,
+                    "original_network_id": 32375,
+                    "service_id": 24632
+                },
+                "broadcast_channel_name": "テレビ神奈川・神奈川"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32352,
+                    "original_network_id": 32352,
+                    "service_id": 25600
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・群馬"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32359,
+                    "original_network_id": 32359,
+                    "service_id": 25656
+                },
+                "broadcast_channel_name": "群馬テレビ・群馬"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32336,
+                    "original_network_id": 32336,
+                    "service_id": 26624
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・茨城"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32327,
+                    "original_network_id": 32327,
+                    "service_id": 27704
+                },
+                "broadcast_channel_name": "千葉テレビ放送・千葉"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32304,
+                    "original_network_id": 32304,
+                    "service_id": 28672
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・栃木"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32311,
+                    "original_network_id": 32311,
+                    "service_id": 28728
+                },
+                "broadcast_channel_name": "とちぎテレビ・栃木"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32295,
+                    "original_network_id": 32295,
+                    "service_id": 29752
+                },
+                "broadcast_channel_name": "テレビ埼玉・埼玉"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32272,
+                    "original_network_id": 32272,
+                    "service_id": 30720
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・長野"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32273,
+                    "original_network_id": 32273,
+                    "service_id": 30728
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・長野"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32274,
+                    "original_network_id": 32274,
+                    "service_id": 30736
+                },
+                "broadcast_channel_name": "テレビ信州・長野"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32275,
+                    "original_network_id": 32275,
+                    "service_id": 30744
+                },
+                "broadcast_channel_name": "長野朝日放送・長野"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32276,
+                    "original_network_id": 32276,
+                    "service_id": 30752
+                },
+                "broadcast_channel_name": "信越放送・長野"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32277,
+                    "original_network_id": 32277,
+                    "service_id": 30760
+                },
+                "broadcast_channel_name": "長野放送・長野"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32256,
+                    "original_network_id": 32256,
+                    "service_id": 31744
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・新潟"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32257,
+                    "original_network_id": 32257,
+                    "service_id": 31752
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・新潟"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32258,
+                    "original_network_id": 32258,
+                    "service_id": 31760
+                },
+                "broadcast_channel_name": "新潟放送・新潟"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32259,
+                    "original_network_id": 32259,
+                    "service_id": 31768
+                },
+                "broadcast_channel_name": "新潟総合テレビ・新潟"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32260,
+                    "original_network_id": 32260,
+                    "service_id": 31776
+                },
+                "broadcast_channel_name": "テレビ新潟放送網・新潟"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32261,
+                    "original_network_id": 32261,
+                    "service_id": 31784
+                },
+                "broadcast_channel_name": "新潟テレビ21・新潟"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32240,
+                    "original_network_id": 32240,
+                    "service_id": 32768
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・山梨"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32241,
+                    "original_network_id": 32241,
+                    "service_id": 32776
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・山梨"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32242,
+                    "original_network_id": 32242,
+                    "service_id": 32784
+                },
+                "broadcast_channel_name": "山梨放送・山梨"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32243,
+                    "original_network_id": 32243,
+                    "service_id": 32792
+                },
+                "broadcast_channel_name": "テレビ山梨・山梨"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32224,
+                    "original_network_id": 32224,
+                    "service_id": 33792
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・愛知"
+            },
+            {
+                "logical_channel_number": "101",
+                "resource": {
+                    "transport_stream_id": 32230,
+                    "original_network_id": 32230,
+                    "service_id": 33840
+                },
+                "broadcast_channel_name": "テレビ愛知・愛知"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32208,
+                    "original_network_id": 32208,
+                    "service_id": 34816
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・石川"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32209,
+                    "original_network_id": 32209,
+                    "service_id": 34824
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・石川"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32210,
+                    "original_network_id": 32210,
+                    "service_id": 34832
+                },
+                "broadcast_channel_name": "テレビ金沢・石川"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32211,
+                    "original_network_id": 32211,
+                    "service_id": 34840
+                },
+                "broadcast_channel_name": "北陸朝日放送・石川"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32212,
+                    "original_network_id": 32212,
+                    "service_id": 34848
+                },
+                "broadcast_channel_name": "北陸放送・石川"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32213,
+                    "original_network_id": 32213,
+                    "service_id": 34856
+                },
+                "broadcast_channel_name": "石川テレビ放送・石川"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32192,
+                    "original_network_id": 32192,
+                    "service_id": 35840
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・静岡"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32193,
+                    "original_network_id": 32193,
+                    "service_id": 35848
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・静岡"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32194,
+                    "original_network_id": 32194,
+                    "service_id": 35856
+                },
+                "broadcast_channel_name": "静岡放送・静岡"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32195,
+                    "original_network_id": 32195,
+                    "service_id": 35864
+                },
+                "broadcast_channel_name": "テレビ静岡・静岡"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32196,
+                    "original_network_id": 32196,
+                    "service_id": 35872
+                },
+                "broadcast_channel_name": "静岡第一テレビ・静岡"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32197,
+                    "original_network_id": 32197,
+                    "service_id": 35880
+                },
+                "broadcast_channel_name": "静岡朝日テレビ・静岡"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32176,
+                    "original_network_id": 32176,
+                    "service_id": 36864
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・福井"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32177,
+                    "original_network_id": 32177,
+                    "service_id": 36872
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・福井"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32178,
+                    "original_network_id": 32178,
+                    "service_id": 36880
+                },
+                "broadcast_channel_name": "福井放送・福井"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32179,
+                    "original_network_id": 32179,
+                    "service_id": 36888
+                },
+                "broadcast_channel_name": "福井テレビジョン放送・福井"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32160,
+                    "original_network_id": 32160,
+                    "service_id": 37888
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・富山"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32161,
+                    "original_network_id": 32161,
+                    "service_id": 37896
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・富山"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32162,
+                    "original_network_id": 32162,
+                    "service_id": 37904
+                },
+                "broadcast_channel_name": "北日本放送・富山"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32163,
+                    "original_network_id": 32163,
+                    "service_id": 37912
+                },
+                "broadcast_channel_name": "富山テレビ放送・富山"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32164,
+                    "original_network_id": 32164,
+                    "service_id": 37920
+                },
+                "broadcast_channel_name": "チューリップテレビ・富山"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32144,
+                    "original_network_id": 32144,
+                    "service_id": 38912
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・三重"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32150,
+                    "original_network_id": 32150,
+                    "service_id": 38960
+                },
+                "broadcast_channel_name": "三重テレビ放送・三重"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32128,
+                    "original_network_id": 32128,
+                    "service_id": 39936
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・岐阜"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32134,
+                    "original_network_id": 32134,
+                    "service_id": 39984
+                },
+                "broadcast_channel_name": "岐阜放送・岐阜"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32112,
+                    "original_network_id": 32112,
+                    "service_id": 40960
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・大阪"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32118,
+                    "original_network_id": 32118,
+                    "service_id": 41008
+                },
+                "broadcast_channel_name": "テレビ大阪・大阪"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32096,
+                    "original_network_id": 32096,
+                    "service_id": 41984
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・京都"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32102,
+                    "original_network_id": 32102,
+                    "service_id": 42032
+                },
+                "broadcast_channel_name": "京都放送・京都"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32080,
+                    "original_network_id": 32080,
+                    "service_id": 43008
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・兵庫"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32086,
+                    "original_network_id": 32086,
+                    "service_id": 43056
+                },
+                "broadcast_channel_name": "サンテレビジョン・兵庫"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32064,
+                    "original_network_id": 32064,
+                    "service_id": 44032
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・和歌山"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32070,
+                    "original_network_id": 32070,
+                    "service_id": 44080
+                },
+                "broadcast_channel_name": "テレビ和歌山・和歌山"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32048,
+                    "original_network_id": 32048,
+                    "service_id": 45056
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・奈良"
+            },
+            {
+                "logical_channel_number": "091",
+                "resource": {
+                    "transport_stream_id": 32054,
+                    "original_network_id": 32054,
+                    "service_id": 45104
+                },
+                "broadcast_channel_name": "奈良テレビ放送・奈良"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32032,
+                    "original_network_id": 32032,
+                    "service_id": 46080
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・滋賀"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32038,
+                    "original_network_id": 32038,
+                    "service_id": 46128
+                },
+                "broadcast_channel_name": "びわ湖放送・滋賀"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32016,
+                    "original_network_id": 32016,
+                    "service_id": 47104
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・広島"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32017,
+                    "original_network_id": 32017,
+                    "service_id": 47112
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・広島"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 32018,
+                    "original_network_id": 32018,
+                    "service_id": 47120
+                },
+                "broadcast_channel_name": "中国放送・広島"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32019,
+                    "original_network_id": 32019,
+                    "service_id": 47128
+                },
+                "broadcast_channel_name": "広島テレビ放送・広島"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32020,
+                    "original_network_id": 32020,
+                    "service_id": 47136
+                },
+                "broadcast_channel_name": "広島ホームテレビ・広島"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32021,
+                    "original_network_id": 32021,
+                    "service_id": 47144
+                },
+                "broadcast_channel_name": "テレビ新広島・広島"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32000,
+                    "original_network_id": 32000,
+                    "service_id": 48128
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・岡山"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32001,
+                    "original_network_id": 32001,
+                    "service_id": 48136
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・岡山"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 31984,
+                    "original_network_id": 31984,
+                    "service_id": 49152
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・島根"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31985,
+                    "original_network_id": 31985,
+                    "service_id": 49160
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・島根"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 31968,
+                    "original_network_id": 31968,
+                    "service_id": 50176
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・鳥取"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31969,
+                    "original_network_id": 31969,
+                    "service_id": 50184
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・鳥取"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31952,
+                    "original_network_id": 31952,
+                    "service_id": 51200
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・山口"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31953,
+                    "original_network_id": 31953,
+                    "service_id": 51208
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・山口"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 31954,
+                    "original_network_id": 31954,
+                    "service_id": 51216
+                },
+                "broadcast_channel_name": "山口放送・山口"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 31955,
+                    "original_network_id": 31955,
+                    "service_id": 51224
+                },
+                "broadcast_channel_name": "テレビ山口・山口"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 31956,
+                    "original_network_id": 31956,
+                    "service_id": 51232
+                },
+                "broadcast_channel_name": "山口朝日放送・山口"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31936,
+                    "original_network_id": 31936,
+                    "service_id": 52224
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・愛媛"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31937,
+                    "original_network_id": 31937,
+                    "service_id": 52232
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・愛媛"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 31938,
+                    "original_network_id": 31938,
+                    "service_id": 52240
+                },
+                "broadcast_channel_name": "南海放送・愛媛"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 31939,
+                    "original_network_id": 31939,
+                    "service_id": 52248
+                },
+                "broadcast_channel_name": "愛媛朝日テレビ・愛媛"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 31940,
+                    "original_network_id": 31940,
+                    "service_id": 52256
+                },
+                "broadcast_channel_name": "あいテレビ・愛媛"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 31941,
+                    "original_network_id": 31941,
+                    "service_id": 52264
+                },
+                "broadcast_channel_name": "愛媛放送・愛媛"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31920,
+                    "original_network_id": 31920,
+                    "service_id": 53248
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・香川"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31921,
+                    "original_network_id": 31921,
+                    "service_id": 53256
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・香川"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 31904,
+                    "original_network_id": 31904,
+                    "service_id": 54272
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・徳島"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31905,
+                    "original_network_id": 31905,
+                    "service_id": 54280
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・徳島"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31906,
+                    "original_network_id": 31906,
+                    "service_id": 54288
+                },
+                "broadcast_channel_name": "四国放送・徳島"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31888,
+                    "original_network_id": 31888,
+                    "service_id": 55296
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・高知"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31889,
+                    "original_network_id": 31889,
+                    "service_id": 55304
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・高知"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 31890,
+                    "original_network_id": 31890,
+                    "service_id": 55312
+                },
+                "broadcast_channel_name": "高知放送・高知"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 31891,
+                    "original_network_id": 31891,
+                    "service_id": 55320
+                },
+                "broadcast_channel_name": "テレビ高知・高知"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 31892,
+                    "original_network_id": 31892,
+                    "service_id": 55328
+                },
+                "broadcast_channel_name": "高知さんさんテレビ・高知"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 31872,
+                    "original_network_id": 31872,
+                    "service_id": 56320
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・福岡"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31873,
+                    "original_network_id": 31873,
+                    "service_id": 56328
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・福岡"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31874,
+                    "original_network_id": 31874,
+                    "service_id": 56336
+                },
+                "broadcast_channel_name": "九州朝日放送・福岡"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 31875,
+                    "original_network_id": 31875,
+                    "service_id": 56344
+                },
+                "broadcast_channel_name": "アール・ケー・ビー毎日放送・福岡"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 31876,
+                    "original_network_id": 31876,
+                    "service_id": 56352
+                },
+                "broadcast_channel_name": "福岡放送・福岡"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 31877,
+                    "original_network_id": 31877,
+                    "service_id": 56360
+                },
+                "broadcast_channel_name": "ＴＶＱ九州放送・福岡"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 31878,
+                    "original_network_id": 31878,
+                    "service_id": 56368
+                },
+                "broadcast_channel_name": "テレビ西日本・福岡"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31856,
+                    "original_network_id": 31856,
+                    "service_id": 57344
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・熊本"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31857,
+                    "original_network_id": 31857,
+                    "service_id": 57352
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・熊本"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 31858,
+                    "original_network_id": 31858,
+                    "service_id": 57360
+                },
+                "broadcast_channel_name": "熊本放送・熊本"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 31859,
+                    "original_network_id": 31859,
+                    "service_id": 57368
+                },
+                "broadcast_channel_name": "テレビ熊本・熊本"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 31860,
+                    "original_network_id": 31860,
+                    "service_id": 57376
+                },
+                "broadcast_channel_name": "熊本県民テレビ・熊本"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 31861,
+                    "original_network_id": 31861,
+                    "service_id": 57384
+                },
+                "broadcast_channel_name": "熊本朝日放送・熊本"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31840,
+                    "original_network_id": 31840,
+                    "service_id": 58368
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・長崎"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31841,
+                    "original_network_id": 31841,
+                    "service_id": 58376
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・長崎"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 31842,
+                    "original_network_id": 31842,
+                    "service_id": 58384
+                },
+                "broadcast_channel_name": "長崎放送・長崎"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 31843,
+                    "original_network_id": 31843,
+                    "service_id": 58392
+                },
+                "broadcast_channel_name": "テレビ長崎・長崎"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 31844,
+                    "original_network_id": 31844,
+                    "service_id": 58400
+                },
+                "broadcast_channel_name": "長崎文化放送・長崎"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 31845,
+                    "original_network_id": 31845,
+                    "service_id": 58408
+                },
+                "broadcast_channel_name": "長崎国際テレビ・長崎"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 31824,
+                    "original_network_id": 31824,
+                    "service_id": 59392
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・鹿児島"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31825,
+                    "original_network_id": 31825,
+                    "service_id": 59400
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・鹿児島"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31826,
+                    "original_network_id": 31826,
+                    "service_id": 59408
+                },
+                "broadcast_channel_name": "南日本放送・鹿児島"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 31827,
+                    "original_network_id": 31827,
+                    "service_id": 59416
+                },
+                "broadcast_channel_name": "鹿児島テレビ放送・鹿児島"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 31828,
+                    "original_network_id": 31828,
+                    "service_id": 59424
+                },
+                "broadcast_channel_name": "鹿児島放送・鹿児島"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 31829,
+                    "original_network_id": 31829,
+                    "service_id": 59432
+                },
+                "broadcast_channel_name": "鹿児島讀賣テレビ・鹿児島"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31808,
+                    "original_network_id": 31808,
+                    "service_id": 60416
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・宮崎"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31809,
+                    "original_network_id": 31809,
+                    "service_id": 60424
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・宮崎"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 31810,
+                    "original_network_id": 31810,
+                    "service_id": 60432
+                },
+                "broadcast_channel_name": "MRT宮崎放送・宮崎"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 31811,
+                    "original_network_id": 31811,
+                    "service_id": 60440
+                },
+                "broadcast_channel_name": "UMKテレビ宮崎・宮崎"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31792,
+                    "original_network_id": 31792,
+                    "service_id": 61440
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・大分"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31793,
+                    "original_network_id": 31793,
+                    "service_id": 61448
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・大分"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 31794,
+                    "original_network_id": 31794,
+                    "service_id": 61456
+                },
+                "broadcast_channel_name": "大分放送・大分"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 31795,
+                    "original_network_id": 31795,
+                    "service_id": 61464
+                },
+                "broadcast_channel_name": "テレビ大分・大分"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 31796,
+                    "original_network_id": 31796,
+                    "service_id": 61472
+                },
+                "broadcast_channel_name": "大分朝日放送・大分"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31776,
+                    "original_network_id": 31776,
+                    "service_id": 62464
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・佐賀"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31777,
+                    "original_network_id": 31777,
+                    "service_id": 62472
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・佐賀"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 31778,
+                    "original_network_id": 31778,
+                    "service_id": 62480
+                },
+                "broadcast_channel_name": "サガテレビ・佐賀"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 31760,
+                    "original_network_id": 31760,
+                    "service_id": 63488
+                },
+                "broadcast_channel_name": "ＮＨＫ総合・沖縄"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 31761,
+                    "original_network_id": 31761,
+                    "service_id": 63496
+                },
+                "broadcast_channel_name": "ＮＨＫ教育・沖縄"
+            },
+            {
+                "logical_channel_number": "031",
+                "resource": {
+                    "transport_stream_id": 31762,
+                    "original_network_id": 31762,
+                    "service_id": 63504
+                },
+                "broadcast_channel_name": "琉球放送・沖縄"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 31764,
+                    "original_network_id": 31764,
+                    "service_id": 63520
+                },
+                "broadcast_channel_name": "琉球朝日放送・沖縄"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 31767,
+                    "original_network_id": 31767,
+                    "service_id": 63544
+                },
+                "broadcast_channel_name": "沖縄テレビ放送・沖縄"
+            },
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32736,
+                    "original_network_id": 32736,
+                    "service_id": 1024
+                },
                 "broadcast_channel_name": "ＮＨＫ総合１・東京"
             },
             {
@@ -184,39 +2461,66 @@
             },
             {
                 "logical_channel_number": "91",
-                "broadcast_channel_name": "ＴＯＫＹＯ　ＭＸ１",
                 "resource": {
-                    "original_network_id": 32391,
                     "transport_stream_id": 32391,
+                    "original_network_id": 32391,
                     "service_id": 23608
-                }
+                },
+                "broadcast_channel_name": "ＴＯＫＹＯ　ＭＸ１"
             },
             {
                 "logical_channel_number": "92",
-                "broadcast_channel_name": "ＴＯＫＹＯ　ＭＸ１",
                 "resource": {
-                    "original_network_id": 32391,
                     "transport_stream_id": 32391,
+                    "original_network_id": 32391,
                     "service_id": 23609
-                }
+                },
+                "broadcast_channel_name": "ＴＯＫＹＯ　ＭＸ１"
             },
             {
                 "logical_channel_number": "93",
-                "broadcast_channel_name": "ＴＯＫＹＯ　ＭＸ２",
                 "resource": {
-                    "original_network_id": 32391,
                     "transport_stream_id": 32391,
+                    "original_network_id": 32391,
                     "service_id": 23610
-                }
+                },
+                "broadcast_channel_name": "ＴＯＫＹＯ　ＭＸ２"
             },
             {
                 "logical_channel_number": "98",
-                "broadcast_channel_name": "ＴＯＫＹＯ　ＭＸ臨時",
                 "resource": {
-                    "original_network_id": 32391,
                     "transport_stream_id": 32391,
+                    "original_network_id": 32391,
                     "service_id": 23615
-                }
+                },
+                "broadcast_channel_name": "ＴＯＫＹＯ　ＭＸ臨時"
+            },
+            {
+                "logical_channel_number": "121",
+                "resource": {
+                    "transport_stream_id": 32744,
+                    "original_network_id": 32744,
+                    "service_id": 1088
+                },
+                "broadcast_channel_name": "放送大学１"
+            },
+            {
+                "logical_channel_number": "122",
+                "resource": {
+                    "transport_stream_id": 32744,
+                    "original_network_id": 32744,
+                    "service_id": 1089
+                },
+                "broadcast_channel_name": "放送大学２"
+            },
+            {
+                "logical_channel_number": "123",
+                "resource": {
+                    "transport_stream_id": 32744,
+                    "original_network_id": 32744,
+                    "service_id": 1090
+                },
+                "broadcast_channel_name": "放送大学３"
             },
             {
                 "logical_channel_number": "268",
@@ -253,7 +2557,7 @@
             {
                 "logical_channel_number": "103",
                 "resource": {
-                    "transport_stream_id": 16433,
+                    "transport_stream_id": 16626,
                     "original_network_id": 4,
                     "service_id": 103
                 },
@@ -262,7 +2566,7 @@
             {
                 "logical_channel_number": "104",
                 "resource": {
-                    "transport_stream_id": 16433,
+                    "transport_stream_id": 16626,
                     "original_network_id": 4,
                     "service_id": 104
                 },
@@ -370,38 +2674,38 @@
             {
                 "logical_channel_number": "171",
                 "resource": {
-                    "transport_stream_id": 16402,
+                    "transport_stream_id": 16433,
                     "original_network_id": 4,
                     "service_id": 171
                 },
-                "broadcast_channel_name": "ＢＳテレ東"
+                "broadcast_channel_name": "ＢＳジャパン"
             },
             {
                 "logical_channel_number": "172",
                 "resource": {
-                    "transport_stream_id": 16402,
+                    "transport_stream_id": 16433,
                     "original_network_id": 4,
                     "service_id": 172
                 },
-                "broadcast_channel_name": "ＢＳテレ東２"
+                "broadcast_channel_name": "ＢＳジャパン２"
             },
             {
                 "logical_channel_number": "173",
                 "resource": {
-                    "transport_stream_id": 16402,
+                    "transport_stream_id": 16433,
                     "original_network_id": 4,
                     "service_id": 173
                 },
-                "broadcast_channel_name": "ＢＳテレ東３"
+                "broadcast_channel_name": "ＢＳジャパン３"
             },
             {
                 "logical_channel_number": "179",
                 "resource": {
-                    "transport_stream_id": 16402,
+                    "transport_stream_id": 16433,
                     "original_network_id": 4,
                     "service_id": 179
                 },
-                "broadcast_channel_name": "ＢＳテレ東臨時"
+                "broadcast_channel_name": "ＢＳジャパン臨時"
             },
             {
                 "logical_channel_number": "181",
@@ -487,7 +2791,7 @@
             {
                 "logical_channel_number": "201",
                 "resource": {
-                    "transport_stream_id": 16626,
+                    "transport_stream_id": 17520,
                     "original_network_id": 4,
                     "service_id": 201
                 },
@@ -496,7 +2800,7 @@
             {
                 "logical_channel_number": "202",
                 "resource": {
-                    "transport_stream_id": 16626,
+                    "transport_stream_id": 17520,
                     "original_network_id": 4,
                     "service_id": 202
                 },
@@ -527,7 +2831,7 @@
                     "original_network_id": 4,
                     "service_id": 231
                 },
-                "broadcast_channel_name": "ＢＳキャンパスｅｘ"
+                "broadcast_channel_name": "放送大学ＢＳ１"
             },
             {
                 "logical_channel_number": "232",
@@ -536,7 +2840,16 @@
                     "original_network_id": 4,
                     "service_id": 232
                 },
-                "broadcast_channel_name": "ＢＳキャンパスｏｎ"
+                "broadcast_channel_name": "放送大学ＢＳ２"
+            },
+            {
+                "logical_channel_number": "233",
+                "resource": {
+                    "transport_stream_id": 18098,
+                    "original_network_id": 4,
+                    "service_id": 233
+                },
+                "broadcast_channel_name": "放送大学ＢＳ３"
             },
             {
                 "logical_channel_number": "234",
@@ -550,7 +2863,7 @@
             {
                 "logical_channel_number": "236",
                 "resource": {
-                    "transport_stream_id": 18130,
+                    "transport_stream_id": 18033,
                     "original_network_id": 4,
                     "service_id": 236
                 },
@@ -640,11 +2953,11 @@
             {
                 "logical_channel_number": "256",
                 "resource": {
-                    "transport_stream_id": 17970,
+                    "transport_stream_id": 18034,
                     "original_network_id": 4,
                     "service_id": 256
                 },
-                "broadcast_channel_name": "ディズニーｃｈ"
+                "broadcast_channel_name": "ディズニーチャンネル"
             },
             {
                 "logical_channel_number": "258",
@@ -698,7 +3011,7 @@
                     "original_network_id": 4,
                     "service_id": 744
                 },
-                "broadcast_channel_name": "　"
+                "broadcast_channel_name": "ＢＳ日テレ"
             },
             {
                 "logical_channel_number": "745",
@@ -707,7 +3020,7 @@
                     "original_network_id": 4,
                     "service_id": 745
                 },
-                "broadcast_channel_name": "　"
+                "broadcast_channel_name": "ＢＳ日テレ"
             },
             {
                 "logical_channel_number": "746",
@@ -716,7 +3029,7 @@
                     "original_network_id": 4,
                     "service_id": 746
                 },
-                "broadcast_channel_name": "　"
+                "broadcast_channel_name": "ＢＳ日テレ"
             },
             {
                 "logical_channel_number": "753",
