@@ -141,7 +141,8 @@ window.addEventListener('load', function() {
 		$("#appid").text( hcjson["hybridcast"]["appid"] ) ; 
 		
 		var hcarea = document.getElementById("hcarea");
-		if( hcjson["mode"] == "app" ) {
+//		if( hcjson["mode"] == "app" ) {
+		if( (hcjson["mode"] == "app") || (hcjson["mode"] == "bia") ) {
 			hcarea.src = hcjson["hybridcast"]["hcurl"];
 		}
 		else {

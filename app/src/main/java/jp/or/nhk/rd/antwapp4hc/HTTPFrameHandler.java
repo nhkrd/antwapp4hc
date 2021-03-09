@@ -31,6 +31,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
+import java.io.UnsupportedEncodingException;
+import java.net.CookieStore;
 import java.net.HttpURLConnection;
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -40,6 +42,7 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 
 import java.nio.charset.Charset;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 
 import java.util.List;
@@ -92,12 +95,14 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
     private static Map<String, Integer> resourceStatus = new HashMap<String, Integer>() {{
         put("original_network_id", 0);
         put("transport_stream_id", 0);
+        put("tlv_stream_id", 0);
         put("service_id", 0);
     }};
     private static JSONObject lastReqObject = new JSONObject();
 
     private static SessionManager sessMan = null;
 
+    private static Boolean isStartAITCalled = false;
 
     /**
      * Constructor
@@ -133,6 +138,7 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
         public String[] query_params = null;
         public String mode;
         public JSONObject bodyObj = null;
+        public boolean is4K8K = false;
 
         public String hybridcastBrowserStatus = null ;
         public String startAITTaskStatus = null ;
@@ -307,10 +313,12 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
 
         }
         else {
-            ByteBuf buf = Unpooled.copiedBuffer(res.status().toString(), CharsetUtil.UTF_8);
-            res.content().writeBytes(buf);
-            buf.release();
-            HttpUtil.setContentLength(res, res.content().readableBytes());
+            if( !HttpUtil.isContentLengthSet(res) ) {
+                ByteBuf buf = Unpooled.copiedBuffer(res.status().toString(), CharsetUtil.UTF_8);
+                res.content().writeBytes(buf);
+                buf.release();
+                HttpUtil.setContentLength(res, res.content().readableBytes());
+            }
         }
 
         // Send the response and close the connection if necessary.
@@ -427,10 +435,13 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                         .put( Const.Config.aitLoad.Name, configMan.get(Const.Config.aitLoad.Name) )
                         .put( Const.Config.aitVerifierMode.Name, configMan.get(Const.Config.aitVerifierMode.Name) )
                         .put( Const.Config.aitVerifierUrl.Name, configMan.get(Const.Config.aitVerifierUrl.Name) )
+                        .put( Const.Config.aitVerificationMethod.Name, configMan.get(Const.Config.aitVerificationMethod.Name) )
+                        .put( Const.Config.aitVerificationTimeout.Name, configMan.get(Const.Config.aitVerificationTimeout.Name) )
                         .put( Const.Config.WSBroadcastMode.Name, configMan.get(Const.Config.WSBroadcastMode.Name) )
                         .put( Const.Config.mDNS.Name, configMan.get(Const.Config.mDNS.Name) )
+                        .put( Const.Config.support4K8K.Name, configMan.get(Const.Config.support4K8K.Name) )
+                        .put( Const.Config.allowBIA.Name, configMan.get(Const.Config.allowBIA.Name) )
                     )
-
                 );
         String resstr = resobj.toString();
 
@@ -519,6 +530,62 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
         return isValid;
     }
 
+    /**
+     * AIT可否判定 Internal V2
+     * @param str
+     * @return
+     */
+    public Boolean isAiturlValidOnAitVerificationV2(String str) {
+        Boolean isValid = true;
+        // write interanal AITURI Verification V2 Logic
+        send_loginfo( Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Success, "isAiturlValidOnAitVerificationV2()", str, Const.LogBlack, "" );
+
+        String[] queries = str.split("\\?");
+        if(queries.length < 2) {
+            isValid = false;
+        }
+        else {
+            String[] params = queries[1].split("&");
+            if(params.length < 6) {
+                isValid = false;
+            }
+            else {
+                String[] param0 = params[0].split("=");
+                String[] param1 = params[1].split("=");
+                String[] param2 = params[2].split("=");
+                String[] param3 = params[3].split("=");
+                String[] param4 = params[4].split("=");
+                String[] param5 = params[5].split("=");
+                if( !param0[0].equals("original_network_id")
+                    || !param1[0].equals("transport_stream_id")
+                    || !param2[0].equals("service_id")
+                    || !param3[0].equals("orgid")
+                    || !param4[0].equals("appid")
+                    || !param5[0].equals("aiturl") ) {
+                    isValid = false;
+                }
+                else {
+                    long original_network_id = Long.parseLong(param0[1]);
+                    long transport_stream_id = Long.parseLong(param1[1]);
+                    long service_id = Long.parseLong(param2[1]);
+                    long orgid = Long.parseLong(param3[1]);
+                    long appid = Long.parseLong(param4[1]);
+                    if( (original_network_id < 0) || (65535 < original_network_id)
+                        || (transport_stream_id < 0) || (65535 < transport_stream_id)
+                        || (service_id < 0) || (65535 < service_id)
+                        || (orgid < 0) || (65535 < orgid)
+                        || (appid < 0) || (4294967295L < appid) ) {
+                        isValid = false;
+                    }
+                    else {
+                        //check aiturl
+                    }
+                }
+            }
+        }
+
+        return isValid;
+    }
 
     /**
      * AIT可否判定
@@ -527,10 +594,34 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
      */
     private void verifyAIT(ChannelHandlerContext ctx, FullHttpRequest req) {
         send_loginfo( Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Success, "verifyAIT()", "start verification process at internal: AITURI Verification API", Const.LogBlack, "" );
-        JSONObject jsonStrForVerification = new JSONObject();
+//        JSONObject jsonStrForVerification = new JSONObject();
+        ByteBuf content = req.content();
+        FullHttpResponse res = null;
+//        if( isAiturlValidOnAitVerification(jsonStrForVerification.toString()) ) {
+        if( isAiturlValidOnAitVerification(content.toString(CharsetUtil.UTF_8)) ) {
+            content = Unpooled.copiedBuffer(("OK").getBytes());
+            res = new DefaultFullHttpResponse(HTTP_1_1, OK, content);
+        }
+        else {
+            content = Unpooled.copiedBuffer(("Unacceptable AIT specified").getBytes());
+            res = new DefaultFullHttpResponse(HTTP_1_1, HyconetHandlerInterface.StartAITResponse.UnacceptableAITSpecified, content);
+        }
+
+        res.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/plain; charset=utf-8");
+        HttpUtil.setContentLength(res, content.readableBytes());
+        sendHttpResponse(ctx, req, res, false);
+    }
+
+    /**
+     * AIT可否判定 V2
+     * @param ctx
+     * @param req
+     */
+    private void verifyAITV2(ChannelHandlerContext ctx, FullHttpRequest req) {
+        send_loginfo( Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Success, "verifyAITV2()", "start verification process at internal: AITURI Verification API", Const.LogBlack, "" );
         ByteBuf content = null;
         FullHttpResponse res = null;
-        if( isAiturlValidOnAitVerification(jsonStrForVerification.toString()) ) {
+        if( isAiturlValidOnAitVerificationV2( req.uri()) ) {
             content = Unpooled.copiedBuffer(("OK").getBytes());
             res = new DefaultFullHttpResponse(HTTP_1_1, OK, content);
         }
@@ -554,7 +645,8 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
         String locationURL = "";
         String hcurl = "";
 
-        String aitstr = WebViewActivity.getHTTP(aiturl, 5000);
+        Map<String,Object> ret = WebViewActivity.getHTTP(aiturl, 5000);
+        String aitstr = (String)ret.get("response");
         if(aitstr.equals("")) {
             Log.i("getHCURLfromAIT:", String.format("Error: NULL ait"));
             send_loginfo( Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Success, "getHCURLfromAIT()", "Error: NULL ait", Const.LogRed, "" );
@@ -696,6 +788,18 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
             reqMedia.add("CS");
         }
 
+        if( (boolean)WebViewActivity.configMan().get(Const.Config.support4K8K.Name) ) {
+            if( selmedia.equals("ABS") || selmedia.equals("ALL") ) {
+                reqMedia.add("ABS");
+            }
+            if( selmedia.equals("ACS") || selmedia.equals("ALL") ) {
+                reqMedia.add("ACS");
+            }
+            if( selmedia.equals("NCS") || selmedia.equals("ALL") ) {
+                reqMedia.add("NCS");
+            }
+        }
+
         JSONArray mediaobj = new JSONArray();
         for( String media : reqMedia) {
             JSONObject chXXobj = configMan.getChannelsObj(media);
@@ -705,15 +809,28 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                 for( int i=0; i<chobj.length(); i++ ) {
                     JSONObject channel = chobj.getJSONObject(i);
                     JSONObject resource = channel.getJSONObject("resource");
-                    JSONObject ch = new JSONObject()
+                    if( media.equals("TD") || media.equals("BS") || media.equals("CS") ) {
+                        JSONObject ch = new JSONObject()
                             .put("logical_channel_number", channel.getString("logical_channel_number"))
                             .put("broadcast_channel_name", channel.getString("broadcast_channel_name"))
                             .put("resource", new JSONObject()
-                                    .put("original_network_id", resource.getInt("original_network_id"))
-                                    .put("transport_stream_id", resource.getInt("transport_stream_id"))
-                                    .put("service_id", resource.getInt("service_id"))
+                                .put("original_network_id", resource.getInt("original_network_id"))
+                                .put("transport_stream_id", resource.getInt("transport_stream_id"))
+                                .put("service_id", resource.getInt("service_id"))
                             );
-                    mobj.put(ch);
+                        mobj.put(ch);
+                    }
+                    else if( media.equals("ABS") || media.equals("ACS") || media.equals("NCS") ) {
+                        JSONObject ch = new JSONObject()
+                            .put("logical_channel_number", channel.getString("logical_channel_number"))
+                            .put("broadcast_channel_name", channel.getString("broadcast_channel_name"))
+                            .put("resource", new JSONObject()
+                                .put("original_network_id", resource.getInt("original_network_id"))
+                                .put("tlv_stream_id", resource.getInt("tlv_stream_id"))
+                                .put("service_id", resource.getInt("service_id"))
+                            );
+                        mobj.put(ch);
+                    }
                 }
             }
             catch(JSONException e) {
@@ -1016,6 +1133,14 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                             .put("BS", configMan.getMediaStatus("BS"))
                             .put("CS", configMan.getMediaStatus("CS"))
                     );
+
+            if( (boolean)WebViewActivity.configMan().get(Const.Config.support4K8K.Name) ) {
+                resobj.getJSONObject("body")
+                    .put("ABS", configMan.getMediaStatus("ABS"))
+                    .put("ACS", configMan.getMediaStatus("ACS"))
+                    .put("NCS", configMan.getMediaStatus("NCS"));
+            }
+
             String resstr = resobj.toString();
 
             //send response
@@ -1038,7 +1163,7 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
         Boolean isParamGood = false;
         SessionManager.SessionInfo sessInfo = null;
 
-        String param_media = ""; //"ALL", "TD", "BS", "CS"
+        String param_media = ""; //"ALL", "TD", "BS", "CS", "ABS", "ACS", "NCS"
         if( params != null ) {
             String[] param = params[0].split("=");
             if( (param.length==2) && (param[0].equals("media")) ) {
@@ -1052,7 +1177,10 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
             send_loginfo( Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Notice, "sendChannelsInfo()", "sendChannelsInfo::BadRequest(parameter)", Const.LogRed, "" );
             sendErrorStatus(ctx, req, Const.HTTP.Unauthorized, false, null);
         }else{
-            if (param_media.equals("ALL") || param_media.equals("TD") ||param_media.equals("BS") ||param_media.equals("CS")) {
+//            if (param_media.equals("ALL") || param_media.equals("TD") ||param_media.equals("BS") ||param_media.equals("CS")) {
+            if (param_media.equals("ALL") || param_media.equals("TD") ||param_media.equals("BS") ||param_media.equals("CS") ||
+                ((boolean)WebViewActivity.configMan().get(Const.Config.support4K8K.Name) &&
+                    (param_media.equals("ABS") ||param_media.equals("ACS") ||param_media.equals("NCS"))) ) {
                 JSONArray mediaobj = getChannelInfo(param_media);
                 JSONObject resobj = new JSONObject()
                         .put("head", new JSONObject()
@@ -1104,7 +1232,14 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
         try{
             resObj = (JSONObject) reqbodyObj.get("resource");
             nwid = resObj.getInt("original_network_id");
-            tsid = resObj.getInt("transport_stream_id");
+            if( resObj.has("transport_stream_id")) {
+                tsid = resObj.getInt("transport_stream_id");
+                task.is4K8K = false;
+            }
+            else if( resObj.has("tlv_stream_id")) {
+                tsid = resObj.getInt("tlv_stream_id");
+                task.is4K8K = true;
+            }
             svid = resObj.getInt("service_id");
         }
         catch (JSONException e) {
@@ -1137,7 +1272,7 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                     task.startAITTaskStatus = HyconetHandlerInterface.StartAITTaskStatus.Done;
                     task.startAITTaskResult = HyconetHandlerInterface.StartAITTaskResultStatus.OK;
                 }
-                else if( task.getMode().equals("app") ) {
+                else if( task.getMode().equals("app") || task.getMode().equals("bia") ) {
                     // TODO: schema-validation
                     // 受付処理でschema-validationしていれば、aiturlがURLフォーマットになっているか、AITXMLのパース、HCアプリのURLValidation以外はいらない。
                     if( reqbodyObj.has("hybridcast") ) {
@@ -1247,7 +1382,14 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
 
                     companion_apps = 1;
                     resourceStatus.put("original_network_id", nwid);
-                    resourceStatus.put("transport_stream_id", tsid);
+                    if( task.is4K8K ) {
+                        resourceStatus.put("tlv_stream_id", tsid);
+                        resourceStatus.put("transport_stream_id", 0);
+                    }
+                    else {
+                        resourceStatus.put("transport_stream_id", tsid);
+                        resourceStatus.put("tlv_stream_id", 0);
+                    }
                     resourceStatus.put("service_id", svid);
 
                     reqbodyObj.put("mode", task.getMode());
@@ -1255,6 +1397,7 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                     ((JSONObject) reqbodyObj.get("hybridcast")).put("hcurl", hcurl);
                     ((JSONObject) reqbodyObj.get("hybridcast")).put("tuneurl", WebViewActivity.tune_url);
                     lastReqObject = reqbodyObj;
+                    isStartAITCalled = true;
 
                     //set Logo
                     lastReqObject.put("logo_image", "");
@@ -1263,6 +1406,12 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                     send_loginfo( Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Notice, "launchHcAppsSub()", "launchHCApp::startAIT mode=" + task.getMode(), Const.LogBlack, "" );
 
                     if (task.getMode().equals("app") && !hcurl.equals("")) {//Launch HC App
+                        // launch用messageArrayStringObject
+                        String[] urlInfo = { String.format("javascript:startAITControlledApp('%s');", reqbodyObj.toString()) , hcurl };
+                        activity_sendurl(WebViewActivity.MessageType.URL, urlInfo);
+                        send_loginfo( Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Notice, "launchHcAppsSub() url", hcurl, Const.LogBlue, "" );
+                    }
+                    else if (task.getMode().equals("bia") && !hcurl.equals("")) {//Launch HC App with BIA mode
                         // launch用messageArrayStringObject
                         String[] urlInfo = { String.format("javascript:startAITControlledApp('%s');", reqbodyObj.toString()) , hcurl };
                         activity_sendurl(WebViewActivity.MessageType.URL, urlInfo);
@@ -1379,18 +1528,21 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
      * @return mode name of string
      */
     public String getRequestModeFromQueryString(String[] params) {
-        // mode enum: [tune|app|none]
+        // mode enum: [tune|app|bia|none]
         String mode = "none";
         if (null == params || 0 == params.length) { // params指定がなかったらapp modeとみなす
             mode = "app"; //default
         } else if (0 < params.length) { // paramsが１つ以上あれば処理する
             String[] param = params[0].split("=");
             if (param[0].equals("mode")) {
-                if (param.length == 2) { // param[0]=mode, param[1]=[app | tune | others]
+                if (param.length == 2) { // param[0]=mode, param[1]=[app | tune | bia | others]
                     if( null == param[1] ) { // null => mode = none
                         mode = "none";
                     }
-                    else if( param[1].equals("app") || param[1].equals("tune") ) {
+                    else if( param[1].equals("app") || param[1].equals("tune")) {
+                        mode = param[1];
+                    }
+                    else if( param[1].equals("bia") && (boolean)WebViewActivity.configMan().get(Const.Config.allowBIA.Name) ) {
                         mode = param[1];
                     }
                 }
@@ -1497,7 +1649,6 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
         return Existed;
     }
 
-
     /**
      * Channel Resource Body Validation Interface
      *
@@ -1509,30 +1660,40 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
         Boolean Existed = true; //default true
         // write channel resource parameters are in the list of channel resource list on TV Set in common or at any request type.
 
-        JSONObject reqbodyObj = task.getBodyObj();
-        try {
-            JSONObject resObj = (JSONObject) reqbodyObj.get("resource");
-            int nwid = resObj.getInt("original_network_id");
-            int tsid = resObj.getInt("transport_stream_id");
-            int svid = resObj.getInt("service_id");
+        if( task.getMode().equals("bia") ) {
+            //No check
+        }
+        else {
+            JSONObject reqbodyObj = task.getBodyObj();
+            try {
+                JSONObject resObj = (JSONObject) reqbodyObj.get("resource");
+                int nwid = resObj.getInt("original_network_id");
+                int tsid = (-1);
+                if (resObj.has("transport_stream_id")) {
+                    tsid = resObj.getInt("transport_stream_id");
+                } else if (resObj.has("tlv_stream_id")) {
+                    tsid = resObj.getInt("tlv_stream_id");
+                }
+                int svid = resObj.getInt("service_id");
 
-            JSONObject chobj = configMan.getChannelObj(nwid, tsid, svid);
-            if (chobj == null) {
+                JSONObject chobj = configMan.getChannelObj(nwid, tsid, svid);
+                if (chobj == null) {
+                    Existed = false;
+                    send_loginfo(Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Error, "isChannelResourceEntried()", "isChannelResourceEntried::BadRequest", Const.LogRed, "Available Channel resource not match in CHlist");
+                    sendErrorStatus(ctx, task.req, HyconetHandlerInterface.StartAITResponse.BadRequest, false, null);
+                } else {
+                    Log.i("isChRsrcEntried:", String.format("Resource %d/%d/%d", nwid, tsid, svid));
+                    send_loginfo(Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Success, "isChannelResourceEntried()", String.format("isChannelResourceEntried::Valid: %d/%d/%d", nwid, tsid, svid), Const.LogGreen, "");
+                }
+            } catch (JSONException e) {
                 Existed = false;
-                send_loginfo(Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Error, "isChannelResourceEntried()", "isChannelResourceEntried::BadRequest", Const.LogRed, "Available Channel resource not match in CHlist");
+                send_loginfo(Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Error, "isChannelResourceEntried()", String.format("isChannelResourceEntried::BadRequest"), Const.LogRed, "json error");
                 sendErrorStatus(ctx, task.req, HyconetHandlerInterface.StartAITResponse.BadRequest, false, null);
-            } else {
-                Log.i("isChRsrcEntried:", String.format("Resource %d/%d/%d", nwid, tsid, svid));
-                send_loginfo(Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Success, "isChannelResourceEntried()", String.format("isChannelResourceEntried::Valid: %d/%d/%d", nwid, tsid, svid), Const.LogGreen, "");
+            } catch (RuntimeException e) {
+                Existed = false;
+                send_loginfo(Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Error, "isChannelResourceEntried()", String.format("isChannelResourceEntried::RuntimeException"), Const.LogRed, "");
+                sendErrorStatus(ctx, task.req, HyconetHandlerInterface.StartAITResponse.BadRequest, false, null);
             }
-        } catch (JSONException e) {
-            Existed = false;
-            send_loginfo(Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Error, "isChannelResourceEntried()", String.format("isChannelResourceEntried::BadRequest"), Const.LogRed, "json error");
-            sendErrorStatus(ctx, task.req, HyconetHandlerInterface.StartAITResponse.BadRequest, false, null);
-        } catch (RuntimeException e) {
-            Existed = false;
-            send_loginfo(Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Error, "isChannelResourceEntried()", String.format("isChannelResourceEntried::RuntimeException"), Const.LogRed, "");
-            sendErrorStatus(ctx, task.req, HyconetHandlerInterface.StartAITResponse.BadRequest, false, null);
         }
 
         return Existed;
@@ -1617,6 +1778,83 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
         return isValid;
     }
 
+    /**
+     * Request AitUrl Validation Interface
+     *
+     * @param verifyURL
+     * @param hybridcastConnectObj
+     * @return Boolean body Valid or Not
+     */
+    public Boolean isAitUrlValidAskServer(String verifyURL, JSONObject hybridcastConnectObj) {
+        Boolean isValid = true; //default true
+        // request validation from AITURL Verification Server.
+
+        String method = (String)configMan.get(Const.Config.aitVerificationMethod.Name);
+        int timeout = (int)configMan.get(Const.Config.aitVerificationTimeout.Name);
+
+Log.i("isAitUrlValidAskServer", String.format("Method:%s, Timeout:%d msec", method, timeout));
+
+        if( method.equals(Const.Config.aitVerificationMethod.Value.POST) ) {
+            Map<String,Object> ret = WebViewActivity.postHTTP(verifyURL, hybridcastConnectObj.toString(), timeout);
+//            if (ret.equals("OK")) {
+            if ((int)ret.get(Const.HTTP.Status) == Const.HTTP.OK.code()) {
+                isValid = true;
+            } else {
+                isValid = false;
+            }
+        }
+        else if( method.equals(Const.Config.aitVerificationMethod.Value.GET) ) {
+            String query = "";
+
+            JSONObject resObj = (JSONObject) hybridcastConnectObj.get("resource");
+            int nwid = resObj.getInt("original_network_id");
+            String tsname = "";
+            int tsid = (-1);
+            if (resObj.has("transport_stream_id")) {
+                tsname = "transport_stream_id";
+                tsid = resObj.getInt("transport_stream_id");
+            } else if (resObj.has("tlv_stream_id")) {
+                tsname = "tlv_stream_id";
+                tsid = resObj.getInt("tlv_stream_id");
+            }
+            int svid = resObj.getInt("service_id");
+
+            JSONObject hcObj = (JSONObject) hybridcastConnectObj.get("hybridcast");
+            int orgid = hcObj.getInt("orgid");
+            int appid = hcObj.getInt("appid");
+            String aiturl = (String)hcObj.get("aiturl");
+            try {
+                aiturl = URLEncoder.encode(aiturl, "UTF-8");
+            }
+            catch (UnsupportedEncodingException e) {
+                //error
+            }
+
+            query = "original_network_id" + "=" + nwid;
+            query = query + "&" + tsname + "=" + tsid;
+            query = query + "&" + "service_id" + "=" + svid;
+            query = query + "&" + "orgid" + "=" + orgid;
+            query = query + "&" + "appid" + "=" + appid;
+            query = query + "&" + "aiturl" + "=" + aiturl;
+
+            String urlWithParams = verifyURL + "?" + query;
+Log.i("isAitUrlValidAskServer", urlWithParams);
+
+            Map<String,Object> ret = WebViewActivity.getHTTP(urlWithParams, timeout);
+Log.i("getHTTP ait", ret.toString());
+//            if (ret.equals("OK")) {
+            if ((int)ret.get(Const.HTTP.Status) == Const.HTTP.OK.code()) {
+                isValid = true;
+            } else {
+                isValid = false;
+            }
+        }
+        else {
+            isValid = false;
+        }
+
+        return isValid;
+    }
 
     /**
      * Request AitUrl Validation Interface
@@ -1659,17 +1897,7 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                 if (!isAitUrlValidAsURL(aiturl)) {
                     isValid = false;
                 } else {
-                    // request validation
-//                    Log.i("isAitUrlValid",String.format("aiturl: [%s]", verifyURL));
-//                    String ret = WebViewActivity.getHTTP(aiturl, (int) configMan.get(Const.Config.aitVerificationTimeout.Name));
-
-                    String ret = WebViewActivity.postHTTP(verifyURL, hybridcastConnectObj.toString(), (int)configMan.get(Const.Config.aitVerificationTimeout.Name));
-                    Log.i("isAitUrlValid",String.format("aiturl: [%s]", ret));
-                    if (ret.equals("OK")) {
-                        isValid = true;
-                    } else {
-                        isValid = false;
-                    }
+                    isValid = isAitUrlValidAskServer(verifyURL, hybridcastConnectObj);
                 }
             }
         }
@@ -1693,6 +1921,26 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
         if((aiturl == null) || aiturl.equals("")){
             // BadRequest
             isValid = false;
+        }
+
+        return isValid;
+    }
+
+    /**
+     * App/BIA Request 可否判定
+     *
+     * @param ctx
+     * @param task
+     * @return
+     */
+    public Boolean isAppReqestValid(ChannelHandlerContext ctx, StartAITTask task) {
+        Boolean isValid = true;
+        if( task.getMode().equals("app") || task.getMode().equals("bia") ) {
+            JSONObject reqbodyObj = task.getBodyObj();
+            JSONObject resObj = (JSONObject) reqbodyObj.get("resource");
+            if (resObj.has("tlv_stream_id")) {
+                isValid = false;
+            }
         }
 
         return isValid;
@@ -1898,6 +2146,11 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                 send_loginfo( Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Error, "launchHcApps()", "launchHcApps::AitUrl:BadRequest", Const.LogRed, "" );
                 sendErrorStatus(ctx, req, Const.HTTP.BadRequest, true, sessInfo);
             }
+            else if( !isAppReqestValid( ctx, task )) {
+                removeStartAITTask(task);
+                send_loginfo( Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Error, "launchHcApps()", "launchHcApps::AppRequest:BadRequest", Const.LogRed, "" );
+                sendErrorStatus(ctx, req, Const.HTTP.BadRequest, true, sessInfo);
+            }
             else {
                 //Set Status
                 setLastTaskId(task.taskid);
@@ -1912,15 +2165,37 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                 hybridcastBrowserStatus = HyconetHandlerInterface.HybridcastBrowserStatus.NotStarted;
                 send_loginfo(Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Notice, "launchHcApps()", String.format("launchHcApps::start Tune Process start"), Const.LogBlack, "");
 
-                JSONObject reqbodyObj = task.getBodyObj();
-                JSONObject resObj = (JSONObject) reqbodyObj.get("resource");
-                int nwid = resObj.getInt("original_network_id");
-                int tsid = resObj.getInt("transport_stream_id");
-                int svid = resObj.getInt("service_id");
-                JSONObject chobj = configMan.getChannelObj(nwid, tsid, svid);
+                if( task.getMode().equals("bia")) {
+                    //set default values
+                    JSONObject reqbodyObj = task.getBodyObj();
+                    JSONObject resObj = (JSONObject) reqbodyObj.get("resource");
+                    resObj.put("original_network_id", StartAITmodeBIA.original_network_id);
+                    if (resObj.has("transport_stream_id")) {
+                        resObj.put("transport_stream_id", StartAITmodeBIA.transport_stream_id);
+                    } else if (resObj.has("tlv_stream_id")) {
+                        resObj.put("tlv_stream_id", StartAITmodeBIA.tlv_stream_id);
+                    }
+                    resObj.put("service_id", StartAITmodeBIA.service_id);
+                    task.getBodyObj().put("resource", resObj);
+                    task.getBodyObj().put("logical_channel_number", StartAITmodeBIA.logical_channel_number);
+                    task.getBodyObj().put("broadcast_channel_name", StartAITmodeBIA.broadcast_channel_name);
+                }
+                else {
+                    JSONObject reqbodyObj = task.getBodyObj();
+                    JSONObject resObj = (JSONObject) reqbodyObj.get("resource");
+                    int nwid = resObj.getInt("original_network_id");
+                    int tsid = (-1);
+                    if (resObj.has("transport_stream_id")) {
+                        tsid = resObj.getInt("transport_stream_id");
+                    } else if (resObj.has("tlv_stream_id")) {
+                        tsid = resObj.getInt("tlv_stream_id");
+                    }
+                    int svid = resObj.getInt("service_id");
+                    JSONObject chobj = configMan.getChannelObj(nwid, tsid, svid);
 
-                task.getBodyObj().put("logical_channel_number", chobj.getString("logical_channel_number"));
-                task.getBodyObj().put("broadcast_channel_name", chobj.getString("broadcast_channel_name"));
+                    task.getBodyObj().put("logical_channel_number", chobj.getString("logical_channel_number"));
+                    task.getBodyObj().put("broadcast_channel_name", chobj.getString("broadcast_channel_name"));
+                }
 
                 //Tune with Delay
                 int tuneDelay = (int) configMan.get(Const.Config.tuneDelay.Name);
@@ -2015,6 +2290,29 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
             sendErrorStatus(ctx, req, Const.HTTP.BadRequest, false, null);
         }
         else {
+            JSONObject resourceObj = new JSONObject();
+            resourceObj.put("original_network_id", resourceStatus.get("original_network_id"));
+            resourceObj.put("service_id", resourceStatus.get("service_id"));
+            if( 0 != resourceStatus.get("transport_stream_id") ) {
+                resourceObj.put("transport_stream_id", resourceStatus.get("transport_stream_id"));
+            }
+            else if( 0 != resourceStatus.get("tlv_stream_id") ) {
+                resourceObj.put("tlv_stream_id", resourceStatus.get("tlv_stream_id"));
+            }
+            else {
+                if( isStartAITCalled ) {
+                    if( (boolean)WebViewActivity.configMan().get(Const.Config.support4K8K.Name) ) {
+                        resourceObj.put("tlv_stream_id", resourceStatus.get("tlv_stream_id"));
+                    }
+                    else {
+                        resourceObj.put("transport_stream_id", resourceStatus.get("transport_stream_id"));
+                    }
+                }
+                else {
+                    resourceObj.put("transport_stream_id", resourceStatus.get("transport_stream_id"));
+                }
+            }
+
             JSONObject resobj = new JSONObject()
                     .put("head", new JSONObject()
                             .put("code", 200)
@@ -2024,13 +2322,16 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                             .put("status", new JSONObject()
                                     .put("hybridcast", hybridcastBrowserStatus)
                                     .put("companion_apps", WebSocketFrameHandler.getNumberOfConnections())
-                                    .put("resource", new JSONObject()
-                                            .put("original_network_id", resourceStatus.get("original_network_id"))
-                                            .put("transport_stream_id", resourceStatus.get("transport_stream_id"))
-                                            .put("service_id", resourceStatus.get("service_id"))
-                                    )
+                                    .put("resource", resourceObj)
+//                                    .put("resource", new JSONObject()
+//                                            .put("original_network_id", resourceStatus.get("original_network_id"))
+//                                            .put("transport_stream_id", resourceStatus.get("transport_stream_id"))
+//                                            .put("service_id", resourceStatus.get("service_id"))
+//                                    )
                             )
                     );
+
+
             String resstr = resobj.toString();
             sendHttpResponseWithJSON( ctx, req, resstr, HttpResponseStatus.OK, sessInfo );
             send_loginfo( Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Success, "sendReceiverStatus()", "sendReceiverStatus::Response finished", Const.LogGreen, "" );
@@ -2258,6 +2559,8 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                 sendResponse(ctx, req, "wsclient.html", "html");
             } else if ("/hcxplog.html".equals(url_loc)) {
                 sendResponse(ctx, req, "hcxplog.html", "html");
+            } else if ("/testbia.html".equals(url_loc)) {
+                sendResponse(ctx, req, "testbia.html", "html");
             }
             else if (req.uri().substring(0, 5).equals("/ait/")) {
                 String script = "javascript:logdisp('%s');";
@@ -2281,6 +2584,9 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
             else if (("/api/lastappinfo").equals(req.uri())) { sendLastAppInfo(ctx, req); }
             else if (("/api/calldialog").equals(req.uri())) { calldialog(); }
             else if (("/api/antwappconfig").equals(req.uri())) { sendAppConfig(ctx, req); }
+
+            // webAPI for antwapp
+            else if ( ("/api/aitverifier").equals(url_loc) ) { verifyAITV2(ctx, req); }
 
             else {
                 String script = "javascript:logdisp('%s');";
@@ -2338,6 +2644,7 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
             else if ( ("/api/aitverifier").equals(req.uri()) ) { verifyAIT(ctx, req); }
             else if ( ("/api/seturl").equals(req.uri()) ) { updateHCSetURL(ctx, req); }
             else if ( ("/api/seturls").equals(req.uri()) ) { updateHCSetURLParams(ctx, req); }
+            else if ( ("/api/aitverifier").equals(req.uri()) ) { verifyAIT(ctx, req); }
 
             // Interface API
             else if ( (apiPrefix + HyconetHandlerInterface.restApiPath.get("hybridcast")).equals(url_loc) ) { launchHcApps(ctx, req, url_query ); }

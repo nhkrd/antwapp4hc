@@ -6,7 +6,7 @@
 
 受信機に設定されている利用可能なメディアをコンパニオンアプリケーションから受信機へ要求し、取得する.
 
-"[IPTVFJ STD-0013](http://www.iptvforum.jp/download/input.html) 7.2.3.2.3.2.1 メディア(地上デジタル、BS、CS)利用可否情報の取得"を参照.
+"[IPTVFJ STD-0013](http://www.iptvforum.jp/download/input.html) 7.2.3.2.3.2.1 メディア(地上デジタル、BS、CS等)利用可否情報の取得"を参照.
 
 ## AnTwapp(Receiver/Server-Side)
 
@@ -35,7 +35,10 @@ HTTP/1.1 200 OK
         "created_at": "2018-01-01T00:00:00Z",
         "TD": "Available",
         "BS": "NotAvailable",
-        "CS": "NotAvailable"
+        "CS": "NotAvailable",
+        "ABS": "NotAvailable",
+        "ACS": "NotAvailable",
+        "NCS": "NotAvailable"
     }
 }
 ```
@@ -68,8 +71,10 @@ body | Object | 受信機からのレスポンスデータを含むオブジェ�
 created_at | String | 当該情報を受信機が応答した日時<br/>タイムゾーンをUTCとし、フォーマットは"YYYY-MM-DDThh:mm:ssZ"形式(ISO 8601)とする
 TD | String | 地上デジタルの選局可否<br/>"Available"：選局可能、"NotAvailable"：選局不可のいずれかの文字列
 BS | String | BSの選局可否<br/>"Available"：選局可能、"NotAvailable"：選局不可のいずれかの文字列
-CS | String | CSの選局可否<br/>"Available"：選局可能、"NotAvailable"：選局不可のいずれかの文字列
-
+CS | String | 広帯域CSの選局可否<br/>"Available"：選局可能、"NotAvailable"：選局不可のいずれかの文字列
+ABS | String | 高度BSの選局可否<br/>"Available"：選局可能、"NotAvailable"：選局不可のいずれかの文字列
+ACS | String | 高度広帯域CSの選局可否<br/>"Available"：選局可能、"NotAvailable"：選局不可のいずれかの文字列
+NCS | String | 狭帯域CS・高度狭帯域CS両方の選局可否<br/>"Available"：選局可能、"NotAvailable"：選局不可のいずれかの文字列
 
 ## ClientSide(Recommendation)
 
@@ -79,4 +84,4 @@ CS | String | CSの選局可否<br/>"Available"：選局可能、"NotAvailable"�
 Promise getAvailableMediaFromHostDevice()
 ```
 
-"[IPTVFJ STD-0013](http://www.iptvforum.jp/download/input.html) 7.1.7.1.1 メディア(地上デジタル、BS、CS)利用可否情報の取得"を参照.
+"[IPTVFJ STD-0013](http://www.iptvforum.jp/download/input.html) 7.1.7.1.1 メディア(地上デジタル、BS、CS等)利用可否情報の取得"を参照.

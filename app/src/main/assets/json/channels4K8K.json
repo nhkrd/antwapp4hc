@@ -1,0 +1,1367 @@
+[
+    {
+        "type": "TD",
+        "channels": [
+            {
+                "logical_channel_number": "011",
+                "resource": {
+                    "transport_stream_id": 32736,
+                    "original_network_id": 32736,
+                    "service_id": 1024
+                },
+                "broadcast_channel_name": "ＮＨＫ総合１・東京"
+            },
+            {
+                "logical_channel_number": "012",
+                "resource": {
+                    "transport_stream_id": 32736,
+                    "original_network_id": 32736,
+                    "service_id": 1025
+                },
+                "broadcast_channel_name": "ＮＨＫ総合２・東京"
+            },
+            {
+                "logical_channel_number": "021",
+                "resource": {
+                    "transport_stream_id": 32737,
+                    "original_network_id": 32737,
+                    "service_id": 1032
+                },
+                "broadcast_channel_name": "ＮＨＫＥテレ１東京"
+            },
+            {
+                "logical_channel_number": "022",
+                "resource": {
+                    "transport_stream_id": 32737,
+                    "original_network_id": 32737,
+                    "service_id": 1033
+                },
+                "broadcast_channel_name": "ＮＨＫＥテレ２東京"
+            },
+            {
+                "logical_channel_number": "023",
+                "resource": {
+                    "transport_stream_id": 32737,
+                    "original_network_id": 32737,
+                    "service_id": 1034
+                },
+                "broadcast_channel_name": "ＮＨＫＥテレ３東京"
+            },
+            {
+                "logical_channel_number": "041",
+                "resource": {
+                    "transport_stream_id": 32738,
+                    "original_network_id": 32738,
+                    "service_id": 1040
+                },
+                "broadcast_channel_name": "日テレ１"
+            },
+            {
+                "logical_channel_number": "042",
+                "resource": {
+                    "transport_stream_id": 32738,
+                    "original_network_id": 32738,
+                    "service_id": 1041
+                },
+                "broadcast_channel_name": "日テレ２"
+            },
+            {
+                "logical_channel_number": "045",
+                "resource": {
+                    "transport_stream_id": 32738,
+                    "original_network_id": 32738,
+                    "service_id": 1044
+                },
+                "broadcast_channel_name": "日テレ臨時"
+            },
+            {
+                "logical_channel_number": "051",
+                "resource": {
+                    "transport_stream_id": 32741,
+                    "original_network_id": 32741,
+                    "service_id": 1064
+                },
+                "broadcast_channel_name": "テレビ朝日"
+            },
+            {
+                "logical_channel_number": "052",
+                "resource": {
+                    "transport_stream_id": 32741,
+                    "original_network_id": 32741,
+                    "service_id": 1065
+                },
+                "broadcast_channel_name": "テレビ朝日"
+            },
+            {
+                "logical_channel_number": "053",
+                "resource": {
+                    "transport_stream_id": 32741,
+                    "original_network_id": 32741,
+                    "service_id": 1066
+                },
+                "broadcast_channel_name": "テレビ朝日"
+            },
+            {
+                "logical_channel_number": "061",
+                "resource": {
+                    "transport_stream_id": 32739,
+                    "original_network_id": 32739,
+                    "service_id": 1048
+                },
+                "broadcast_channel_name": "ＴＢＳ１"
+            },
+            {
+                "logical_channel_number": "062",
+                "resource": {
+                    "transport_stream_id": 32739,
+                    "original_network_id": 32739,
+                    "service_id": 1049
+                },
+                "broadcast_channel_name": "ＴＢＳ２"
+            },
+            {
+                "logical_channel_number": "071",
+                "resource": {
+                    "transport_stream_id": 32742,
+                    "original_network_id": 32742,
+                    "service_id": 1072
+                },
+                "broadcast_channel_name": "テレビ東京１"
+            },
+            {
+                "logical_channel_number": "072",
+                "resource": {
+                    "transport_stream_id": 32742,
+                    "original_network_id": 32742,
+                    "service_id": 1073
+                },
+                "broadcast_channel_name": "テレビ東京２"
+            },
+            {
+                "logical_channel_number": "073",
+                "resource": {
+                    "transport_stream_id": 32742,
+                    "original_network_id": 32742,
+                    "service_id": 1074
+                },
+                "broadcast_channel_name": "テレビ東京３"
+            },
+            {
+                "logical_channel_number": "077",
+                "resource": {
+                    "transport_stream_id": 32742,
+                    "original_network_id": 32742,
+                    "service_id": 1078
+                },
+                "broadcast_channel_name": "臨時サービス"
+            },
+            {
+                "logical_channel_number": "081",
+                "resource": {
+                    "transport_stream_id": 32740,
+                    "original_network_id": 32740,
+                    "service_id": 1056
+                },
+                "broadcast_channel_name": "フジテレビ"
+            },
+            {
+                "logical_channel_number": "082",
+                "resource": {
+                    "transport_stream_id": 32740,
+                    "original_network_id": 32740,
+                    "service_id": 1057
+                },
+                "broadcast_channel_name": "フジテレビ"
+            },
+            {
+                "logical_channel_number": "083",
+                "resource": {
+                    "transport_stream_id": 32740,
+                    "original_network_id": 32740,
+                    "service_id": 1058
+                },
+                "broadcast_channel_name": "フジテレビ"
+            },
+            {
+                "logical_channel_number": "91",
+                "broadcast_channel_name": "ＴＯＫＹＯ　ＭＸ１",
+                "resource": {
+                    "original_network_id": 32391,
+                    "transport_stream_id": 32391,
+                    "service_id": 23608
+                }
+            },
+            {
+                "logical_channel_number": "92",
+                "broadcast_channel_name": "ＴＯＫＹＯ　ＭＸ１",
+                "resource": {
+                    "original_network_id": 32391,
+                    "transport_stream_id": 32391,
+                    "service_id": 23609
+                }
+            },
+            {
+                "logical_channel_number": "93",
+                "broadcast_channel_name": "ＴＯＫＹＯ　ＭＸ２",
+                "resource": {
+                    "original_network_id": 32391,
+                    "transport_stream_id": 32391,
+                    "service_id": 23610
+                }
+            },
+            {
+                "logical_channel_number": "98",
+                "broadcast_channel_name": "ＴＯＫＹＯ　ＭＸ臨時",
+                "resource": {
+                    "original_network_id": 32391,
+                    "transport_stream_id": 32391,
+                    "service_id": 23615
+                }
+            },
+            {
+                "logical_channel_number": "268",
+                "resource": {
+                    "transport_stream_id": 32739,
+                    "original_network_id": 32739,
+                    "service_id": 1183
+                },
+                "broadcast_channel_name": "Ｇガイド"
+            }
+        ]
+    },
+    {
+        "type": "BS",
+        "channels": [
+            {
+                "logical_channel_number": "101",
+                "resource": {
+                    "transport_stream_id": 16625,
+                    "original_network_id": 4,
+                    "service_id": 101
+                },
+                "broadcast_channel_name": "ＮＨＫＢＳ１"
+            },
+            {
+                "logical_channel_number": "102",
+                "resource": {
+                    "transport_stream_id": 16625,
+                    "original_network_id": 4,
+                    "service_id": 102
+                },
+                "broadcast_channel_name": "ＮＨＫＢＳ１"
+            },
+            {
+                "logical_channel_number": "103",
+                "resource": {
+                    "transport_stream_id": 16433,
+                    "original_network_id": 4,
+                    "service_id": 103
+                },
+                "broadcast_channel_name": "ＮＨＫＢＳプレミアム"
+            },
+            {
+                "logical_channel_number": "104",
+                "resource": {
+                    "transport_stream_id": 16433,
+                    "original_network_id": 4,
+                    "service_id": 104
+                },
+                "broadcast_channel_name": "ＮＨＫＢＳプレミアム"
+            },
+            {
+                "logical_channel_number": "141",
+                "resource": {
+                    "transport_stream_id": 16592,
+                    "original_network_id": 4,
+                    "service_id": 141
+                },
+                "broadcast_channel_name": "ＢＳ日テレ"
+            },
+            {
+                "logical_channel_number": "142",
+                "resource": {
+                    "transport_stream_id": 16592,
+                    "original_network_id": 4,
+                    "service_id": 142
+                },
+                "broadcast_channel_name": "ＢＳ日テレ"
+            },
+            {
+                "logical_channel_number": "143",
+                "resource": {
+                    "transport_stream_id": 16592,
+                    "original_network_id": 4,
+                    "service_id": 143
+                },
+                "broadcast_channel_name": "ＢＳ日テレ"
+            },
+            {
+                "logical_channel_number": "144",
+                "resource": {
+                    "transport_stream_id": 16592,
+                    "original_network_id": 4,
+                    "service_id": 144
+                },
+                "broadcast_channel_name": "ＢＳ日テレ臨時"
+            },
+            {
+                "logical_channel_number": "151",
+                "resource": {
+                    "transport_stream_id": 16400,
+                    "original_network_id": 4,
+                    "service_id": 151
+                },
+                "broadcast_channel_name": "ＢＳ朝日１"
+            },
+            {
+                "logical_channel_number": "152",
+                "resource": {
+                    "transport_stream_id": 16400,
+                    "original_network_id": 4,
+                    "service_id": 152
+                },
+                "broadcast_channel_name": "ＢＳ朝日２"
+            },
+            {
+                "logical_channel_number": "153",
+                "resource": {
+                    "transport_stream_id": 16400,
+                    "original_network_id": 4,
+                    "service_id": 153
+                },
+                "broadcast_channel_name": "ＢＳ朝日３"
+            },
+            {
+                "logical_channel_number": "161",
+                "resource": {
+                    "transport_stream_id": 16401,
+                    "original_network_id": 4,
+                    "service_id": 161
+                },
+                "broadcast_channel_name": "ＢＳ－ＴＢＳ"
+            },
+            {
+                "logical_channel_number": "162",
+                "resource": {
+                    "transport_stream_id": 16401,
+                    "original_network_id": 4,
+                    "service_id": 162
+                },
+                "broadcast_channel_name": "ＢＳ－ＴＢＳ"
+            },
+            {
+                "logical_channel_number": "163",
+                "resource": {
+                    "transport_stream_id": 16401,
+                    "original_network_id": 4,
+                    "service_id": 163
+                },
+                "broadcast_channel_name": "ＢＳ－ＴＢＳ"
+            },
+            {
+                "logical_channel_number": "169",
+                "resource": {
+                    "transport_stream_id": 16401,
+                    "original_network_id": 4,
+                    "service_id": 169
+                },
+                "broadcast_channel_name": "ＢＳ－ＴＢＳ"
+            },
+            {
+                "logical_channel_number": "171",
+                "resource": {
+                    "transport_stream_id": 16402,
+                    "original_network_id": 4,
+                    "service_id": 171
+                },
+                "broadcast_channel_name": "ＢＳテレ東"
+            },
+            {
+                "logical_channel_number": "172",
+                "resource": {
+                    "transport_stream_id": 16402,
+                    "original_network_id": 4,
+                    "service_id": 172
+                },
+                "broadcast_channel_name": "ＢＳテレ東２"
+            },
+            {
+                "logical_channel_number": "173",
+                "resource": {
+                    "transport_stream_id": 16402,
+                    "original_network_id": 4,
+                    "service_id": 173
+                },
+                "broadcast_channel_name": "ＢＳテレ東３"
+            },
+            {
+                "logical_channel_number": "179",
+                "resource": {
+                    "transport_stream_id": 16402,
+                    "original_network_id": 4,
+                    "service_id": 179
+                },
+                "broadcast_channel_name": "ＢＳテレ東臨時"
+            },
+            {
+                "logical_channel_number": "181",
+                "resource": {
+                    "transport_stream_id": 16593,
+                    "original_network_id": 4,
+                    "service_id": 181
+                },
+                "broadcast_channel_name": "ＢＳフジ・１８１"
+            },
+            {
+                "logical_channel_number": "182",
+                "resource": {
+                    "transport_stream_id": 16593,
+                    "original_network_id": 4,
+                    "service_id": 182
+                },
+                "broadcast_channel_name": "ＢＳフジ・１８２"
+            },
+            {
+                "logical_channel_number": "183",
+                "resource": {
+                    "transport_stream_id": 16593,
+                    "original_network_id": 4,
+                    "service_id": 183
+                },
+                "broadcast_channel_name": "ＢＳフジ・１８３"
+            },
+            {
+                "logical_channel_number": "188",
+                "resource": {
+                    "transport_stream_id": 16593,
+                    "original_network_id": 4,
+                    "service_id": 188
+                },
+                "broadcast_channel_name": "ＢＳフジ・１８８"
+            },
+            {
+                "logical_channel_number": "189",
+                "resource": {
+                    "transport_stream_id": 16593,
+                    "original_network_id": 4,
+                    "service_id": 189
+                },
+                "broadcast_channel_name": "ＢＳフジ・１８９"
+            },
+            {
+                "logical_channel_number": "191",
+                "resource": {
+                    "transport_stream_id": 16432,
+                    "original_network_id": 4,
+                    "service_id": 191
+                },
+                "broadcast_channel_name": "ＷＯＷＯＷプライム"
+            },
+            {
+                "logical_channel_number": "192",
+                "resource": {
+                    "transport_stream_id": 17488,
+                    "original_network_id": 4,
+                    "service_id": 192
+                },
+                "broadcast_channel_name": "ＷＯＷＯＷライブ"
+            },
+            {
+                "logical_channel_number": "193",
+                "resource": {
+                    "transport_stream_id": 17489,
+                    "original_network_id": 4,
+                    "service_id": 193
+                },
+                "broadcast_channel_name": "ＷＯＷＯＷシネマ"
+            },
+            {
+                "logical_channel_number": "200",
+                "resource": {
+                    "transport_stream_id": 16529,
+                    "original_network_id": 4,
+                    "service_id": 200
+                },
+                "broadcast_channel_name": "スターチャンネル１"
+            },
+            {
+                "logical_channel_number": "201",
+                "resource": {
+                    "transport_stream_id": 16626,
+                    "original_network_id": 4,
+                    "service_id": 201
+                },
+                "broadcast_channel_name": "スターチャンネル２"
+            },
+            {
+                "logical_channel_number": "202",
+                "resource": {
+                    "transport_stream_id": 16626,
+                    "original_network_id": 4,
+                    "service_id": 202
+                },
+                "broadcast_channel_name": "スターチャンネル３"
+            },
+            {
+                "logical_channel_number": "211",
+                "resource": {
+                    "transport_stream_id": 16528,
+                    "original_network_id": 4,
+                    "service_id": 211
+                },
+                "broadcast_channel_name": "ＢＳ１１イレブン"
+            },
+            {
+                "logical_channel_number": "222",
+                "resource": {
+                    "transport_stream_id": 16530,
+                    "original_network_id": 4,
+                    "service_id": 222
+                },
+                "broadcast_channel_name": "ＢＳ１２トゥエルビ"
+            },
+            {
+                "logical_channel_number": "231",
+                "resource": {
+                    "transport_stream_id": 18098,
+                    "original_network_id": 4,
+                    "service_id": 231
+                },
+                "broadcast_channel_name": "ＢＳキャンパスｅｘ"
+            },
+            {
+                "logical_channel_number": "232",
+                "resource": {
+                    "transport_stream_id": 18098,
+                    "original_network_id": 4,
+                    "service_id": 232
+                },
+                "broadcast_channel_name": "ＢＳキャンパスｏｎ"
+            },
+            {
+                "logical_channel_number": "234",
+                "resource": {
+                    "transport_stream_id": 18224,
+                    "original_network_id": 4,
+                    "service_id": 234
+                },
+                "broadcast_channel_name": "グリーンチャンネル"
+            },
+            {
+                "logical_channel_number": "236",
+                "resource": {
+                    "transport_stream_id": 18130,
+                    "original_network_id": 4,
+                    "service_id": 236
+                },
+                "broadcast_channel_name": "ＢＳアニマックス"
+            },
+            {
+                "logical_channel_number": "238",
+                "resource": {
+                    "transport_stream_id": 18096,
+                    "original_network_id": 4,
+                    "service_id": 238
+                },
+                "broadcast_channel_name": "ＦＯＸスポーツエンタ"
+            },
+            {
+                "logical_channel_number": "241",
+                "resource": {
+                    "transport_stream_id": 18097,
+                    "original_network_id": 4,
+                    "service_id": 241
+                },
+                "broadcast_channel_name": "ＢＳスカパー！"
+            },
+            {
+                "logical_channel_number": "242",
+                "resource": {
+                    "transport_stream_id": 18225,
+                    "original_network_id": 4,
+                    "service_id": 242
+                },
+                "broadcast_channel_name": "Ｊ　ＳＰＯＲＴＳ　１"
+            },
+            {
+                "logical_channel_number": "243",
+                "resource": {
+                    "transport_stream_id": 18226,
+                    "original_network_id": 4,
+                    "service_id": 243
+                },
+                "broadcast_channel_name": "Ｊ　ＳＰＯＲＴＳ　２"
+            },
+            {
+                "logical_channel_number": "244",
+                "resource": {
+                    "transport_stream_id": 18257,
+                    "original_network_id": 4,
+                    "service_id": 244
+                },
+                "broadcast_channel_name": "Ｊ　ＳＰＯＲＴＳ　３"
+            },
+            {
+                "logical_channel_number": "245",
+                "resource": {
+                    "transport_stream_id": 18258,
+                    "original_network_id": 4,
+                    "service_id": 245
+                },
+                "broadcast_channel_name": "Ｊ　ＳＰＯＲＴＳ　４"
+            },
+            {
+                "logical_channel_number": "251",
+                "resource": {
+                    "transport_stream_id": 18288,
+                    "original_network_id": 4,
+                    "service_id": 251
+                },
+                "broadcast_channel_name": "ＢＳ釣りビジョン"
+            },
+            {
+                "logical_channel_number": "252",
+                "resource": {
+                    "transport_stream_id": 18256,
+                    "original_network_id": 4,
+                    "service_id": 252
+                },
+                "broadcast_channel_name": "シネフィルＷＯＷＯＷ"
+            },
+            {
+                "logical_channel_number": "255",
+                "resource": {
+                    "transport_stream_id": 18289,
+                    "original_network_id": 4,
+                    "service_id": 255
+                },
+                "broadcast_channel_name": "ＢＳ日本映画専門ｃｈ"
+            },
+            {
+                "logical_channel_number": "256",
+                "resource": {
+                    "transport_stream_id": 17970,
+                    "original_network_id": 4,
+                    "service_id": 256
+                },
+                "broadcast_channel_name": "ディズニーｃｈ"
+            },
+            {
+                "logical_channel_number": "258",
+                "resource": {
+                    "transport_stream_id": 18290,
+                    "original_network_id": 4,
+                    "service_id": 258
+                },
+                "broadcast_channel_name": "ディーライフ"
+            },
+            {
+                "logical_channel_number": "531",
+                "resource": {
+                    "transport_stream_id": 18098,
+                    "original_network_id": 4,
+                    "service_id": 531
+                },
+                "broadcast_channel_name": "放送大学ラジオ"
+            },
+            {
+                "logical_channel_number": "700",
+                "resource": {
+                    "transport_stream_id": 16625,
+                    "original_network_id": 4,
+                    "service_id": 700
+                },
+                "broadcast_channel_name": "ＮＨＫデータ１"
+            },
+            {
+                "logical_channel_number": "701",
+                "resource": {
+                    "transport_stream_id": 16625,
+                    "original_network_id": 4,
+                    "service_id": 701
+                },
+                "broadcast_channel_name": "ＮＨＫデータ２"
+            },
+            {
+                "logical_channel_number": "707",
+                "resource": {
+                    "transport_stream_id": 16625,
+                    "original_network_id": 4,
+                    "service_id": 707
+                },
+                "broadcast_channel_name": "７０７チャンネル"
+            },
+            {
+                "logical_channel_number": "744",
+                "resource": {
+                    "transport_stream_id": 16592,
+                    "original_network_id": 4,
+                    "service_id": 744
+                },
+                "broadcast_channel_name": "　"
+            },
+            {
+                "logical_channel_number": "745",
+                "resource": {
+                    "transport_stream_id": 16592,
+                    "original_network_id": 4,
+                    "service_id": 745
+                },
+                "broadcast_channel_name": "　"
+            },
+            {
+                "logical_channel_number": "746",
+                "resource": {
+                    "transport_stream_id": 16592,
+                    "original_network_id": 4,
+                    "service_id": 746
+                },
+                "broadcast_channel_name": "　"
+            },
+            {
+                "logical_channel_number": "753",
+                "resource": {
+                    "transport_stream_id": 16400,
+                    "original_network_id": 4,
+                    "service_id": 753
+                },
+                "broadcast_channel_name": "ＢＳ朝日データ７５３"
+            },
+            {
+                "logical_channel_number": "755",
+                "resource": {
+                    "transport_stream_id": 16400,
+                    "original_network_id": 4,
+                    "service_id": 755
+                },
+                "broadcast_channel_name": "ＢＳ朝日データ７５５"
+            },
+            {
+                "logical_channel_number": "756",
+                "resource": {
+                    "transport_stream_id": 16400,
+                    "original_network_id": 4,
+                    "service_id": 756
+                },
+                "broadcast_channel_name": "ＢＳ朝日データ７５６"
+            },
+            {
+                "logical_channel_number": "757",
+                "resource": {
+                    "transport_stream_id": 16400,
+                    "original_network_id": 4,
+                    "service_id": 757
+                },
+                "broadcast_channel_name": "ＢＳ朝日データ７５７"
+            },
+            {
+                "logical_channel_number": "766",
+                "resource": {
+                    "transport_stream_id": 16401,
+                    "original_network_id": 4,
+                    "service_id": 766
+                },
+                "broadcast_channel_name": "ＢＳ－ＴＢＳ"
+            },
+            {
+                "logical_channel_number": "768",
+                "resource": {
+                    "transport_stream_id": 16401,
+                    "original_network_id": 4,
+                    "service_id": 768
+                },
+                "broadcast_channel_name": "Ｇガイド"
+            },
+            {
+                "logical_channel_number": "777",
+                "resource": {
+                    "transport_stream_id": 16433,
+                    "original_network_id": 4,
+                    "service_id": 777
+                },
+                "broadcast_channel_name": "株価情報"
+            },
+            {
+                "logical_channel_number": "778",
+                "resource": {
+                    "transport_stream_id": 16433,
+                    "original_network_id": 4,
+                    "service_id": 778
+                },
+                "broadcast_channel_name": "778ch"
+            },
+            {
+                "logical_channel_number": "780",
+                "resource": {
+                    "transport_stream_id": 16593,
+                    "original_network_id": 4,
+                    "service_id": 780
+                },
+                "broadcast_channel_name": "ＢＳフジ・７８０"
+            },
+            {
+                "logical_channel_number": "781",
+                "resource": {
+                    "transport_stream_id": 16593,
+                    "original_network_id": 4,
+                    "service_id": 781
+                },
+                "broadcast_channel_name": "ＢＳフジ・７８１"
+            },
+            {
+                "logical_channel_number": "791",
+                "resource": {
+                    "transport_stream_id": 16432,
+                    "original_network_id": 4,
+                    "service_id": 791
+                },
+                "broadcast_channel_name": "ご案内チャンネル"
+            },
+            {
+                "logical_channel_number": "792",
+                "resource": {
+                    "transport_stream_id": 16432,
+                    "original_network_id": 4,
+                    "service_id": 792
+                },
+                "broadcast_channel_name": "プレミアムナビ"
+            },
+            {
+                "logical_channel_number": "800",
+                "resource": {
+                    "transport_stream_id": 16529,
+                    "original_network_id": 4,
+                    "service_id": 800
+                },
+                "broadcast_channel_name": "スターチャンネル"
+            },
+            {
+                "logical_channel_number": "840",
+                "resource": {
+                    "transport_stream_id": 18097,
+                    "original_network_id": 4,
+                    "service_id": 840
+                },
+                "broadcast_channel_name": "スカパー！ガイド"
+            },
+            {
+                "logical_channel_number": "841",
+                "resource": {
+                    "transport_stream_id": 18097,
+                    "original_network_id": 4,
+                    "service_id": 841
+                },
+                "broadcast_channel_name": "ＢＳスカパー！データ"
+            },
+            {
+                "logical_channel_number": "929",
+                "resource": {
+                    "transport_stream_id": 16625,
+                    "original_network_id": 4,
+                    "service_id": 929
+                },
+                "broadcast_channel_name": "Ｄｐａダウンロード"
+            }
+        ]
+    },
+    {
+        "type": "CS",
+        "channels": [
+            {
+                "logical_channel_number": "001",
+                "resource": {
+                    "transport_stream_id": 24608,
+                    "original_network_id": 6,
+                    "service_id": 1
+                },
+                "broadcast_channel_name": "-"
+            },
+            {
+                "logical_channel_number": "055",
+                "resource": {
+                    "transport_stream_id": 24704,
+                    "original_network_id": 6,
+                    "service_id": 55
+                },
+                "broadcast_channel_name": "ショップチャンネル"
+            },
+            {
+                "logical_channel_number": "100",
+                "resource": {
+                    "transport_stream_id": 28736,
+                    "original_network_id": 7,
+                    "service_id": 100
+                },
+                "broadcast_channel_name": "スカパー！プロモ"
+            },
+            {
+                "logical_channel_number": "161",
+                "resource": {
+                    "transport_stream_id": 29024,
+                    "original_network_id": 7,
+                    "service_id": 161
+                },
+                "broadcast_channel_name": "ＱＶＣ"
+            },
+            {
+                "logical_channel_number": "218",
+                "resource": {
+                    "transport_stream_id": 24704,
+                    "original_network_id": 6,
+                    "service_id": 218
+                },
+                "broadcast_channel_name": "東映チャンネル"
+            },
+            {
+                "logical_channel_number": "219",
+                "resource": {
+                    "transport_stream_id": 24704,
+                    "original_network_id": 6,
+                    "service_id": 219
+                },
+                "broadcast_channel_name": "衛星劇場"
+            },
+            {
+                "logical_channel_number": "223",
+                "resource": {
+                    "transport_stream_id": 28736,
+                    "original_network_id": 7,
+                    "service_id": 223
+                },
+                "broadcast_channel_name": "映画・ｃｈＮＥＣＯ"
+            },
+            {
+                "logical_channel_number": "227",
+                "resource": {
+                    "transport_stream_id": 28736,
+                    "original_network_id": 7,
+                    "service_id": 227
+                },
+                "broadcast_channel_name": "ザ・シネマ"
+            },
+            {
+                "logical_channel_number": "240",
+                "resource": {
+                    "transport_stream_id": 28960,
+                    "original_network_id": 7,
+                    "service_id": 240
+                },
+                "broadcast_channel_name": "ムービープラスＨＤ"
+            },
+            {
+                "logical_channel_number": "250",
+                "resource": {
+                    "transport_stream_id": 28736,
+                    "original_network_id": 7,
+                    "service_id": 250
+                },
+                "broadcast_channel_name": "スカイＡ"
+            },
+            {
+                "logical_channel_number": "254",
+                "resource": {
+                    "transport_stream_id": 28864,
+                    "original_network_id": 7,
+                    "service_id": 254
+                },
+                "broadcast_channel_name": "ＧＡＯＲＡ"
+            },
+            {
+                "logical_channel_number": "257",
+                "resource": {
+                    "transport_stream_id": 29056,
+                    "original_network_id": 7,
+                    "service_id": 257
+                },
+                "broadcast_channel_name": "日テレジータス"
+            },
+            {
+                "logical_channel_number": "262",
+                "resource": {
+                    "transport_stream_id": 28960,
+                    "original_network_id": 7,
+                    "service_id": 262
+                },
+                "broadcast_channel_name": "ゴルフネットＨＤ"
+            },
+            {
+                "logical_channel_number": "290",
+                "resource": {
+                    "transport_stream_id": 28928,
+                    "original_network_id": 7,
+                    "service_id": 290
+                },
+                "broadcast_channel_name": "ＳＫＹ　ＳＴＡＧＥ"
+            },
+            {
+                "logical_channel_number": "292",
+                "resource": {
+                    "transport_stream_id": 28896,
+                    "original_network_id": 7,
+                    "service_id": 292
+                },
+                "broadcast_channel_name": "時代劇専門ｃｈＨＤ"
+            },
+            {
+                "logical_channel_number": "293",
+                "resource": {
+                    "transport_stream_id": 28896,
+                    "original_network_id": 7,
+                    "service_id": 293
+                },
+                "broadcast_channel_name": "ファミリー劇場ＨＤ"
+            },
+            {
+                "logical_channel_number": "294",
+                "resource": {
+                    "transport_stream_id": 28768,
+                    "original_network_id": 7,
+                    "service_id": 294
+                },
+                "broadcast_channel_name": "ホームドラマＣＨ"
+            },
+            {
+                "logical_channel_number": "296",
+                "resource": {
+                    "transport_stream_id": 24608,
+                    "original_network_id": 6,
+                    "service_id": 296
+                },
+                "broadcast_channel_name": "ＴＢＳチャンネル１"
+            },
+            {
+                "logical_channel_number": "297",
+                "resource": {
+                    "transport_stream_id": 29024,
+                    "original_network_id": 7,
+                    "service_id": 297
+                },
+                "broadcast_channel_name": "ＴＢＳチャンネル２"
+            },
+            {
+                "logical_channel_number": "298",
+                "resource": {
+                    "transport_stream_id": 24608,
+                    "original_network_id": 6,
+                    "service_id": 298
+                },
+                "broadcast_channel_name": "テレ朝チャンネル１"
+            },
+            {
+                "logical_channel_number": "299",
+                "resource": {
+                    "transport_stream_id": 24608,
+                    "original_network_id": 6,
+                    "service_id": 299
+                },
+                "broadcast_channel_name": "テレ朝チャンネル２"
+            },
+            {
+                "logical_channel_number": "300",
+                "resource": {
+                    "transport_stream_id": 29056,
+                    "original_network_id": 7,
+                    "service_id": 300
+                },
+                "broadcast_channel_name": "日テレプラス"
+            },
+            {
+                "logical_channel_number": "305",
+                "resource": {
+                    "transport_stream_id": 28928,
+                    "original_network_id": 7,
+                    "service_id": 305
+                },
+                "broadcast_channel_name": "銀河◆歴ドラ・サスペ"
+            },
+            {
+                "logical_channel_number": "307",
+                "resource": {
+                    "transport_stream_id": 28992,
+                    "original_network_id": 7,
+                    "service_id": 307
+                },
+                "broadcast_channel_name": "フジテレビＯＮＥ"
+            },
+            {
+                "logical_channel_number": "308",
+                "resource": {
+                    "transport_stream_id": 28992,
+                    "original_network_id": 7,
+                    "service_id": 308
+                },
+                "broadcast_channel_name": "フジテレビＴＷＯ"
+            },
+            {
+                "logical_channel_number": "309",
+                "resource": {
+                    "transport_stream_id": 28992,
+                    "original_network_id": 7,
+                    "service_id": 309
+                },
+                "broadcast_channel_name": "フジテレビＮＥＸＴ"
+            },
+            {
+                "logical_channel_number": "310",
+                "resource": {
+                    "transport_stream_id": 28896,
+                    "original_network_id": 7,
+                    "service_id": 310
+                },
+                "broadcast_channel_name": "スーパー！ドラマＨＤ"
+            },
+            {
+                "logical_channel_number": "311",
+                "resource": {
+                    "transport_stream_id": 28928,
+                    "original_network_id": 7,
+                    "service_id": 311
+                },
+                "broadcast_channel_name": "ＡＸＮ　海外ドラマ"
+            },
+            {
+                "logical_channel_number": "312",
+                "resource": {
+                    "transport_stream_id": 29024,
+                    "original_network_id": 7,
+                    "service_id": 312
+                },
+                "broadcast_channel_name": "ＦＯＸ"
+            },
+            {
+                "logical_channel_number": "314",
+                "resource": {
+                    "transport_stream_id": 28960,
+                    "original_network_id": 7,
+                    "service_id": 314
+                },
+                "broadcast_channel_name": "女性ｃｈ／ＬａＬａ"
+            },
+            {
+                "logical_channel_number": "321",
+                "resource": {
+                    "transport_stream_id": 29056,
+                    "original_network_id": 7,
+                    "service_id": 321
+                },
+                "broadcast_channel_name": "スペシャプラス"
+            },
+            {
+                "logical_channel_number": "322",
+                "resource": {
+                    "transport_stream_id": 29024,
+                    "original_network_id": 7,
+                    "service_id": 322
+                },
+                "broadcast_channel_name": "スペースシャワーＴＶ"
+            },
+            {
+                "logical_channel_number": "323",
+                "resource": {
+                    "transport_stream_id": 28768,
+                    "original_network_id": 7,
+                    "service_id": 323
+                },
+                "broadcast_channel_name": "ＭＴＶ　ＨＤ"
+            },
+            {
+                "logical_channel_number": "325",
+                "resource": {
+                    "transport_stream_id": 28864,
+                    "original_network_id": 7,
+                    "service_id": 325
+                },
+                "broadcast_channel_name": "エムオン！ＨＤ"
+            },
+            {
+                "logical_channel_number": "326",
+                "resource": {
+                    "transport_stream_id": 24704,
+                    "original_network_id": 6,
+                    "service_id": 326
+                },
+                "broadcast_channel_name": "ミュージック・エア"
+            },
+            {
+                "logical_channel_number": "329",
+                "resource": {
+                    "transport_stream_id": 28768,
+                    "original_network_id": 7,
+                    "service_id": 329
+                },
+                "broadcast_channel_name": "歌謡ポップス"
+            },
+            {
+                "logical_channel_number": "330",
+                "resource": {
+                    "transport_stream_id": 28864,
+                    "original_network_id": 7,
+                    "service_id": 330
+                },
+                "broadcast_channel_name": "キッズステーション"
+            },
+            {
+                "logical_channel_number": "331",
+                "resource": {
+                    "transport_stream_id": 29024,
+                    "original_network_id": 7,
+                    "service_id": 331
+                },
+                "broadcast_channel_name": "カートゥーン"
+            },
+            {
+                "logical_channel_number": "333",
+                "resource": {
+                    "transport_stream_id": 28928,
+                    "original_network_id": 7,
+                    "service_id": 333
+                },
+                "broadcast_channel_name": "ＡＴ－Ｘ"
+            },
+            {
+                "logical_channel_number": "339",
+                "resource": {
+                    "transport_stream_id": 24704,
+                    "original_network_id": 6,
+                    "service_id": 339
+                },
+                "broadcast_channel_name": "ディズニージュニア"
+            },
+            {
+                "logical_channel_number": "340",
+                "resource": {
+                    "transport_stream_id": 28768,
+                    "original_network_id": 7,
+                    "service_id": 340
+                },
+                "broadcast_channel_name": "ディスカバリー"
+            },
+            {
+                "logical_channel_number": "341",
+                "resource": {
+                    "transport_stream_id": 28768,
+                    "original_network_id": 7,
+                    "service_id": 341
+                },
+                "broadcast_channel_name": "アニマルプラネット"
+            },
+            {
+                "logical_channel_number": "342",
+                "resource": {
+                    "transport_stream_id": 28736,
+                    "original_network_id": 7,
+                    "service_id": 342
+                },
+                "broadcast_channel_name": "ヒストリーチャンネル"
+            },
+            {
+                "logical_channel_number": "343",
+                "resource": {
+                    "transport_stream_id": 28928,
+                    "original_network_id": 7,
+                    "service_id": 343
+                },
+                "broadcast_channel_name": "ナショジオ"
+            },
+            {
+                "logical_channel_number": "349",
+                "resource": {
+                    "transport_stream_id": 24704,
+                    "original_network_id": 6,
+                    "service_id": 349
+                },
+                "broadcast_channel_name": "日テレＮＥＷＳ２４"
+            },
+            {
+                "logical_channel_number": "351",
+                "resource": {
+                    "transport_stream_id": 29024,
+                    "original_network_id": 7,
+                    "service_id": 351
+                },
+                "broadcast_channel_name": "ＴＢＳニュースバード"
+            },
+            {
+                "logical_channel_number": "353",
+                "resource": {
+                    "transport_stream_id": 28928,
+                    "original_network_id": 7,
+                    "service_id": 353
+                },
+                "broadcast_channel_name": "ＢＢＣワールド"
+            },
+            {
+                "logical_channel_number": "354",
+                "resource": {
+                    "transport_stream_id": 28768,
+                    "original_network_id": 7,
+                    "service_id": 354
+                },
+                "broadcast_channel_name": "ＣＮＮｊ"
+            },
+            {
+                "logical_channel_number": "363",
+                "resource": {
+                    "transport_stream_id": 28736,
+                    "original_network_id": 7,
+                    "service_id": 363
+                },
+                "broadcast_channel_name": "囲碁・将棋チャンネル"
+            },
+            {
+                "logical_channel_number": "800",
+                "resource": {
+                    "transport_stream_id": 24736,
+                    "original_network_id": 6,
+                    "service_id": 800
+                },
+                "broadcast_channel_name": "スカサカ！ "
+            },
+            {
+                "logical_channel_number": "801",
+                "resource": {
+                    "transport_stream_id": 24736,
+                    "original_network_id": 6,
+                    "service_id": 801
+                },
+                "broadcast_channel_name": "スカチャン１"
+            },
+            {
+                "logical_channel_number": "802",
+                "resource": {
+                    "transport_stream_id": 24736,
+                    "original_network_id": 6,
+                    "service_id": 802
+                },
+                "broadcast_channel_name": "スカチャン２"
+            },
+            {
+                "logical_channel_number": "805",
+                "resource": {
+                    "transport_stream_id": 24736,
+                    "original_network_id": 6,
+                    "service_id": 805
+                },
+                "broadcast_channel_name": "スカチャン３"
+            },
+            {
+                "logical_channel_number": "295",
+                "resource": {
+                    "transport_stream_id": 29056,
+                    "original_network_id": 7,
+                    "service_id": 295
+                },
+                "broadcast_channel_name": "ＭＯＮＤＯ　ＴＶ"
+            },
+            {
+                "logical_channel_number": "316",
+                "resource": {
+                    "transport_stream_id": 29056,
+                    "original_network_id": 7,
+                    "service_id": 316
+                },
+                "broadcast_channel_name": "ＡＸＮミステリー"
+            }
+        ]
+    },
+    {        "type": "ABS",        "channels": [            {                "logical_channel_number": "901",                "resource": {                    "original_network_id": 100,                    "tlv_stream_id": 101,                    "service_id": 1024                },                "broadcast_channel_name": "高度ＢＳ・１"            },            {                "logical_channel_number": "902",                "resource": {                    "original_network_id": 100,                    "tlv_stream_id": 102,                    "service_id": 1025                },                "broadcast_channel_name": "高度ＢＳ・２"            }        ]    },    {        "type": "ACS",        "channels": [            {                "logical_channel_number": "911",                "resource": {                    "original_network_id": 200,                    "tlv_stream_id": 201,                    "service_id": 1024                },                "broadcast_channel_name": "高度広帯域ＣＳ・１"            },            {                "logical_channel_number": "912",                "resource": {                    "original_network_id": 200,                    "tlv_stream_id": 202,                    "service_id": 1025                },                "broadcast_channel_name": "高度広帯域ＣＳ・２"            }        ]    },    {        "type": "NCS",        "channels": [            {                "logical_channel_number": "921",                "resource": {                    "original_network_id": 300,                    "tlv_stream_id": 301,                    "service_id": 1024                },                "broadcast_channel_name": "狭帯域ＣＳ・１"            },            {                "logical_channel_number": "922",                "resource": {                    "original_network_id": 300,                    "tlv_stream_id": 302,                    "service_id": 1025                },                "broadcast_channel_name": "狭帯域ＣＳ・２"            }        ]    }]

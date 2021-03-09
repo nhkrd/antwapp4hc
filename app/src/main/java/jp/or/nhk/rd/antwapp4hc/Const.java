@@ -70,6 +70,14 @@ class Const {
 			final static String Value = "Hybridcast/1.0 (;0;AnTWhapp;2;2;)" ;
 		}
 
+		final static class support4K8K {
+			final static String Name = "support4K8K" ;
+		}
+
+		final static class allowBIA {
+			final static String Name = "allowBIA" ;
+		}
+
 		final static class SetUrl {
 			final static String Name = "seturl" ;
 		}
@@ -129,9 +137,17 @@ class Const {
 			}
 		}
 
+		final static class aitVerificationMethod {
+			final static String Name = "aitVerificationMethod" ;
+			final static class Value {
+				final static String GET = "GET";
+				final static String POST = "POST";
+			}
+		}
+
 		final static class aitVerificationTimeout {
 			final static String Name = "aitVerificationTimeout" ;
-			final static int DefaultValue = 5000 ;
+			final static int DefaultValue = 5000 ;	//millisecond
 		}
 
 		final static class aitRequestTimeout {
@@ -179,7 +195,11 @@ class Const {
 ////			}
 		}
 
-		final static class channelsFrom {
+        final static class channels4K8K {
+            final static String Name = "channels4K8K" ;
+        }
+
+        final static class channelsFrom {
 			final static String Name = "channelsFrom" ;
 			final static class Value {
 				final static String File = "File";
@@ -198,6 +218,8 @@ class Const {
 	}
 
 	final static class HTTP {
+		final static String Status = "status";
+		final static String Response = "response";
 		final static HttpResponseStatus OK = new HttpResponseStatus( 200, "OK");
 		final static HttpResponseStatus BadRequest = new HttpResponseStatus( 400, "Bad Request");
 		final static HttpResponseStatus Unauthorized = new HttpResponseStatus( 401, "Unauthorized");

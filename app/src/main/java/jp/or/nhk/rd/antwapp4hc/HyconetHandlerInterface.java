@@ -16,7 +16,7 @@ import io.netty.handler.codec.http.HttpResponseStatus;
  */
 public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
-	public static final String protocolVersion = "2.0";
+	public static final String protocolVersion = "2.1";
 	public static final String restApiEndpoint = "/antwapp/tvcontrol";
 	public static final String websocketApiEndpoint = "/antwapp/websocket";
 	public static final Map<String, String> restApiPath = new HashMap<String, String>() {
@@ -88,7 +88,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 	/**
 	 * "IPTVFJ STD-0013 7.2.3.2.3.3.1 ハイブリッドキャストの起動要求" の処理ハンドラー.
 	 * POST データで指定する情報に従ってハイブリッドキャストアプリケーションの起動（または選局のみ）を受信機へ要求を処理してレスポンスを返す.
-	 * "IPTVFJ STD-0013 Image 7-11"
+	 * "IPTVFJ STD-0013 Figure 7-11"
 	 * @param ctx
 	 * @param req
 	 * @param params
@@ -98,7 +98,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 	/**
 	 * "IPTVFJ STD-0013 7.2.3.2.3.4.1 起動要求成否の取得” の処理ハンドラー.
 	 * 起動要求(本書 7.2.3.2.3.3.1 節参照)を受理した後の受信機の処理結果を受信機へ要求を処理してレスポンスを返す.”
-	 * "IPTVFJ STD-0013 Image 7-12"
+	 * "IPTVFJ STD-0013 Figure 7-12"
 	 * @param ctx
 	 * @param req
 	 */
@@ -121,7 +121,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * Request Validation Interface.
-	 * "[処理1] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理1] in IPTVFJ STD-0013 Figure 7-11"
 	 *
 	 * @param ctx
 	 * @param req
@@ -140,7 +140,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * Request Policy Validation Interface
-	 * "[処理1] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理1] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param ctx
 	 * @param req
 	 * @return Boolean params Valid or Not
@@ -149,7 +149,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * Request Header Params Validation Interface
-	 * "[処理1] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理1] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param ctx
 	 * @param req
 	 * @return Boolean paramsValid or Not
@@ -166,7 +166,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * request params Validation Interface.
-	 * "[処理1] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理1] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param ctx
 	 * @param req
 	 * @return Boolean body Valid or Not
@@ -176,7 +176,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * request query parameters validation interface.
-	 * "[処理1] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理1] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param ctx
 	 * @param req
 	 * @return boolean body valid or not
@@ -186,16 +186,16 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * get request mode from queryParams.
-	 * "[処理1] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理1] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param params strings of queryParams
-	 * @return mode name of strin
+	 * @return mode name of string
 	 * *
 	 */
 	public String getRequestModeFromQueryString(String[] params);
 
 	/**
 	 * Receiver Policy Validation Interface.
-	 * "[処理1] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理1] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param ctx
 	 * @param req
 	 * @return Boolean body Valid or Not
@@ -204,7 +204,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * channel resource entried Interface
-	 * "[処理1] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理1] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param req
 	 * @return Boolean body Valid or Not
 	 */
@@ -212,14 +212,14 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * Permission of Launch Request Interface
-	 * "[処理1] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理1] in IPTVFJ STD-0013 Figure 7-11"
 	 * @return Boolean body Valid or Not
 	 */
 	public Boolean isStartAitPermitted();
 
 	/**
 	 * Hybridcast Mode Enable / Disable Interface
-	 * "[処理2] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理2] in IPTVFJ STD-0013 Figure 7-11"
 	 * @return Boolean body Valid or Not
 	 */
 	public Boolean isHybridcastEnabled();
@@ -227,7 +227,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * Request AitUrl Validation Interface
-	 * "[処理3] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理3] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param jsobj
 	 * @return Boolean body Valid or Not
 	 */
@@ -235,7 +235,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * Request Body Validation Interface.
-	 * "[処理3] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理3] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param str
 	 * @return Boolean body Valid or Not
 	 */
@@ -243,7 +243,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * get XMLAIT from AITURL.
-	 * "[処理5] in IPTVFJ STD-0013 Image 7-11"
+	 * "[処理5] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param aiturl
 	 * @return String body Valid or Not
 	 */
@@ -251,7 +251,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * validation XMLAIT.
-	 *  "[処理5] in IPTVFJ STD-0013 Image 7-11"
+	 *  "[処理5] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param xmlait
 	 * @return Boolean body Valid or Not
 	 */
@@ -259,7 +259,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * comparison orgid/appid between XMLAIT and request params.
-	 *  "[処理5] in IPTVFJ STD-0013 Image 7-11"
+	 *  "[処理5] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param aiturl
 	 * @return Boolean body Valid or Not
 	 */
@@ -267,7 +267,7 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 
 	/**
 	 * 指定されたXMLAITファイルから起動するHybridcastHTMLApplicationのURLを取得する.
-	 *  "[処理5] in IPTVFJ STD-0013 Image 7-11"
+	 *  "[処理5] in IPTVFJ STD-0013 Figure 7-11"
 	 * @param aiturl
 	 * @return
 	 */
@@ -325,5 +325,17 @@ public interface HyconetHandlerInterface extends DIALRestHandlerInterface {
 		final static HttpResponseStatus Internalservererror = new HttpResponseStatus( 500, "Internal server error");
 		final static HttpResponseStatus BadRequestInternalProcessing = new HttpResponseStatus( 51400, "Bad Request InternalProcessing");
 		final static HttpResponseStatus DenyInternalProcessing = new HttpResponseStatus( 51500, "Deny InternalProcessing");
+	}
+
+	/*
+		Hybridcast Connect BIA mode .
+	 */
+	final static class StartAITmodeBIA {
+		final static int original_network_id = 0;
+		final static int transport_stream_id = 0;
+		final static int tlv_stream_id = 0;
+		final static int service_id = 0;
+		final static String logical_channel_number = "";
+		final static String broadcast_channel_name = "BIA";
 	}
 }

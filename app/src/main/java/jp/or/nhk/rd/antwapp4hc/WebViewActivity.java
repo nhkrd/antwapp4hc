@@ -44,7 +44,9 @@ import javax.net.ssl.HttpsURLConnection;
 //import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONjava.JSONObject;
 
@@ -228,10 +230,13 @@ public class WebViewActivity extends FragmentActivity  {
      * @param strGetUrl URL
      * @return
      */
-    public static String getHTTP(String strGetUrl, Integer timeout) {
+    public static Map<String, Object> getHTTP(String strGetUrl, Integer timeout) {
         HttpURLConnection con = null;
         StringBuffer result = new StringBuffer();
+        int status = Const.HTTP.InternalServerError.code();
         String retStr = "";
+        Map<String, Object> ret = new HashMap<String, Object>();
+
         try {
             URL url = new URL(strGetUrl);
             if(url.getProtocol().equals("https")) {
@@ -246,7 +251,7 @@ public class WebViewActivity extends FragmentActivity  {
             con.connect();
 
             // HTTPレスポンスコード
-            final int status = con.getResponseCode();
+            status = con.getResponseCode();
             if (status == HttpURLConnection.HTTP_OK) {
                 // 通信に成功した
                 // テキストを取得する
@@ -260,8 +265,10 @@ public class WebViewActivity extends FragmentActivity  {
                 String line = null;
                 // 1行ずつテキストを読み込む
                 while ((line = bufReader.readLine()) != null) {
+                    if(0 < result.length()) {
+                        result.append("\n");
+                    }
                     result.append(line);
-                    result.append("\n");
                 }
                 bufReader.close();
                 inReader.close();
@@ -288,7 +295,9 @@ public class WebViewActivity extends FragmentActivity  {
             }
         }
 
-        return retStr;
+        ret.put(Const.HTTP.Status, status);
+        ret.put(Const.HTTP.Response, retStr);
+        return ret;
     }
 
     /**
@@ -297,10 +306,12 @@ public class WebViewActivity extends FragmentActivity  {
      * @param JSON
      * @return
      */
-    public static String postHTTP(String strPostUrl, String JSON, Integer timeout) {
+    public static Map<String, Object> postHTTP(String strPostUrl, String JSON, Integer timeout) {
         HttpURLConnection con = null;
         StringBuffer result = new StringBuffer();
+        int status = Const.HTTP.InternalServerError.code();
         String retStr = "";
+        Map<String, Object> ret = new HashMap<String, Object>();
 
         Log.i("post-http: ", strPostUrl);
         try {
@@ -327,7 +338,7 @@ public class WebViewActivity extends FragmentActivity  {
             con.connect();
 
             // HTTPレスポンスコード
-            final int status = con.getResponseCode();
+            status = con.getResponseCode();
             if (status == HttpURLConnection.HTTP_OK) {
                 // 通信に成功した
                 // テキストを取得する
@@ -364,7 +375,10 @@ public class WebViewActivity extends FragmentActivity  {
                 con.disconnect();
             }
         }
-        return retStr;
+
+        ret.put(Const.HTTP.Status, status);
+        ret.put(Const.HTTP.Response, retStr);
+        return ret;
     }
 
 

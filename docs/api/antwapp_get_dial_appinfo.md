@@ -82,7 +82,7 @@ xmlns:iptv="urn:iptv:HybridcastApplication:2015" dialVer="2.1">
 | ラベル | 規格上の意味(IPTVFJ STD-0013 7.2.x節) | Antwappで指定する値 |
 | --- | --- | --- |
 | ServerName/Version | 提供ベンダーの情報 | Antwapp/[build.gradle指定のantwappアプリバージョン] |
-| ProtocolVersion | 端末連携拡張プロトコルversion | 2.0 |
+| ProtocolVersion | 端末連携拡張プロトコルversion | 2.1 |
 | MakerID | ブラウザのUAと同じ値 | NHK |
 | ModelID : ブラウザのUAと同じ値 | Antwapp |
 

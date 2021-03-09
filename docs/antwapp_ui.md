@@ -1,96 +1,75 @@
 ## About Application View on Antwapp
 
+[Japanese](./antwapp_ui_jp.md)
+
 ### Application View
 
 ![antwapp_Application_view](./imgs/antwapp_config_app_screen.jpg)
 
-"Antwapp4hc" has application views(views as Android App) to display debug messages and to set configuration that changes functions of antwapp4hc. These views are shown on a display of device and you can check log message of "Antwapp4hc" as debug information and change configuration to debug Hybridcast Connect protocol.
+"Antwapp4hc" has sevral views for various purposes such as showing debug messages and changing configuration. Views of "Antwapp4hc" are displayed as an Android application.
 
-"Antwapp4hc"は、デバッグメッセージの表示や設定変更のためのアプリ画面をAndroidアプリとしてを用意しています。デバイス上のディスプレイにてアプリの画面として表示し、デバッグのためのlog表示、設定変更ができます。以下はその説明です。
+- Log Area(ログ表示)
 
-- Log Area
-
-  Show log information on the display of the Antwapp4hc android application view.Here is log level and the color of the messages corresponding to each loglevel.
-
-  Antwapp4hcが通信した際の受信・処理・応答に関するメッセージをログとして表示する.
-
+  Messages related to reception, processing, and response by "antwapp4hc" are shown. Debug messages are also shown here. Clasification of messages and their colors are listed below.
 
   | Color | Meaning of the messages |
   | :---: | :--- |
-  | <font color="Red">Red</font> | - Error message for the webAPI in Hybridcast Connect Protocol. <br/> - ハイコネプロトコル対応APIに対するエラーメッセージ. |
-  | <font color="Green">Green</font> | - Message that indicates completing the processing of the webAPI in Hybridcast Connect Protocol.<br/>- ハイコネプロトコル対応APIに対する処理完了メッセージ. |
-  | <font color="Blue">Blue</font> | - Received message for the webAPI in Hybridcast Connect Protocol.<br/>- ハイコネプロトコル対応APIに対する受信メッセージ. |
-  | <font color="Black">Black</font> | - Detail information on the webAPI in Hybridcast Connect Protocol.<br/>- ハイコネプロトコル対応APIに対する詳細情報. |
-  | <font color="Yellow">Yellow</font> | - Messages related with the process of websocketAPI.<br/>- ハイコネプロトコルの連携端末通信websocketに関係する受信・処理・応答に関するメッセージ. |
+  | <font color="Red">Red</font> | - Error for the call of APIs in Hybridcast-Connect Protocol. |
+  | <font color="Green">Green</font> | - Completion of the process of the APIs called in Hybridcast-Connect Protocol. |
+  | <font color="Blue">Blue</font> | - Received message by the APIs in Hybridcast-Connect Protocol. |
+  | <font color="Black">Black</font> | - Detail information on the process of the APIs called in Hybridcast-Connect Protocol. |
+  | <font color="Yellow">Yellow</font> | - Messages related to the process in response to the websocket messages of Hybridcast-Connect protocol. |
 
 
 - startAIT Request Information Area
 
-  Show current channel information and the properties of the received message body that a client application requests.
-
-  選局・HC起動APIがクライアントから要求された際に、リクエストの内容(チャンネル情報・HCのAITURLなど)を表示する.
+  When tunig and/or launching an Hybridcast application is requested, contents of the request, such as target channel or URL of AIT of target Hybridcast application, is shown here.
 
   - Mode:
-    - startAIT API request mode(tune/app)
-    - 選局・ハイブリッドキャスト起動APIのモード
-  - Resource: channel information | 編成チャンネル情報
-    - NWID: original_network_id
-    - TSID: transport_stream_id
-    - SVID: service_id
+    - request type(tuning only/tuning and launching)
+  - Resource:
+    - infomation on target channel
+      - NWID: original_network_id
+      - TSID: transport_stream_id
+      - SVID: service_id
   - Hybridcast: 
-    - AITURL: AITURL to launch| 起動要求に含まれるハイブリッドキャストのAITURL
-    - HCURL:  Hybridcast App URL to launch | 起動要求に含まれるハイブリッドキャストのAITURL内に記述されているURL
-    - ORGID:  "orgid" defined in IPTVFJ STD-0013
-    - APPID:  "appid" defined in IPTVFJ STD-0013
+    - AITURL: URL of AIT for the target Hybridcast application in the request message
+    - HCURL: URL of the Hybridcast Application described in the AIT
+    - ORGID:  "orgid" defined in IPTVFJ STD-0010
+    - APPID:  "appid" defined in IPTVFJ STD-0010
 
-- WebBrowser(Hybridcast) Display Area
+- Hybridcast application Area(Hybridcast想定HTML表示画面)
 
-  - show HTML(web)application that is expected as Hybridacast application.
-  - クライアントから要求された選局・HC起動APIに記述されたHTMLを表示する画面.選局要求では、放送波を想定してアプリ内部に実装してあるhtmlを要求された放送局と仮定して表示する.HC起動要求では、選局要求の動作に加えて、指定されたAITURLに記述されているHCアプリのHTMLを表示する.
+  - When the request is tuning only, built-in HTML document is shown to indicate completion of tuning.
+  - When the rewuest is tuning and launching, the launched Hybridcast application is shown.
 
 
 #### Tabs on the Window
 
-It can be button to switch window.
+You can change the content by seleting tabs.
+- Log (ログ表示)
 
-このタブはボタンとして機能し、以下の画面に切り替えることができる。
+  Messages related to reception, processing, and response by "antwapp4hc" are shown. Debug messages are also shown here.
 
-- "ログ表示" -- Log
+- Configuration (設定情報)
 
-  Antwapp4hcアプリが通信した際の受信・処理・応答に関するメッセージ表示するタブ.debugメッセージも出力する.
-
-- "設定情報" -- Config
-
-  - AITload
-    - Switch On/Off(true/false) to ignore processing Verification of a AITURL that is defined in IPTVFJ STD-0013.
-    - 選局・HC起動APIを受信した時の指定されたURLで取得するファイルタイプを変更できる（AITまたはHTML）
+  - aitload
+    - Select target infomation to be acquired by given URL, tune only or launch of Hybridcast application. When setting to true, "Antwapp4hc" retrieves the AIT. When setting to false, "Antwapp4hc" retrieves the Hybridcast application directly without reading the AIT. Note that behaviour of "Antwapp4hc" for false is not compliant with "Hybridcast-Connect" specification. It is provided only for easiness of application development.
   - wsBroadcastMode
-    - if true, antwapp4hc responds(sends) the same message as the message received from a client over websocket.
-    - websocketでメッセージを受信した時に受信したメッセージと同じメッセージを返す（送信する）機能のOn/Off.
+    - Select enable(true) or disable(false) to echo the received messages via Websocet by "Antwapp4hc". The echo message is delivered to all the conected devices with "Antwapp4hc" except the orignal sender.
   - aitVerify
-    - Select the AITURL-Verification-Server URL to verify the AITURL requested from client. If "ALL OK" mode selected, the process of the AITURL-Verification will be ignored, so that no request to verify.
-    - AITURL可否判定サーバーのURLの指定をすることができる。External/InternalのモードへのURL設定はbuild時のパラメタで決まる。"ALL OK"を指定するとAITURL判定処理が無視され、判定リクエストもされない。
+    - Select service integrity check server to be used.
+     - External: Use the service integrity check server designated by the URL in the right field.
+     - Internal: Use the built-in service integrity check server in "Antwapp4hc".
+     - AllOK: Disable service integrity check; tuning and launching Hybridcast application are always allowed.
   - hcViewMode
-    - Switch display-mode between Debug/Full/Both. In DEBUG mode, show all area on the display. In FULL mode, show only WebBrowser Display Area. In Both mode, switch to show areas in DEBUG mode and FULL mode.
-    - ログ・設定画面と選局・Hybridcast想定画面の表示方法を設定
-
-    | DebugMode | Log Area | StartAIT Area | WebBrowser Area | Full WebBrowser Area<br/>Only in another window |
-    | :---: | :---: | :---: | :---: | :---: |
-    | Debug | O | O | O | - |
-    | Full | - | - | - | O |
-    | Both | O | O | O | O |
-
-  - Delay(milliseconds)
-    - Delay time-interval until excuting tune process in startAIT.
-    - 選局APIを受信した際に、選局処理実行の前に入れることができる遅延時間
-
-- "アプリ画面へ遷移"
+    - There are 2 types of presentation of Hybridcast application, with or without debug messages. Selection of presentation type is controled by a button on a remote. hcViewMode is to select the subject of continuous update among the 2 types.
+     - Debug: Only Hybridcast application with debug messages is updated.
+     - Full: Only full screen presented Hybridcast application is updated.
+     - Both: Presentation of both types is updated.
+  - tuneDelay(milliseconds)
+    - Intentional delay time to start tuning process after reception of tuning request.
+- App screen (アプリ画面へ遷移)
   - TBD
-  - 未実装
-
-- "ログクリア" -- Clear message in log area
-  - Clear message displayed in Log Area.
-  - ログ画面をクリアする
-
-
-  
+- Clear the log (ログクリア)
+  - Clear the messages in log area.

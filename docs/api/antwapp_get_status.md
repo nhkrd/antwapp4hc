@@ -74,6 +74,7 @@ companion_apps | Number | 受信機に接続しているコンパニオンアプ
 resource | Object | 選局中の編成サービスを示すオブジェクト<br/>original_network_id/transport_stream_id/service_idを含む.「選局中の編成サービス」は、受信機が本APIにより受信機動作状態の要求を受信した際に提示中の放送局の編成サービスと規定する.<br/>なお、受信機が放送サービスを提示していない状態（外部入力の表示中や電源OFF・スタンバイ状態など）の場合、<br/>original_network_id/transport_stream_id/service_idの値はそれぞれ0が返却される.
 original_network_id | Number | オリジナルネットワーク識別子(範囲は[0..65535])
 transport_stream_id | Number | トランスポートストリーム識別子(範囲は[0..65535])
+tlv_stream_id | Number | TLVストリーム識別子(範囲は[0..65535])
 service_id | Number | サービス識別子(範囲は[0..65535])
 
 

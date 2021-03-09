@@ -57,7 +57,7 @@ body {
 	font-size: 16px;
 	vertical-align: top;
 }
-.tuneDelayButton {
+.tuneDelayButton, .timeoutButton {
 	border: 1px solid rgba(0,0,0,0.0);
 	padding: 0px 10px ;
 	margin: 5px 10px 0px 10px;
@@ -175,6 +175,9 @@ p.attrstr {
 .subinfo2 {
 	margin: 0px 0px 0px 20px;
 	}
+#aiturl {
+	height: 20px;
+	}
 .urlinfo {
 	word-wrap: break-word;
 	margin: -20px 0px 0px 110px;
@@ -275,7 +278,7 @@ input#cc_aitVerifierURL {
 	<div><p class="subinfo">Mode: <span id="hcmode"></span></p>
 	</div>
 	<div><p class="subinfo">Resource:</p>
-		<p class="subinfo2"><span>NWID: </span><span id="nwid">0</span><span>, TSID: </span><span id="tsid">0</span><span>, SVID: </span><span id="svid">0</span></p>
+		<p class="subinfo2"><span>NWID: </span><span id="nwid">0</span><span>, <span id="tsidName">TSID:</span> </span><span id="tsid">0</span><span>, SVID: </span><span id="svid">0</span></p>
 		<p class="subinfo2"><span>Number: </span><span id="chnumber">0</span><span>, Name: </span><span id="chname">name</span></p>
 	</div>
 	<div><p class="subinfo">Hybridcast:</p>
@@ -361,7 +364,14 @@ input#cc_aitVerifierURL {
 		$("#nwid").text( hcjson["resource"]["original_network_id"] ) ;
 			$("#channel_icon").removeClass() ;
 			$("#channel_icon").addClass( "color_" + ( (parseInt(hcjson["resource"]["original_network_id"]) + parseInt(hcjson["resource"]["service_id"])) % 8) ) ;
-		$("#tsid").text( hcjson["resource"]["transport_stream_id"] ) ;
+		if( "transport_stream_id" in hcjson["resource"] ) {
+			$("#tsid").text( hcjson["resource"]["transport_stream_id"] ) ;
+			$("#tsidName").text( "TSID" ) ;
+		}
+		if( "tlv_stream_id" in hcjson["resource"] ) {
+			$("#tsid").text( hcjson["resource"]["tlv_stream_id"] ) ;
+			$("#tsidName").text( "TLVSID" ) ;
+		}
 		$("#svid").text( hcjson["resource"]["service_id"] ) ;
 
 		$("#chnumber").text( hcjson["logical_channel_number"] ) ;
@@ -387,7 +397,8 @@ input#cc_aitVerifierURL {
 
 		if((hcjson["hcViewMode"] == "Debug") || (hcjson["hcViewMode"] == "Both")) {
 			var hcarea = document.getElementById("hcsrc");
-			if( hcjson["mode"] == "app" ) {
+//			if( hcjson["mode"] == "app" ) {
+			if( (hcjson["mode"] == "app") || (hcjson["mode"] == "bia") ) {
 				hcarea.src = hcjson["hybridcast"]["hcurl"];
 			}
 			else {

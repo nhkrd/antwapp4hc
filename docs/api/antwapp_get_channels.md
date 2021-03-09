@@ -29,7 +29,7 @@ GET <BaseURL>/channels?media=MEDIA
 ```
 
 - BaseURL <- DialApplicationInformationのXMLにおけるX_Hybridcast_TVControlURL値
-- MEDIAは、"ALL","TD","BS","CS"のいずれか.クエリが省略された場合は、"ALL"として扱う.
+- MEDIAは、"ALL","TD","BS","CS","ABS","ACS","NCS"のいずれか.クエリが省略された場合は、"ALL"として扱う.
 
 #### Response
 
@@ -109,13 +109,14 @@ code | Number | HTTPステータスコード
 message | String | HTTPステータスコードの説明句.なお、受信機の状態を示す文字列も含まれる
 body | Object | 受信機からのレスポンスデータを含むオブジェクト（codeがエラーを示す場合は空とする）
 created_at | String | 当該情報を受信機が応答した日時<br/>タイムゾーンをUTCとし、フォーマットは"YYYY-MM-DDThh:mm:ssZ"形式(ISO 8601)とする
-media | Object | 地上デジタル、BS、CSそれぞれの編成チャンネル情報を含むオブジェクト
-type | String | 当該データが"TD"(地上デジタル)、"BS"、"CS"のどの編成チャンネル情報かを示す文字列
+media | Object | 地上デジタル、BS、広帯域CS、高度BS、高度広帯域CS、狭帯域CS、高度狭帯域CSそれぞれの編成チャンネル情報を含むオブジェクト
+type | String | 当該データが"TD"(地上デジタル)、"BS"、"CS(広帯域CS)"、"ABS(高度BS)"、"ACS(高度広帯域CS)"、"NCS(狭帯域CSおよび高度狭帯域CS)"のどの編成チャンネル情報かを示す文字列
 channels | Array | 編成チャンネル情報を含む配列
 logical_channel_number | String | 論理チャンネル番号
 resource | Object | original_network_id/transport_stream_id/service_idを含むオブジェクト
 original_network_id | Number | オリジナルネットワーク識別子(範囲は[0..65535])
 transport_stream_id | Number | トランスポートストリーム識別子(範囲は[0..65535])
+tlv_stream_id | Number | TLVストリーム識別子(範囲は[0..65535])
 service_id | Number | サービス識別子(範囲は[0..65535])
 broadcast_channel_name | String | 編成サービス名
 

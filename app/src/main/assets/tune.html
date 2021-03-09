@@ -13,8 +13,7 @@ body {
 <!--	background: url("img/tt_all.gif"); -->
 	background-size: cover;
 	margin: 0px; padding: 0px; border: 0px;
-	<!-- background-color: #a0a0a0; -->
-	font-size:20px;
+	background-color: #a0a0a0; font-size:20px;
 	}
 #vObj {position:absolute; top:0px; left:1440px; width:480px; height:270px;
 	}
@@ -91,7 +90,7 @@ button:focus {
 	<div><p class="subinfo">Mode: <span id="hcmode"></span></p>
 	</div>
 	<div><p class="subinfo">Resource:</p>
-		<p class="subinfo2"><span>NWID: </span><span id="nwid">0</span><span>, TSID: </span><span id="tsid">0</span><span>, SVID: </span><span id="svid">0</span></p>
+		<p class="subinfo2"><span>NWID: </span><span id="nwid">0</span><span>, <span id="tsidName">TSID:</span> </span><span id="tsid">0</span><span>, SVID: </span><span id="svid">0</span></p>
 		<p class="subinfo2"><span>Number: </span><span id="chnumber">0</span><span>, Name: </span><span id="chname">name</span></p>
 	</div>
 </div>
@@ -119,13 +118,19 @@ window.addEventListener('load', function() {
 		var hcjson = JSON.parse( data )["body"];
 
 		$("#hcmode").text( hcjson["mode"] ) ; 
-		$("#nwid").text( hcjson["resource"]["original_network_id"] ) ; 
-		$("#tsid").text( hcjson["resource"]["transport_stream_id"] ) ; 
+		$("#nwid").text( hcjson["resource"]["original_network_id"] ) ;
+        if( "transport_stream_id" in hcjson["resource"] ) {
+		    $("#tsid").text( hcjson["resource"]["transport_stream_id"] ) ;
+   			$("#tsidName").text( "TSID" ) ;
+        }
+        if( "tlv_stream_id" in hcjson["resource"] ) {
+		    $("#tsid").text( hcjson["resource"]["tlv_stream_id"] ) ;
+   			$("#tsidName").text( "TLVSID" ) ;
+        }
 		$("#svid").text( hcjson["resource"]["service_id"] ) ;
-
-		$("#chnumber").text( hcjson["logical_channel_number"] ) ;
-		$("#chname").text( hcjson["broadcast_channel_name"] ) ;
-
+		
+		$("#chnumber").text( hcjson["logical_channel_number"] ) ; 
+		$("#chname").text( hcjson["broadcast_channel_name"] ) ; 
 	})
 	.fail(function() {
 	});

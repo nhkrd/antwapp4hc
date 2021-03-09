@@ -1,6 +1,7 @@
 {
     "media": "json/media.json",
     "channels": "json/channels.json",
+    "channels4K8K": "json/channels4K8K.json",
     "channelsFrom": "File",
     "tuneMode": "Emulator",
     "tuneDelay": "2000",
@@ -9,5 +10,9 @@
     "aitload": true,
     "aitVerifierMode": "AllOK",
     "aitVerifierUrl": "http://127.0.0.1:8887/api/aitverifier|https://example.com/api/validation|PASS",
-    "wsBroadcastMode": true
+    "aitVerificationMethod": "POST",
+    "aitVerificationTimeout": 5000,
+    "wsBroadcastMode": true,
+    "support4K8K": true,
+    "allowBIA": true
 }

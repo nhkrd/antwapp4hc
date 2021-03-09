@@ -12,6 +12,7 @@ import org.json.JSONjava.JSONObject;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +34,9 @@ class AnTWappConfigManager {
         put("TD", "Available");
         put("BS", "Available");
         put("CS", "Available");
+        put("ABS", "Available");
+        put("ACS", "Available");
+        put("NCS", "Available");
     }};
 
     //channels Data
@@ -40,6 +44,9 @@ class AnTWappConfigManager {
         put("TD", new JSONObject());
         put("BS", new JSONObject());
         put("CS", new JSONObject());
+        put("ABS", new JSONObject());
+        put("ACS", new JSONObject());
+        put("NCS", new JSONObject());
     }};
 
     //current channels Data
@@ -69,10 +76,12 @@ class AnTWappConfigManager {
         config.put( Const.Config.aitLoad.Name, true);
         config.put( Const.Config.aitVerifierMode.Name, Const.Config.aitVerifierMode.Value.AllOK );
         config.put( Const.Config.aitVerifierUrl.Name, Const.Config.aitVerifierUrl.Url.getAllUrl() );
+        config.put( Const.Config.aitVerificationMethod.Name, Const.Config.aitVerificationMethod.Value.POST );
         config.put( Const.Config.aitVerificationTimeout.Name, Const.Config.aitVerificationTimeout.DefaultValue );
         config.put( Const.Config.aitRequestTimeout.Name, Const.Config.aitRequestTimeout.DefaultValue );
         config.put( Const.Config.media.Name, "");
         config.put( Const.Config.channels.Name, "");
+        config.put( Const.Config.channels4K8K.Name, "");
         config.put( Const.Config.channelsFrom.Name, "");
         config.put( Const.Config.tuneDelay.Name, Const.Config.tuneDelay.DefaultValue );
         config.put( Const.Config.SetUrl.Name, "");
@@ -81,7 +90,8 @@ class AnTWappConfigManager {
         config.put( Const.Config.SetUrlAppDesc.Name, "");
         config.put( Const.Config.WSBroadcastMode.Name, true);
         config.put( Const.Config.mDNS.Name, true );
-
+        config.put( Const.Config.support4K8K.Name, true);
+        config.put( Const.Config.allowBIA.Name, true);
     }
 
     /**
@@ -179,6 +189,9 @@ class AnTWappConfigManager {
                     if (configJson.has(Const.Config.aitVerifierUrl.Name)) {
                         config.put(Const.Config.aitVerifierUrl.Name, configJson.get(Const.Config.aitVerifierUrl.Name));
                     }
+                    if (configJson.has(Const.Config.aitVerificationMethod.Name)) {
+                        config.put(Const.Config.aitVerificationMethod.Name, configJson.get(Const.Config.aitVerificationMethod.Name));
+                    }
                     if (configJson.has(Const.Config.aitVerificationTimeout.Name)) {
                         config.put(Const.Config.aitVerificationTimeout.Name, configJson.get(Const.Config.aitVerificationTimeout.Name));
                     }
@@ -190,6 +203,9 @@ class AnTWappConfigManager {
                     }
                     if (configJson.has(Const.Config.channels.Name)) {
                         config.put(Const.Config.channels.Name, configJson.get(Const.Config.channels.Name));
+                    }
+                    if (configJson.has(Const.Config.channels4K8K.Name)) {
+                        config.put(Const.Config.channels4K8K.Name, configJson.get(Const.Config.channels4K8K.Name));
                     }
                     if (configJson.has(Const.Config.channelsFrom.Name)) {
                         config.put(Const.Config.channelsFrom.Name, configJson.get(Const.Config.channelsFrom.Name));
@@ -205,6 +221,12 @@ class AnTWappConfigManager {
                     }
                     if (configJson.has(Const.Config.mDNS.Name)) {
                         config.put(Const.Config.mDNS.Name, configJson.get(Const.Config.mDNS.Name));
+                    }
+                    if (configJson.has(Const.Config.support4K8K.Name)) {
+                        config.put(Const.Config.support4K8K.Name, (Boolean)configJson.get(Const.Config.support4K8K.Name));
+                    }
+                    if (configJson.has(Const.Config.allowBIA.Name)) {
+                        config.put(Const.Config.allowBIA.Name, (Boolean)configJson.get(Const.Config.allowBIA.Name));
                     }
                 } catch (org.json.JSONjava.JSONException e) {
                     //TODO:forOSS
@@ -228,7 +250,8 @@ class AnTWappConfigManager {
         if (!mediaFname.equals("")) {
             Log.i("getMediaConfig:", String.format("Media: %s", mediaFname));
             if (mediaFname.substring(0, 7).equals("http://") || mediaFname.substring(0, 8).equals("https://")) {
-                mediaJsonStr = WebViewActivity.getHTTP(mediaFname,5000);
+                Map<String,Object> ret = WebViewActivity.getHTTP(mediaFname,5000);
+                mediaJsonStr = (String)ret.get(Const.HTTP.Response);
             }
             else {
                 try {
@@ -250,6 +273,11 @@ class AnTWappConfigManager {
                     if (mediaJson.has("TD")) { mediaData.put("TD", mediaJson.getString("TD")); }
                     if (mediaJson.has("BS")) { mediaData.put("BS", mediaJson.getString("BS")); }
                     if (mediaJson.has("CS")) { mediaData.put("CS", mediaJson.getString("CS")); }
+                    if ((boolean)WebViewActivity.configMan().get(Const.Config.support4K8K.Name)) {
+                        if (mediaJson.has("ABS")) { mediaData.put("ABS", mediaJson.getString("ABS")); }
+                        if (mediaJson.has("ACS")) { mediaData.put("ACS", mediaJson.getString("ACS")); }
+                        if (mediaJson.has("NCS")) { mediaData.put("NCS", mediaJson.getString("NCS")); }
+                    }
                 }
                 catch (JSONException e) {
                     Log.i("getMediaConfig:", String.format("Media JSON Error %s", e.toString()));
@@ -265,14 +293,20 @@ class AnTWappConfigManager {
     private void getAllChannelInfoFromFile() {
         String channelsJsonStr = "";
         String channelsFname = (String) config.get(Const.Config.channels.Name);
-
         channelsObj_fromFile.put("TD", new JSONObject());
         channelsObj_fromFile.put("BS", new JSONObject());
         channelsObj_fromFile.put("CS", new JSONObject());
+        if ((boolean)WebViewActivity.configMan().get(Const.Config.support4K8K.Name)) {
+            channelsFname = (String) config.get(Const.Config.channels4K8K.Name);
+            channelsObj_fromFile.put("ABS", new JSONObject());
+            channelsObj_fromFile.put("ACS", new JSONObject());
+            channelsObj_fromFile.put("NCS", new JSONObject());
+        }
 
         //read channels info
         if (channelsFname.substring(0, 7).equals("http://") || channelsFname.substring(0, 8).equals("https://")) {
-            channelsJsonStr = WebViewActivity.getHTTP(channelsFname, 5000);
+            Map<String,Object> ret = WebViewActivity.getHTTP(channelsFname,5000);
+            channelsJsonStr = (String)ret.get(Const.HTTP.Response);
         } else {
             try {
                 channelsJsonStr = new String(WebViewActivity.readAssetTextFile(channelsFname), "UTF-8");
@@ -301,6 +335,11 @@ class AnTWappConfigManager {
                     if (obj.get("type").equals("CS")) {
                         channelsObj_fromFile.put("CS", obj);
                     }
+                    if ((boolean)WebViewActivity.configMan().get(Const.Config.support4K8K.Name)) {
+                        if (obj.get("type").equals("ABS")) { channelsObj_fromFile.put("ABS", obj); }
+                        if (obj.get("type").equals("ACS")) { channelsObj_fromFile.put("ACS", obj); }
+                        if (obj.get("type").equals("NCS")) { channelsObj_fromFile.put("NCS", obj); }
+                    }
                 }
             }
             catch (JSONException e) {
@@ -317,6 +356,11 @@ class AnTWappConfigManager {
         channelsObj.put("TD", new JSONObject());
         channelsObj.put("BS", new JSONObject());
         channelsObj.put("CS", new JSONObject());
+        if ((boolean)WebViewActivity.configMan().get(Const.Config.support4K8K.Name)) {
+            channelsObj.put("ABS", new JSONObject());
+            channelsObj.put("ACS", new JSONObject());
+            channelsObj.put("NCS", new JSONObject());
+        }
 
         String channelsFrom = (String) config.get(Const.Config.channelsFrom.Name);
         if(channelsFrom.equals(Const.Config.channelsFrom.Value.File)) {
@@ -324,6 +368,11 @@ class AnTWappConfigManager {
             channelsObj.put("TD", channelsObj_fromFile.get("TD"));
             channelsObj.put("BS", channelsObj_fromFile.get("BS"));
             channelsObj.put("CS", channelsObj_fromFile.get("CS"));
+            if ((boolean)WebViewActivity.configMan().get(Const.Config.support4K8K.Name)) {
+                channelsObj.put("ABS", channelsObj_fromFile.get("ABS"));
+                channelsObj.put("ACS", channelsObj_fromFile.get("ACS"));
+                channelsObj.put("NCS", channelsObj_fromFile.get("NCS"));
+            }
         }
         else {
             Log.i("setChannelsInfo:", String.format("channelsFrom invalid: %s", channelsFrom));
@@ -378,31 +427,44 @@ class AnTWappConfigManager {
      */
     public JSONObject getChannelObj( int nwid, int trid,  int svid) {
         JSONObject channelObj = null ;
-        String[] channelsMedia = {"TD", "BS", "CS"};
+//        String[] channelsMedia = {"TD", "BS", "CS"};
+        ArrayList<String> channelsMedia = new ArrayList<String>();
+        if( getMediaStatus("TD").equals("Available") ) { channelsMedia.add("TD"); }
+        if( getMediaStatus("BS").equals("Available") ) { channelsMedia.add("BS"); }
+        if( getMediaStatus("CS").equals("Available") ) { channelsMedia.add("CS"); }
+        if ((boolean)WebViewActivity.configMan().get(Const.Config.support4K8K.Name)) {
+            if( getMediaStatus("ABS").equals("Available") ) { channelsMedia.add("ABS"); }
+            if( getMediaStatus("ACS").equals("Available") ) { channelsMedia.add("ACS"); }
+            if( getMediaStatus("NCS").equals("Available") ) { channelsMedia.add("NCS"); }
+        }
 
         for( String media: channelsMedia ) {
             JSONObject chXXobj = channelsObj.get(media);
             try {
                 JSONArray chobj = chXXobj.getJSONArray("channels");
-                for( int i=0; i<chobj.length(); i++ ) {
+                for (int i = 0; i < chobj.length(); i++) {
                     JSONObject channel = chobj.getJSONObject(i);
                     JSONObject resource = channel.getJSONObject("resource");
                     int ch_nwid = resource.getInt("original_network_id");
-                    int ch_trid = resource.getInt("transport_stream_id");
+                    int ch_trid = 0;
+                    if (media.equals("TD") || media.equals("BS") || media.equals("CS")) {
+                        ch_trid = resource.getInt("transport_stream_id");
+                    } else if (media.equals("ABS") || media.equals("ACS") || media.equals("NCS")) {
+                        ch_trid = resource.getInt("tlv_stream_id");
+                    }
                     int ch_svid = resource.getInt("service_id");
 
-                    if( (ch_nwid==nwid) && (ch_trid==trid) && (ch_svid==svid) ) {
+                    if ((ch_nwid == nwid) && (ch_trid == trid) && (ch_svid == svid)) {
                         channelObj = channel;
                         break;
                     }
                 }
-            }
-            catch(JSONException e) {
-                send_loginfo( Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Error, "getChannelObj()", String.format("getChannelObj:JSONException: %s", e.getMessage()), Const.LogRed, "" );
+            } catch (JSONException e) {
+                send_loginfo(Const.DebugInfo.Type.HCXPLog, Const.DebugInfo.Status.Error, "getChannelObj()", String.format("getChannelObj:JSONException: %s", e.getMessage()), Const.LogRed, "");
                 throw new JSONException(e);
             }
 
-            if( channelObj != null) {
+            if (channelObj != null) {
                 break;
             }
         }
@@ -476,6 +538,10 @@ class AnTWappConfigManager {
             String aitVerifierUrl = (String) reqConfig.get(Const.Config.aitVerifierUrl.Name);
             config.put(Const.Config.aitVerifierUrl.Name, aitVerifierUrl);
         }
+        if( reqConfig.has(Const.Config.aitVerificationMethod.Name)) {
+            String aitVerificationMethod = (String) reqConfig.get(Const.Config.aitVerificationMethod.Name);
+            config.put(Const.Config.aitVerificationMethod.Name, aitVerificationMethod);
+        }
         if( reqConfig.has(Const.Config.aitVerificationTimeout.Name)) {
             int aitVerificationTimeout = (int) reqConfig.get(Const.Config.aitVerificationTimeout.Name);
             config.put(Const.Config.aitVerificationTimeout.Name, aitVerificationTimeout);
@@ -510,6 +576,14 @@ class AnTWappConfigManager {
         if( reqConfig.has(Const.Config.mDNS.Name)) {
             Boolean mDNS = (Boolean) reqConfig.get(Const.Config.mDNS.Name);
             config.put(Const.Config.mDNS.Name, mDNS);
+        }
+        if( reqConfig.has(Const.Config.support4K8K.Name)) {
+            Boolean support4K8K = (Boolean) reqConfig.get(Const.Config.support4K8K.Name);
+            config.put(Const.Config.support4K8K.Name, support4K8K);
+        }
+        if( reqConfig.has(Const.Config.allowBIA.Name)) {
+            Boolean allowBIA = (Boolean) reqConfig.get(Const.Config.allowBIA.Name);
+            config.put(Const.Config.allowBIA.Name, allowBIA);
         }
 
         if( channlesObj_reset ) {

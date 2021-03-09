@@ -13,6 +13,7 @@ antwapp4hcにおいては、ブラウザはHTML5ブラウザ(webview)、ハイ�
 
  - 選局（リソース切替）のみ[tune指定時]
  - 選局＋hybridcast起動[app指定時]
+ - 放送非依存マネージドアプリケーション起動[bia指定時]
 
 を指定する.
 
@@ -54,6 +55,7 @@ POST <BASEURL>/hybridcast?mode=MODE
 resource | Object | original_network_id/transport_stream_id/service_idを含むオブジェクト
 original_network_id | Number | オリジナルネットワーク識別子(範囲は[0..65535])
 transport_stream_id | Number | トランスポートストリーム識別子(範囲は[0..65535])
+tlv_stream_id | Number | TLVストリーム識別子(範囲は[0..65535])
 service_id | Number | サービス識別子(範囲は[0..65535])
 hybridcast | Object | aiturl/orgid/ appidを含むオブジェクト
 aiturl | String | 実行対象となるハイブリッドキャストアプリケーションのXML-AITのURL
@@ -67,7 +69,7 @@ MODEが取りうる値 | 起動モードの説明 | 備考
 -- | -- | --
 app | resourceオブジェクトをもとに選局後、hybridcastオブジェクトをもとにHybridcast起動 | 指定しない場合はデフォルト
 tune | resourceオブジェクトをもとに選局 | ****
-
+bia | 放送非依存マネージドアプリケーション(Broadcast-Independent managed Application)の起動要求 | ****
 
 
 #### Response
