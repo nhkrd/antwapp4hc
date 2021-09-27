@@ -74,6 +74,9 @@ class Const {
 			final static String Name = "support4K8K" ;
 		}
 
+		final static class allowBOA {
+			final static String Name = "allowBOA" ;
+		}
 		final static class allowBIA {
 			final static String Name = "allowBIA" ;
 		}

@@ -91,6 +91,7 @@ class AnTWappConfigManager {
         config.put( Const.Config.WSBroadcastMode.Name, true);
         config.put( Const.Config.mDNS.Name, true );
         config.put( Const.Config.support4K8K.Name, true);
+        config.put( Const.Config.allowBOA.Name, true);
         config.put( Const.Config.allowBIA.Name, true);
     }
 
@@ -224,6 +225,9 @@ class AnTWappConfigManager {
                     }
                     if (configJson.has(Const.Config.support4K8K.Name)) {
                         config.put(Const.Config.support4K8K.Name, (Boolean)configJson.get(Const.Config.support4K8K.Name));
+                    }
+                    if (configJson.has(Const.Config.allowBOA.Name)) {
+                        config.put(Const.Config.allowBOA.Name, (Boolean)configJson.get(Const.Config.allowBOA.Name));
                     }
                     if (configJson.has(Const.Config.allowBIA.Name)) {
                         config.put(Const.Config.allowBIA.Name, (Boolean)configJson.get(Const.Config.allowBIA.Name));
@@ -580,6 +584,10 @@ class AnTWappConfigManager {
         if( reqConfig.has(Const.Config.support4K8K.Name)) {
             Boolean support4K8K = (Boolean) reqConfig.get(Const.Config.support4K8K.Name);
             config.put(Const.Config.support4K8K.Name, support4K8K);
+        }
+        if( reqConfig.has(Const.Config.allowBOA.Name)) {
+            Boolean allowBOA = (Boolean) reqConfig.get(Const.Config.allowBOA.Name);
+            config.put(Const.Config.allowBOA.Name, allowBOA);
         }
         if( reqConfig.has(Const.Config.allowBIA.Name)) {
             Boolean allowBIA = (Boolean) reqConfig.get(Const.Config.allowBIA.Name);

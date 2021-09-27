@@ -440,6 +440,7 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                         .put( Const.Config.WSBroadcastMode.Name, configMan.get(Const.Config.WSBroadcastMode.Name) )
                         .put( Const.Config.mDNS.Name, configMan.get(Const.Config.mDNS.Name) )
                         .put( Const.Config.support4K8K.Name, configMan.get(Const.Config.support4K8K.Name) )
+                        .put( Const.Config.allowBOA.Name, configMan.get(Const.Config.allowBOA.Name) )
                         .put( Const.Config.allowBIA.Name, configMan.get(Const.Config.allowBIA.Name) )
                     )
                 );
@@ -926,6 +927,19 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
             String serverInfo = String.format( serverInfoFmt, "AnTWapp",
                     (String)configMan.get(Const.Config.versionName.Name) , protocolVersion, "0001", "0001", "Comment");
             appinfo = appinfo.replace("[ServerInfo]", serverInfo);
+
+            //2.9
+            String allowBOA = "true";
+            String allowBIA = "true";
+            if( !(boolean)WebViewActivity.configMan().get(Const.Config.allowBOA.Name) ) {
+                allowBOA = "false";
+            }
+            if( !(boolean)WebViewActivity.configMan().get(Const.Config.allowBIA.Name) ) {
+                allowBIA = "false";
+            }
+            appinfo = appinfo.replace("[ProtocolVersion]", protocolVerssion);
+            appinfo = appinfo.replace("[aBOMapp]", allowBOA);
+            appinfo = appinfo.replace("[aBIMapp]", allowBIA);
 
             //send response
             ByteBuf content = Unpooled.copiedBuffer( appinfo.getBytes() );
@@ -1531,7 +1545,9 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
         // mode enum: [tune|app|bia|none]
         String mode = "none";
         if (null == params || 0 == params.length) { // params指定がなかったらapp modeとみなす
-            mode = "app"; //default
+            if( (boolean)WebViewActivity.configMan().get(Const.Config.allowBOA.Name)) {
+                mode = "app";   //default
+            }
         } else if (0 < params.length) { // paramsが１つ以上あれば処理する
             String[] param = params[0].split("=");
             if (param[0].equals("mode")) {
@@ -1539,7 +1555,10 @@ public class HTTPFrameHandler extends SimpleChannelInboundHandler<FullHttpReques
                     if( null == param[1] ) { // null => mode = none
                         mode = "none";
                     }
-                    else if( param[1].equals("app") || param[1].equals("tune")) {
+                    else if( param[1].equals("tune")) {
+                        mode = param[1];
+                    }
+                    else if( param[1].equals("app") && (boolean)WebViewActivity.configMan().get(Const.Config.allowBOA.Name)) {
                         mode = param[1];
                     }
                     else if( param[1].equals("bia") && (boolean)WebViewActivity.configMan().get(Const.Config.allowBIA.Name) ) {

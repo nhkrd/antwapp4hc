@@ -14,5 +14,6 @@
     "aitVerificationTimeout": 5000,
     "wsBroadcastMode": true,
     "support4K8K": true,
+    "allowBOA": true,
     "allowBIA": true
 }

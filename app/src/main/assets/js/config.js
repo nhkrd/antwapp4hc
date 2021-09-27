@@ -14,8 +14,9 @@ var attrs = {
     "hcViewMode":4,
     "mDNS":5,
     "support4K8K":6,
-    "allowBIA":7,
-    "save":8
+    "allowBOA":7,
+    "allowBIA":8,
+    "save":9
 };
 var Url_index = {"Internal":0, "External":1, "AllOK":2};
 var aitVerifierUrl = {};
@@ -89,6 +90,7 @@ function dispConfig(data) {
     if( configAll['mDNS']) { configNew['mDNS'] = configAll['mDNS']; }
     if( configAll['tuneDelay']) { configNew['tuneDelay'] = configAll['tuneDelay']; }
     if( configAll['support4K8K']) { configNew['support4K8K'] = configAll['support4K8K']; }
+    if( configAll['allowBOA']) { configNew['allowBOA'] = configAll['allowBOA']; }
     if( configAll['allowBIA']) { configNew['allowBIA'] = configAll['allowBIA']; }
 
     var configBase = $('<div class="configBase"></div>');
@@ -103,7 +105,8 @@ function dispConfig(data) {
                     + '<div><button class="CondifChange_Btn focusable">mDNS(ON, OFF)</button><span id="cc_mdns"></span></div>'
                     + '<div><div class="CondifChange_Div">tuneDelay(<span id="cc_tuneDelay"></span> msec)</div><button class="tuneDelayButton focusable" onclick="delayup();">▲</button><button class="tuneDelayButton focusable" onclick="delaydown();">▼</button></div>'
                     + '<div><button class="CondifChange_Btn focusable">support4K8K(true, false)</button><span id="cc_support4K8K"></span></div>'
-                    + '<div><button class="CondifChange_Btn focusable">allowBIA(true, false)</button><span id="cc_allowBIA"></span></div>'
+                    + '<div><button class="CondifChange_Btn focusable">allowBOrientedMApp(true, false)</button><span id="cc_allowBOA"></span></div>'
+                    + '<div><button class="CondifChange_Btn focusable">allowBIndependentMApp(true, false)</button><span id="cc_allowBIA"></span></div>'
                     + '<div><button class="CondifChange_Btn focusable">設定更新</button></div>'
                     + '</div>';
     configBase.append( configButtons ) ;
@@ -169,6 +172,7 @@ function configUpdate() {
     $('#cc_mdns').text( configNew['mDNS']? "ON":"OFF" );
 	$('#cc_tuneDelay').text( configNew['tuneDelay'] );
     $('#cc_support4K8K').text( configNew['support4K8K']? "true":"false" );
+    $('#cc_allowBOA').text( configNew['allowBOA']? "true":"false" );
     $('#cc_allowBIA').text( configNew['allowBIA']? "true":"false" );
 
     aitVerifierUrl = configNew['aitVerifierUrl'].split('|');
@@ -227,6 +231,10 @@ function configUpdate() {
 			else if( index == attrs["support4K8K"] ) {
             	configNew['support4K8K'] = !configNew['support4K8K'];
             	$('#cc_support4K8K').text( configNew['support4K8K']? "true":"false" );
+            }
+			else if( index == attrs["allowBOA"] ) {
+            	configNew['allowBOA'] = !configNew['allowBOA'];
+            	$('#cc_allowBOA').text( configNew['allowBOA']? "true":"false" );
             }
 			else if( index == attrs["allowBIA"] ) {
             	configNew['allowBIA'] = !configNew['allowBIA'];
